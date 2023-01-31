@@ -1,0 +1,762 @@
+@import url('https://fonts.googleapis.com/css2?family=Cardo&family=Inter&family=Montserrat&family=Roboto&display=swap');
+
+:root {
+    --red: #F05454;
+    --blue: #0E49B5;
+    --grey: #DDDDDD;
+    --white: #FFFFFF;
+    --bluegrey: #DAE2EA;
+    --darkgrey: #676363;
+    --graylighter: #757373;
+    --darkblue: #3B3E66;
+    --green: #1BC943;
+    --black: #000000;
+    --lightblue: #EAF6FF;
+    --yellow: #eed814;
+}
+
+:active,
+:hover,
+:focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    line-height: 1.4;
+    color: var(--white);
+    font-weight: normal;
+    background-color: var(--black);
+    height: 100%;
+}
+
+html {
+    box-sizing: border-box;
+    height: 100%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+.wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+img {
+    width: 100%;
+    vertical-align: top;
+}
+
+p {
+    margin: 0 0 10px;
+}
+
+a {
+    color: var(--blue);
+    text-decoration: none;
+    font-family: 'Roboto', serif;
+}
+
+a:hover {
+    opacity: .7;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+}
+
+
+h1 {
+
+
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 8rem;
+    line-height: 155px;
+    text-align: center;
+    text-transform: uppercase;
+    background: radial-gradient(178.71% 178.71% at 50.04% 148.39%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    text-transform: uppercase;
+    text-align: center;
+}
+
+header {
+    position: inherit;
+    height: 100vh;
+}
+
+
+
+.candle-section {
+    position: relative;
+    height: 100vh;
+    top: -50vh;
+}
+
+.flame {
+    width: 50px;
+    height: 50px;
+    background: var(--white);
+    position: absolute;
+    border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+    left: 50%;
+    bottom: 50vh;
+    margin-left: -25px;
+    transform: rotateZ(-45deg);
+}
+
+
+.middle-glow {
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: #ffffff;
+    position: absolute;
+    border-radius: 100%;
+    margin-left: -50px;
+    top: 50%;
+    margin-top: -13vh;
+    opacity: 0.3;
+    transform-origin: center center;
+}
+
+.inner-glow {
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    background: #ffffff;
+    position: absolute;
+    border-radius: 100%;
+    margin-left: -35px;
+    margin-top: -9vh;
+    opacity: 0.8;
+    top: 50%;
+    transform-origin: center center;
+}
+
+.step.element-show {
+    opacity: 1;
+    transition: all 1s;
+}
+
+
+.wix {
+    width: 100px;
+    height: 60vh;
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    margin-left: -50px;
+    bottom: 100px;
+    opacity: 1;
+}
+
+
+.candle-text {
+    position: absolute;
+    width: 200px;
+    bottom: 10vh;
+    left: 10vh;
+    opacity: 0;
+}
+
+
+.section-steps {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    height: auto;
+    z-index: 2;
+    background-color: var(--black);
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 325px;
+}
+
+.step span {
+    opacity: 0;
+    font-size: 32px;
+}
+
+.step .step-content {
+    opacity: 0;
+    font-size: 24px;
+}
+
+.light-container {
+    height: 35vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.light {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.light.outer {
+    height: 30vh;
+    width: 30vh;
+    background: radial-gradient(52.43% 52.43% at 49.83% 50.17%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.02) 100%)
+}
+
+.light.middle {
+    height: 23vh;
+    width: 23vh;
+    background: radial-gradient(52.69% 52.69% at 49.77% 50%, rgba(255, 255, 255, 0.18) 0%, rgba(217, 217, 217, 0.03) 100%)
+}
+
+.light.inner {
+    height: 16vh;
+    width: 16vh;
+    background: radial-gradient(57.33% 57.33% at 49.69% 50.31%, rgba(255, 255, 255, 0.3) 0%, rgba(217, 217, 217, 0.05) 100%)
+}
+
+.light.center {
+    height: 9vh;
+    width: 9vh;
+    background-color: var(--white);
+    opacity: 0;
+}
+
+.wix-img {
+    display: block;
+    position: relative;
+    translate: 5vw 50vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.third-section {
+    min-height: 100vh;
+    height: auto;
+    position: relative;
+}
+
+
+.wix-img.static {
+    translate: 0 10vh;
+    transform: scale(0.8);
+}
+
+.candle-wrap {
+    position: relative;
+    height: 120vh;
+}
+
+.flame.static {
+    margin-left: -70px;
+    bottom: 80vh;
+}
+
+.candle-section.static {
+    position: relative;
+    height: 150vh;
+    top: 0;
+    margin: 0 10px;
+}
+
+.candle-section.static .wix-img {
+    translate: 5vw 15vh;
+}
+
+.candle-section.static .middle-glow {
+    margin-top: -69vh;
+}
+
+.candle-section.static .inner-glow {
+    margin-top: -66vh;
+}
+
+.candle-section.static .flame {
+    bottom: 132vh;
+}
+
+.detail {
+    position: absolute;
+    height: auto;
+    max-width: 325px;
+}
+
+.detail .content {
+    border-top: 2px solid var(--white);
+}
+
+.content .text {
+    position: absolute;
+    max-width: 325px;
+    margin-left: -35px;
+
+}
+
+.detail.two {
+    right: 10px;
+}
+
+.detail.three {
+    top: 50vh;
+}
+
+.detail.four {
+    top: 50vh;
+    right: 10px;
+}
+
+.detail.five {
+    top: 120vh;
+    right: 10vh;
+}
+
+
+.phone-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.phone-section .section-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 105px;
+}
+
+.phone-section .phone {
+    width: 460px;
+}
+
+.phone-section .content {
+    width: 600px;
+    text-align: right;
+}
+
+.phone-section h3 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 77px;
+}
+
+/* .phone-section  */
+h4 {
+    font-family: "Inter";
+    font-size: 40px;
+}
+
+.continue-section {
+    text-align: left;
+    width: 600px;
+    margin: 0 105px;
+}
+
+.day-night {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.day-night .candle-section {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.day-night .candle-section .wix-img {
+    width: 600px;
+    translate: 5vw 50vh;
+}
+
+.day-night .candle-section .flame {
+    bottom: 49vh;
+}
+
+.day-night .candle-section .inner-glow {
+    margin-top: -8vh;
+}
+
+.day-night .candle-section .middle-glow {
+    margin-top: -11vh;
+}
+
+.day-night.animated {
+    position: relative;
+}
+
+.moon-sun-span {
+    top: 0;
+    position: absolute;
+    height: 100vw;
+    width: 100vw;
+    animation: 10s linear infinite dayNight;
+}
+
+.moon,
+.sun {
+    position: absolute;
+    top: 50vh;
+    width: 175px;
+    height: 175px;
+    background-color: var(--lightblue);
+    border-radius: 50%;
+}
+
+.sun {
+    right: 0;
+}
+
+.moon .shadow {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-color: var(--black);
+    border-radius: 50%;
+    right: 0;
+}
+
+.moon {
+    animation: 10s linear infinite dayNight reverse;
+}
+
+.day-night .text-content {
+    text-align: center;
+    width: 980px;
+}
+
+footer {
+    text-align: center;
+    color: var(--white);
+    font-size: 12px;
+}
+
+/* ANIMATIONS */
+
+
+
+.flame-anim,
+.inner-glow-anim,
+.middle-glow-anim,
+.wix-img-anim {
+    opacity: 0;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+}
+
+
+
+.header-span {
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-delay: 5s;
+    animation-name: ani;
+    font-size: 128px;
+    line-height: 155px;
+}
+
+.flame-anim {
+    animation-delay: 1s;
+    animation-name: appearanceFlame;
+}
+
+.inner-glow-anim {
+    animation-name: appearanceInnerGlow;
+    animation-delay: 3s;
+}
+
+.middle-glow-anim {
+    animation-delay: 5s;
+    animation-name: appearanceMiddleGlow;
+}
+
+.wix-img-anim {
+    animation-name: appearanceWix;
+    animation-delay: 2s;
+    animation-duration: 6s;
+}
+
+
+
+.candle-section.animated {
+    animation-delay: 9s;
+    animation-name: candleUP;
+    zoom: normal;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+}
+
+.candle-text {
+    animation-delay: 10.5s;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-name: candleText;
+}
+
+@keyframes flameFlicker {
+
+    0%,
+    100% {
+        width: 48px;
+        height: 49px;
+    }
+
+    25% {
+        width: 51px;
+        height: 49px;
+    }
+
+    50% {
+        width: 49px;
+        height: 48px;
+    }
+
+    75% {
+        width: 49px;
+        height: 51px;
+    }
+
+
+}
+
+
+
+@keyframes glowFlicker {
+
+    0%,
+    100% {
+        opacity: 0.15;
+    }
+
+    50% {
+        opacity: 0.22;
+        transform: scale(1.02);
+
+    }
+
+}
+
+@keyframes appearanceFlame {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes appearanceInnerGlow {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes appearanceHeader {
+    from {
+        background-image: linear-gradient(0, var(--black) 50%, var(--black) 60%);
+    }
+
+    to {
+        background-image: linear-gradient(0, var(--white) 50%, var(--darkgrey) 60%);
+    }
+}
+
+@keyframes appearanceMiddleGlow {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
+
+
+@keyframes appearanceWix {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes ani {
+    0% {
+        transform: translateY(150%);
+        opacity: 0;
+    }
+
+    20% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    30% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        animation-delay: 3s;
+        transform: translateY(-150%);
+        opacity: 0;
+    }
+}
+
+@keyframes candleUP {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        transform: translateY(-15vh) scale(0.7);
+    }
+}
+
+@keyframes candleText {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes dayNight {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* STEPS ANIMaTION */
+.element-show .light.center {
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-name: step;
+}
+
+.element-show .light.inner {
+    animation-delay: 1s;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-name: step;
+}
+
+.element-show .light.middle {
+    animation-delay: 2s;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-name: step;
+}
+
+.element-show .light.outer {
+    animation-delay: 3s;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-name: step;
+}
+
+.element-show span {
+    animation-delay: 4s;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-name: step;
+}
+
+.element-show .step-content {
+    animation-delay: 5s;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-name: step;
+}
+
+@keyframes step {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
