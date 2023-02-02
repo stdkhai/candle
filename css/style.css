@@ -106,7 +106,7 @@ header {
 
 
 
-.candle-section {
+.candle-section-head {
     position: relative;
     height: 100vh;
     top: -50vh;
@@ -487,24 +487,41 @@ footer {
 
 
 .header-span {
-    animation-duration: 4s;
+    animation-duration: 1s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
     animation-timing-function: linear;
     animation-delay: 5s;
-    animation-name: ani;
+    animation-name: h1IN;
+    font-size: 128px;
+    line-height: 155px;
+}
+
+.header-span.out {
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-delay: 0s; 
+    animation-name: h1OUT;
+    font-size: 128px;
+    line-height: 155px;
+}
+
+.header-span.static {
+   animation: none;
     font-size: 128px;
     line-height: 155px;
 }
 
 .flame-anim {
-    animation-delay: 1s;
+    animation-delay: 1s; 
     animation-name: appearanceFlame;
 }
 
 .inner-glow-anim {
     animation-name: appearanceInnerGlow;
-    animation-delay: 3s;
+    animation-delay: 3s; 
 }
 
 .middle-glow-anim {
@@ -520,8 +537,7 @@ footer {
 
 
 
-.candle-section.animated {
-    animation-delay: 9s;
+.candle-section-head.animated {
     animation-name: candleUP;
     zoom: normal;
     animation-duration: 1.5s;
@@ -530,13 +546,22 @@ footer {
     animation-timing-function: linear;
 }
 
-.candle-text {
-    animation-delay: 10.5s;
+.candle-text.in {
     animation-duration: 1s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
     animation-timing-function: linear;
-    animation-name: candleText;
+    animation-name: candleTextIN;
+}
+
+.candle-text.out {/* 
+    animation-delay: 10.5s; */
+    /* animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-name: candleTextOUT; */
+    opacity: 0;
 }
 
 @keyframes flameFlicker {
@@ -638,29 +663,23 @@ footer {
 }
 
 
-@keyframes ani {
+@keyframes h1IN {
     0% {
         transform: translateY(150%);
         opacity: 0;
     }
-
-    20% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    30% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    50% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
     100% {
-        animation-delay: 3s;
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes h1OUT {
+    0% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+    100% {
         transform: translateY(-150%);
         opacity: 0;
     }
@@ -676,13 +695,23 @@ footer {
     }
 }
 
-@keyframes candleText {
+@keyframes candleTextIN {
     0% {
         opacity: 0;
     }
 
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes candleTextOUT {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
     }
 }
 
@@ -699,7 +728,7 @@ footer {
 
 /* STEPS ANIMaTION */
 .element-show .light.center {
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
     animation-timing-function: linear;
@@ -707,8 +736,8 @@ footer {
 }
 
 .element-show .light.inner {
-    animation-delay: 1s;
-    animation-duration: 1s;
+    animation-delay: 0.5s;
+    animation-duration: 0.5s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
     animation-timing-function: linear;
@@ -716,8 +745,8 @@ footer {
 }
 
 .element-show .light.middle {
-    animation-delay: 2s;
-    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-duration: 0.5s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
     animation-timing-function: linear;
@@ -725,8 +754,8 @@ footer {
 }
 
 .element-show .light.outer {
-    animation-delay: 3s;
-    animation-duration: 1s;
+    animation-delay: 1.5s;
+    animation-duration: 0.5s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
     animation-timing-function: linear;
@@ -734,8 +763,8 @@ footer {
 }
 
 .element-show span {
-    animation-delay: 4s;
-    animation-duration: 1s;
+    animation-delay: 2s;
+    animation-duration: 0.5s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
     animation-timing-function: linear;
@@ -743,8 +772,8 @@ footer {
 }
 
 .element-show .step-content {
-    animation-delay: 5s;
-    animation-duration: 1s;
+    animation-delay: 2.5s;
+    animation-duration: 0.5s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
     animation-timing-function: linear;
