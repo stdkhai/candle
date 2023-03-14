@@ -257,11 +257,13 @@ header {
 }
 
 .wix-img {
-    display: block;
+    display: flex;
+    justify-content: center;
     position: relative;
-    translate: 5vw 50vh;
+    translate: 0 50vh;
     margin-left: auto;
     margin-right: auto;
+    height: 100%;
     width: 50%;
     z-index: 0;
     overflow: hidden;
@@ -395,6 +397,7 @@ h4 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation: 10s linear infinite dayNightBack;
 }
 
 .day-night .candle-section {
@@ -448,10 +451,10 @@ h4 {
 .moon .shadow {
     position: absolute;
     width: 150px;
-    height: 150px;
-    background-color: var(--black);
-    border-radius: 50%;
+    height: 150px; border-radius: 50%;
     right: 0;
+    animation: 10s linear infinite dayNightBack;
+
 }
 
 .moon {
@@ -725,6 +728,24 @@ footer {
     }
 }
 
+@keyframes dayNightBack {
+    0% {
+        background-color: var(--black);
+    }
+    25% {
+        background-color: var(--black);
+    }
+    50% {
+        background-color: var(--graylighter);
+    }
+    75% {
+        background-color: var(--graylighter);
+    }
+    100% {
+        background-color: var(--black);
+    }
+}
+
 
 /* STEPS ANIMaTION */
 .element-show .light.center {
@@ -789,3 +810,32 @@ footer {
         opacity: 1;
     }
 }
+.model {
+    z-index: 5;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center !important;
+  /*  transform: rotateX(90deg) rotateZ(90deg);
+   animation: spin 10s linear infinite;
+ position: absolute; */
+}
+  
+  
+   @keyframes spin {
+    0%{
+        transform: rotateX(90deg) rotateZ(90deg);
+    }
+    25%{
+        transform:  rotateX(90deg) rotateZ(180deg)
+    }
+    50%{
+        transform:  rotateX(90deg) rotateZ(270deg)
+    }
+    75%{
+        transform:  rotateX(90deg) rotateZ(360deg)
+    }
+    100%{
+        transform:  rotateX(90deg) rotateZ(90deg)
+    }
+   }

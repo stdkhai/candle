@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
     <title>Candle</title>
 </head>
 
 <body>
     <div class="wrapper">
-        <svg height="auto" width="100vw" style="position: absolute; overflow:hidden; z-index:3;">
+        <!-- <svg height="auto" width="100vw" style="position: absolute; overflow:hidden; z-index:3;">
             <line id="line1" x1="0" y1="0" x2="0" y2="0"
                 style="stroke:rgb(255, 255, 255);stroke-width:2;position:absolute;" />
             <line id="line2" x1="0" y1="0" x2="0" y2="0"
@@ -23,7 +24,7 @@
                 style="stroke:rgb(255, 255, 255);stroke-width:2;position:absolute;" />
             <line id="line5" x1="0" y1="0" x2="0" y2="0"
                 style="stroke:rgb(255, 255, 255);stroke-width:2;position:absolute;" />
-        </svg>
+        </svg> -->
         <header>
             <div style="overflow-y: hidden; position: relative;">
                 <div class="header-span">
@@ -35,12 +36,14 @@
                     Lorem ipsum dolor sit amet consectetur. Pellentesque velit duis enim porta neque. Feugiat leo dui
                     libero tortor volutpat tortor porttitor habitasse.
                 </div>
-                <div class="flame flame-anim"></div>
+                <div class="wix-img wix-img-anim">
+                    <model-viewer class="model" src="./media/assets/Astronaut.glb" ar
+                        ar-modes="webxr scene-viewer quick-look" camera-controls shadow-intensity="2" disable-pan
+                        disable-zoom shadow-softness="1" auto-rotate camera-orbit="-25.03deg 86.04deg 9006m"
+                        field-of-view="30deg" touch-action="none" interaction-prompt="none">
+                    </model-viewer>
+                </div>
 
-                <div class="middle-glow middle-glow-anim"></div>
-                <div class="inner-glow inner-glow-anim"></div>
-
-                <img class="wix-img wix-img-anim" src="./media/candle.svg" alt="">
             </section>
         </header>
         <section class="section-steps">
@@ -97,43 +100,34 @@
         <section class="third-section">
 
             <section class="candle-section static">
-                <div class="detail one">
-                    <span>Detail 1</span>
-                    <div class="content" id="detail1">
-                        Lorem ipsum dolor sit amet consectetur. Pellentesque velit duis enim porta neque.
-                    </div>
-                </div>
 
-                <div class="detail two">
-                    <span>Detail 2</span>
-                    <div class="content" id="detail2">
-                        Lorem ipsum dolor sit amet consectetur. Pellentesque velit duis enim porta neque.
-                    </div>
-                </div>
-                <div class="detail three">
-                    <span>Detail 3</span>
-                    <div class="content" id="detail3">
-                        Lorem ipsum dolor sit amet consectetur. Pellentesque velit duis enim porta neque.
-                    </div>
-                </div>
-                <div class="detail four">
-                    <span>Detail 4</span>
-                    <div class="content" id="detail4">
-                        Lorem ipsum dolor sit amet consectetur. Pellentesque velit duis enim porta neque.
-                    </div>
-                </div>
-                <div class="detail five">
-                    <span>Detail 5</span>
-                    <div class="content" id="detail5">
-                        Lorem ipsum dolor sit amet consectetur. Pellentesque velit duis enim porta neque.
-                    </div>
-                </div>
-                <div class="flame" id="flame"></div>
+                <div class="wix-img">
+                    <model-viewer class="model" src="./media/assets/Astronaut.glb" ar
+                        ar-modes="webxr scene-viewer quick-look" camera-controls shadow-intensity="2" disable-pan
+                        disable-zoom shadow-softness="1" auto-rotate camera-orbit="-25.03deg 86.04deg 9006m"
+                        field-of-view="30deg" touch-action="none" interaction-prompt="none">
 
-                <div class="middle-glow"></div>
-                <div class="inner-glow"></div>
-
-                <img class="wix-img" id="wix" src="./media/candle.svg" alt="">
+                        <button class="Hotspot" slot="hotspot-3" data-surface="0 0 3351 3352 3353 0.629 0.305 0.066"
+                            data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Detail 1</div>
+                            <div class="content">Lorem ipsum dolor sit amet consectetur. Pellentesque velit duis enim
+                                porta neque.
+                            </div>
+                        </button><button class="Hotspot" slot="hotspot-4"
+                            data-surface="0 0 2019 2020 2021 0.494 0.187 0.318" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Detail 2</div>
+                        </button><button class="Hotspot" slot="hotspot-5"
+                            data-surface="0 0 1149 1150 1151 0.098 0.421 0.481" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Detail 3</div>
+                        </button><button class="Hotspot" slot="hotspot-6"
+                            data-surface="0 0 930 931 932 0.035 0.609 0.356" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Detail 4</div>
+                        </button><button class="Hotspot" slot="hotspot-7"
+                            data-surface="0 0 3075 3076 3077 0.472 0.004 0.524" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation">Detail 5</div>
+                        </button>
+                    </model-viewer>
+                </div>
             </section>
         </section>
         <section class="phone-section">
@@ -174,22 +168,28 @@
             </div>
             <div class="day-night animated">
                 <section class="candle-section static">
-                    <div class="flame" id="flame"></div>
-                    <div class="middle-glow"></div>
-                    <div class="inner-glow"></div>
-                    <img class="wix-img" id="wix" src="./media/candle.svg" alt="">
+                    <div class="wix-img">
+                        <model-viewer class="model" src="./media/assets/Astronaut.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls
+                         shadow-intensity="2" disable-pan disable-zoom
+                        shadow-softness="1" auto-rotate camera-orbit="-25.03deg 86.04deg 9006m" field-of-view="30deg"
+                        touch-action="none" interaction-prompt="none" >
+                    </model-viewer>
+                    </div>
                 </section>
                 <div class="moon-sun-span">
-                    <div class="moon"><div class="shadow"></div></div>
-                <div class="sun"></div>
+                    <div class="moon">
+                        <div class="shadow"></div>
+                    </div>
+                    <div class="sun"></div>
                 </div>
-                
+                <p>Brand name</p>
+                <p>2023 All rights reserved</p>
             </div>
         </section>
-        <footer>
+        <!-- <footer>
             <p>Brand name</p>
             <p>2023 All rights reserved</p>
-        </footer>
+        </footer> -->
     </div>
 </body>
 <script src="./scripts/index.js"></script>
