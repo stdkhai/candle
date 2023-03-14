@@ -104,8 +104,9 @@
                 <div class="wix-img">
                     <model-viewer class="model" src="./media/assets/Astronaut.glb" ar
                         ar-modes="webxr scene-viewer quick-look" camera-controls shadow-intensity="2" disable-pan
-                        disable-zoom shadow-softness="1" auto-rotate camera-orbit="-25.03deg 86.04deg 9006m"
-                        field-of-view="30deg" touch-action="pan-y" interaction-prompt="none">
+                        disable-zoom shadow-softness="1" auto-rotate
+                        min-camera-orbit="auto 84deg auto" max-camera-orbit="auto 84deg auto"
+                    touch-action="pan-y" interaction-prompt="none">
 
                         <button class="Hotspot" slot="hotspot-3" data-surface="0 0 3351 3352 3353 0.629 0.305 0.066"
                             data-visibility-attribute="visible">
@@ -169,12 +170,12 @@
             <div class="day-night animated">
                 <section class="candle-section static">
                     <div class="wix-img">
-                        <model-viewer class="model" src="./media/assets/Astronaut.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls
-                         shadow-intensity="2" disable-pan disable-zoom
-                        shadow-softness="1" auto-rotate camera-orbit="-25.03deg 86.04deg 9006m" field-of-view="30deg"
-                        min-camera-orbit="auto 84deg auto" max-camera-orbit="auto 84deg auto"
-                        touch-action="none" interaction-prompt="none" >
-                    </model-viewer>
+                        <model-viewer class="model" src="./media/assets/Astronaut.glb" 
+                            ar-modes="webxr scene-viewer quick-look" camera-controls shadow-intensity="2" disable-pan
+                            disable-zoom shadow-softness="1" auto-rotate
+                            min-camera-orbit="auto 84deg auto" max-camera-orbit="auto 84deg auto"
+                            touch-action="none" interaction-prompt="none">
+                        </model-viewer>
                     </div>
                 </section>
                 <div class="moon-sun-span">
