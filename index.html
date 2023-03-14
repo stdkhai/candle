@@ -27,8 +27,10 @@
                 <div class="wix-img wix-img-anim">
                     <model-viewer class="model" src="./media/assets/Candle_with_glass.glb" ar
                         ar-modes="webxr scene-viewer quick-look" camera-controls shadow-intensity="2" exposure="0.21"
-                        disable-pan disable-zoom shadow-softness="1" auto-rotate camera-orbit="-25.03deg 86.04deg 9006m"
-                        rotation-per-second="25deg"
+                        disable-pan disable-zoom shadow-softness="1"  camera-orbit="-25.03deg 86.04deg 9006m"
+                        auto-rotate-delay="0"
+                        min-camera-orbit="105deg 84deg auto"
+                        max-camera-orbit="105deg 84deg auto"
                         field-of-view="30deg" touch-action="none" interaction-prompt="none">
                     </model-viewer>
                 </div>
@@ -94,7 +96,6 @@
                     <model-viewer class="model" src="./media/assets/Candle_with_glass.glb" ar
                         ar-modes="webxr scene-viewer quick-look" camera-controls shadow-intensity="2" exposure="0.21"
                         disable-pan disable-zoom shadow-softness="1" auto-rotate min-camera-orbit="auto 84deg auto"
-                        
                         max-camera-orbit="auto 84deg auto" touch-action="pan-y" interaction-prompt="none">
                             <button class="Hotspot" slot="hotspot-2" data-surface="3 0 50 49 51 0.860 0.031 0.109"
                                 data-visibility-attribute="visible">

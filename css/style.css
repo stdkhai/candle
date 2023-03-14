@@ -393,11 +393,15 @@ h4 {
     margin: 0 105px;
 }
 
+section.day-night {
+    animation: 10s linear infinite dayNightBack;
+}
+
+
 .day-night {
     display: flex;
     flex-direction: column;
     align-items: center;
-    animation: 10s linear infinite dayNightBack;
 }
 
 .day-night .candle-section {
@@ -451,7 +455,8 @@ h4 {
 .moon .shadow {
     position: absolute;
     width: 150px;
-    height: 150px; border-radius: 50%;
+    height: 150px;
+    border-radius: 50%;
     right: 0;
     animation: 10s linear infinite dayNightBack;
 
@@ -493,7 +498,8 @@ footer {
     animation-duration: 1s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
-    animation-timing-function: linear;/* 
+    animation-timing-function: linear;
+    /* 
     animation-delay: 5s; */
     animation-name: h1IN;
     font-size: 128px;
@@ -505,26 +511,26 @@ footer {
     animation-iteration-count: 1;
     animation-fill-mode: both;
     animation-timing-function: linear;
-    animation-delay: 0s; 
+    animation-delay: 0s;
     animation-name: h1OUT;
     font-size: 128px;
     line-height: 155px;
 }
 
 .header-span.static {
-   animation: none;
+    animation: none;
     font-size: 128px;
     line-height: 155px;
 }
 
 .flame-anim {
-    animation-delay: 1s; 
+    animation-delay: 1s;
     animation-name: appearanceFlame;
 }
 
 .inner-glow-anim {
     animation-name: appearanceInnerGlow;
-    animation-delay: 3s; 
+    animation-delay: 3s;
 }
 
 .middle-glow-anim {
@@ -539,6 +545,14 @@ footer {
 }
 
 
+.candle-section-head {
+    animation-name: candleBACK;
+    zoom: normal;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+}
 
 .candle-section-head.animated {
     animation-name: candleUP;
@@ -557,7 +571,8 @@ footer {
     animation-name: candleTextIN;
 }
 
-.candle-text.out {/* 
+.candle-text.out {
+    /* 
     animation-delay: 10.5s; */
     /* animation-duration: 1s;
     animation-iteration-count: 1;
@@ -671,6 +686,7 @@ footer {
         transform: translateY(150%);
         opacity: 0;
     }
+
     100% {
         transform: translateY(0);
         opacity: 1;
@@ -682,6 +698,7 @@ footer {
         transform: translateY(0%);
         opacity: 1;
     }
+
     100% {
         transform: translateY(-150%);
         opacity: 0;
@@ -695,6 +712,17 @@ footer {
 
     100% {
         transform: translateY(-15vh) scale(0.7);
+    }
+}
+
+@keyframes candleBACK {
+    0% {
+        transform: translateY(-15vh) scale(0.7);
+
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
     }
 }
 
@@ -732,15 +760,19 @@ footer {
     0% {
         background-color: var(--black);
     }
+
     25% {
         background-color: var(--black);
     }
+
     50% {
         background-color: var(--graylighter);
     }
+
     75% {
         background-color: var(--graylighter);
     }
+
     100% {
         background-color: var(--black);
     }
@@ -810,6 +842,7 @@ footer {
         opacity: 1;
     }
 }
+
 .model {
     z-index: 5;
     height: 100%;
@@ -817,47 +850,51 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: center !important;
-  /*  transform: rotateX(90deg) rotateZ(90deg);
+    /*  transform: rotateX(90deg) rotateZ(90deg);
    animation: spin 10s linear infinite;
  position: absolute; */
 }
-  
-  
-   @keyframes spin {
-    0%{
+
+
+@keyframes spin {
+    0% {
         transform: rotateX(90deg) rotateZ(90deg);
     }
-    25%{
-        transform:  rotateX(90deg) rotateZ(180deg)
+
+    25% {
+        transform: rotateX(90deg) rotateZ(180deg)
     }
-    50%{
-        transform:  rotateX(90deg) rotateZ(270deg)
+
+    50% {
+        transform: rotateX(90deg) rotateZ(270deg)
     }
-    75%{
-        transform:  rotateX(90deg) rotateZ(360deg)
+
+    75% {
+        transform: rotateX(90deg) rotateZ(360deg)
     }
-    100%{
-        transform:  rotateX(90deg) rotateZ(90deg)
+
+    100% {
+        transform: rotateX(90deg) rotateZ(90deg)
     }
-   }
+}
 
 
 
 @media (max-width: 600px) {
-h1{
-    margin: 20px 0;
-}
+    h1 {
+        margin: 20px 0;
+    }
 
-    .wix-img{
+    .wix-img {
         translate: none;
         width: 100%;
     }
 
-    .candle-section-head{
+    .candle-section-head {
         width: 100%;
     }
 
-    .model{
+    .model {
         width: 100%;
     }
 

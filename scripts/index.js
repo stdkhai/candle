@@ -81,6 +81,18 @@ async function onEntry(entry) {
 //////////////////////////////////////////////////////////////////////
 
 ////////////////////////////chande classes on scroll//////////////////////////////////////////
+function offAutoRotate(model) {
+  model.removeAttribute('auto-rotate');/* 
+  model.setAttribute('min-camera-orbit','135deg 84deg auto');
+  model.setAttribute('max-camera-orbit','135deg 84deg auto'); */
+}
+
+function onAutoRotate(model) {
+  model.removeAttribute('auto-rotate');/* 
+  model.setAttribute('min-camera-orbit','105deg 84deg auto');
+  model.setAttribute('max-camera-orbit','105deg 84deg auto'); */
+}
+
 window.addEventListener('load', event => {
   let box = document.querySelector('header')
   let prevRatio = 0;
@@ -88,6 +100,7 @@ window.addEventListener('load', event => {
   let candleSection = document.querySelector('.candle-section-head')
   let h1 = document.querySelector('.header-span');
   let candleText = document.querySelector('.candle-text');
+  let model = document.querySelector('.model');
 
   if (window.innerWidth <600) {
     h1.classList.add('static');
@@ -102,14 +115,20 @@ window.addEventListener('load', event => {
       if (window.innerWidth < 600) {
         ratioKoeficient=0.9;
       }
-
       curRatio < ratioKoeficient ?
         (candleSection.classList.add('animated'),
+        model.setAttribute('rotation-per-second','-20deg'),
+        model.setAttribute('auto-rotate',''),
+        setTimeout(offAutoRotate, 1500,model),
+        
           h1.classList.add('out'),
           h1.classList.remove('static'),
           candleText.classList.add('in'),
           candleText.classList.remove('out')) :
         (candleSection.classList.remove('animated'),
+        model.setAttribute('rotation-per-second','20deg'),
+        model.setAttribute('auto-rotate',''),
+        setTimeout(onAutoRotate, 1500,model),
           h1.classList.remove('out'),
           candleText.classList.remove('in'),
           candleText.classList.add('out'),
