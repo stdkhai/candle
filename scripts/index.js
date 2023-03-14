@@ -46,16 +46,20 @@ async function onEntry(entry) {
     if (entry[i].isIntersecting) {
       disableScroll()
       if (i == 0) {
+        document.addEventListener('touchmove',e=>{
+          for (let i = 0; i < steps.length; i++) {
+              steps[i].classList.add('element-show');
+              
+          }
+        });
+
         document.addEventListener('wheel', e => {
-          console.log("whelled");
           e.preventDefault();
-          let target = e.target;
           let steps = document.querySelectorAll('.step');
           for (let i = 0; i < steps.length; i++) {
-            if (!steps[i].classList.contains('element-show')) {
               steps[i].classList.add('element-show');
               return
-            }
+            
           }
           enableScroll()
         })
