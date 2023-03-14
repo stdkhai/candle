@@ -83,16 +83,27 @@ async function onEntry(entry) {
 ////////////////////////////chande classes on scroll//////////////////////////////////////////
 window.addEventListener('load', event => {
   let box = document.querySelector('header')
-  let prevRatio = 0
+  let prevRatio = 0;
+  let ratioKoeficient=0.95;
   let candleSection = document.querySelector('.candle-section-head')
   let h1 = document.querySelector('.header-span');
   let candleText = document.querySelector('.candle-text');
+
+  if (window.innerWidth <600) {
+    h1.classList.add('static');
+  }
+
   let observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       let curRatio = entry.intersectionRatio
       curRatio > 0.1 ? entry.target.classList.add('animated') : (entry.target.classList.remove('animated'));
 
-      curRatio < 0.95 ?
+  
+      if (window.innerWidth < 600) {
+        ratioKoeficient=0.9;
+      }
+
+      curRatio < ratioKoeficient ?
         (candleSection.classList.add('animated'),
           h1.classList.add('out'),
           h1.classList.remove('static'),
@@ -102,7 +113,7 @@ window.addEventListener('load', event => {
           h1.classList.remove('out'),
           candleText.classList.remove('in'),
           candleText.classList.add('out'),
-          prevRatio != 0 && curRatio >= 0.95 ?
+          prevRatio != 0 && curRatio >= ratioKoeficient ?
             h1.classList.add('static') :
             h1.classList.remove('static'))
 
@@ -135,29 +146,3 @@ for (let elm of elements) {
   observer.observe(elm);
 }
 ////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////lines for details/////////////////////////////////////////////////
-one = $('#detail1').position();
-two = $('#flame').position();
-$('#line1').attr({ "x2": two.left, "y2": $('#flame').offset().top, "y1": $('#detail1').offset().top, "x1": $('#detail1').width() });
-
-
-one = $('#detail2').position();
-two = $('#wix').position();
-$('#line2').attr({ "x2": $('#wix').offset().left + $('#wix').width() / 2, "y2": $('#wix').offset().top, "y1": $('#detail2').offset().top, "x1": $('#detail2').offset().left });
-
-
-one = $('#detail3').position();
-two = $('#wix').position();
-$('#line3').attr({ "x2": $('#wix').offset().left + $('#wix').width() / 2, "y2": $('#wix').offset().top + $('#wix').height() / 3 * 2, "y1": $('#detail3').offset().top, "x1": $('#detail3').width() });
-
-
-one = $('#detail4').position();
-two = $('#wix').position();
-$('#line4').attr({ "x2": $('#wix').offset().left + $('#wix').width() * 0.9, "y2": $('#wix').offset().top + $('#wix').height() / 3 * 2, "y1": $('#detail4').offset().top, "x1": $('#detail4').offset().left });
-
-
-one = $('#detail5').position();
-two = $('#wix').position();
-$('#line5').attr({ "x2": $('#wix').offset().left + $('#wix').width() * 0.7, "y2": $('#wix').offset().top + $('#wix').height() / 5 * 4, "y1": $('#detail5').offset().top, "x1": $('#detail5').offset().left });
-//////////////////////////////////////////////////////////////////////////////

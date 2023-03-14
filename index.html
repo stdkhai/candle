@@ -13,18 +13,6 @@
 
 <body>
     <div class="wrapper">
-        <!-- <svg height="auto" width="100vw" style="position: absolute; overflow:hidden; z-index:3;">
-            <line id="line1" x1="0" y1="0" x2="0" y2="0"
-                style="stroke:rgb(255, 255, 255);stroke-width:2;position:absolute;" />
-            <line id="line2" x1="0" y1="0" x2="0" y2="0"
-                style="stroke:rgb(255, 255, 255);stroke-width:2;position:absolute;" />
-            <line id="line3" x1="0" y1="0" x2="0" y2="0"
-                style="stroke:rgb(255, 255, 255);stroke-width:2;position:absolute;" />
-            <line id="line4" x1="0" y1="0" x2="0" y2="0"
-                style="stroke:rgb(255, 255, 255);stroke-width:2;position:absolute;" />
-            <line id="line5" x1="0" y1="0" x2="0" y2="0"
-                style="stroke:rgb(255, 255, 255);stroke-width:2;position:absolute;" />
-        </svg> -->
         <header>
             <div style="overflow-y: hidden; position: relative;">
                 <div class="header-span">
@@ -37,9 +25,10 @@
                     libero tortor volutpat tortor porttitor habitasse.
                 </div>
                 <div class="wix-img wix-img-anim">
-                    <model-viewer class="model" src="./media/assets/Astronaut.glb" ar
-                        ar-modes="webxr scene-viewer quick-look" camera-controls shadow-intensity="2" disable-pan
-                        disable-zoom shadow-softness="1" auto-rotate camera-orbit="-25.03deg 86.04deg 9006m"
+                    <model-viewer class="model" src="./media/assets/Candle_with_glass.glb" ar
+                        ar-modes="webxr scene-viewer quick-look" camera-controls shadow-intensity="2" exposure="0.21"
+                        disable-pan disable-zoom shadow-softness="1" auto-rotate camera-orbit="-25.03deg 86.04deg 9006m"
+                        rotation-per-second="25deg"
                         field-of-view="30deg" touch-action="none" interaction-prompt="none">
                     </model-viewer>
                 </div>
@@ -102,31 +91,24 @@
             <section class="candle-section static">
 
                 <div class="wix-img">
-                    <model-viewer class="model" src="./media/assets/Astronaut.glb" ar
-                        ar-modes="webxr scene-viewer quick-look" camera-controls shadow-intensity="2" disable-pan
-                        disable-zoom shadow-softness="1" auto-rotate
-                        min-camera-orbit="auto 84deg auto" max-camera-orbit="auto 84deg auto"
-                    touch-action="pan-y" interaction-prompt="none">
-
-                        <button class="Hotspot" slot="hotspot-3" data-surface="0 0 3351 3352 3353 0.629 0.305 0.066"
-                            data-visibility-attribute="visible">
-                            <div class="HotspotAnnotation">Detail 1</div>
-                            <div class="content">Lorem ipsum dolor sit amet consectetur. Pellentesque velit duis enim
-                                porta neque.
-                            </div>
-                        </button><button class="Hotspot" slot="hotspot-4"
-                            data-surface="0 0 2019 2020 2021 0.494 0.187 0.318" data-visibility-attribute="visible">
-                            <div class="HotspotAnnotation">Detail 2</div>
-                        </button><button class="Hotspot" slot="hotspot-5"
-                            data-surface="0 0 1149 1150 1151 0.098 0.421 0.481" data-visibility-attribute="visible">
-                            <div class="HotspotAnnotation">Detail 3</div>
-                        </button><button class="Hotspot" slot="hotspot-6"
-                            data-surface="0 0 930 931 932 0.035 0.609 0.356" data-visibility-attribute="visible">
-                            <div class="HotspotAnnotation">Detail 4</div>
-                        </button><button class="Hotspot" slot="hotspot-7"
-                            data-surface="0 0 3075 3076 3077 0.472 0.004 0.524" data-visibility-attribute="visible">
-                            <div class="HotspotAnnotation">Detail 5</div>
-                        </button>
+                    <model-viewer class="model" src="./media/assets/Candle_with_glass.glb" ar
+                        ar-modes="webxr scene-viewer quick-look" camera-controls shadow-intensity="2" exposure="0.21"
+                        disable-pan disable-zoom shadow-softness="1" auto-rotate min-camera-orbit="auto 84deg auto"
+                        
+                        max-camera-orbit="auto 84deg auto" touch-action="pan-y" interaction-prompt="none">
+                            <button class="Hotspot" slot="hotspot-2" data-surface="3 0 50 49 51 0.860 0.031 0.109"
+                                data-visibility-attribute="visible">
+                                <div class="HotspotAnnotation">Detail 1</div>
+                            </button><button class="Hotspot" slot="hotspot-4"
+                                data-surface="1 0 4882 4881 4883 0.076 0.171 0.754" data-visibility-attribute="visible">
+                                <div class="HotspotAnnotation">Detail 2</div>
+                            </button><button class="Hotspot" slot="hotspot-5"
+                                data-surface="1 0 1575 1579 1580 0.003 0.392 0.605" data-visibility-attribute="visible">
+                                <div class="HotspotAnnotation">Detail 3</div>
+                            </button><button class="Hotspot" slot="hotspot-7"
+                                data-surface="1 0 3960 3961 3962 0.041 0.411 0.548" data-visibility-attribute="visible">
+                                <div class="HotspotAnnotation">Detail 4</div>
+                            </button>
                     </model-viewer>
                 </div>
             </section>
@@ -170,11 +152,10 @@
             <div class="day-night animated">
                 <section class="candle-section static">
                     <div class="wix-img">
-                        <model-viewer class="model" src="./media/assets/Astronaut.glb" 
+                        <model-viewer class="model" src="./media/assets/Candle_with_glass.glb"
                             ar-modes="webxr scene-viewer quick-look" camera-controls shadow-intensity="2" disable-pan
-                            disable-zoom shadow-softness="1" auto-rotate
-                            min-camera-orbit="auto 84deg auto" max-camera-orbit="auto 84deg auto"
-                            touch-action="none" interaction-prompt="none">
+                            disable-zoom shadow-softness="1" auto-rotate min-camera-orbit="auto 84deg auto"
+                            max-camera-orbit="auto 84deg auto" touch-action="none" interaction-prompt="none">
                         </model-viewer>
                     </div>
                 </section>

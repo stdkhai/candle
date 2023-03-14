@@ -260,7 +260,7 @@ header {
     display: flex;
     justify-content: center;
     position: relative;
-    translate: 0 50vh;
+    translate: 0 20%;
     margin-left: auto;
     margin-right: auto;
     height: 100%;
@@ -493,8 +493,8 @@ footer {
     animation-duration: 1s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
-    animation-timing-function: linear;
-    animation-delay: 5s;
+    animation-timing-function: linear;/* 
+    animation-delay: 5s; */
     animation-name: h1IN;
     font-size: 128px;
     line-height: 155px;
@@ -812,7 +812,8 @@ footer {
 }
 .model {
     z-index: 5;
-    height: 80%;
+    height: 100%;
+    width: 50vw;
     display: flex;
     flex-direction: row;
     justify-content: center !important;
@@ -839,3 +840,25 @@ footer {
         transform:  rotateX(90deg) rotateZ(90deg)
     }
    }
+
+
+
+@media (max-width: 600px) {
+h1{
+    margin: 20px 0;
+}
+
+    .wix-img{
+        translate: none;
+        width: 100%;
+    }
+
+    .candle-section-head{
+        width: 100%;
+    }
+
+    .model{
+        width: 100%;
+    }
+
+}
