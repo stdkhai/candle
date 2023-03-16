@@ -4,7 +4,6 @@ import {details} from './content.js'
 
 var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
 let hotspots=document.getElementsByClassName('HotspotAnnotation');
-console.log(hotspots);
 function preventDefault(e) {
   e.preventDefault();
 }
@@ -27,6 +26,7 @@ var wheelOpt = supportsPassive ? { passive: false } : false;
 var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
 
 function disableScroll() {
+  console.log('scroll blocked');
   window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
   window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
 /*   window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
@@ -34,6 +34,7 @@ function disableScroll() {
 }
 
 function enableScroll() {
+  console.log('scrol enable');
   window.removeEventListener('DOMMouseScroll', preventDefault, false);
   window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
 /*   window.removeEventListener('touchmove', preventDefault, wheelOpt);
@@ -47,7 +48,10 @@ function enableScroll() {
 async function onEntry(entry) {
   for (let i = 0; i < entry.length; i++) {
     if (entry[i].isIntersecting) {
-      disableScroll()
+      if (window.innerWidth >600) {
+       disableScroll()
+      }
+      
       if (i == 0) {
         document.addEventListener('touchmove', e => {
           let target = e.target;
@@ -82,27 +86,8 @@ async function onEntry(entry) {
 //////////////////////////////////////////////////////////////////////
 
 
-/* 
-  setInterval(() => {
-    const currentOrbitIndex = orbitCycle.indexOf(modelViewer.cameraOrbit);
-    modelViewer.cameraOrbit =
-        orbitCycle[(currentOrbitIndex + 1) % orbitCycle.length];
-  }, 3000); */
-
-
 ////////////////////////////chande classes on scroll//////////////////////////////////////////
-function offAutoRotate(model) {
-  enableScroll()
-  model.removeAttribute('auto-rotate');/* 
-  model.setAttribute('min-camera-orbit','135deg 84deg auto');
-  model.setAttribute('max-camera-orbit','135deg 84deg auto'); */
-}
 
-function onAutoRotate(model) {
-  model.removeAttribute('auto-rotate');/* 
-  model.setAttribute('min-camera-orbit','105deg 84deg auto');
-  model.setAttribute('max-camera-orbit','105deg 84deg auto'); */
-}
 
 window.addEventListener('load', event => {
   let box = document.querySelector('header')
@@ -129,7 +114,7 @@ window.addEventListener('load', event => {
       let curRatio = entry.intersectionRatio
       curRatio > 0.1 ? entry.target.classList.add('animated') : (entry.target.classList.remove('animated'));
       if (window.innerWidth < 600) {
-        ratioKoeficient=0.9;
+        ratioKoeficient=0.91;
       }
       curRatio < ratioKoeficient ?
         (candleSection.classList.add('animated'),

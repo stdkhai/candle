@@ -31,7 +31,7 @@ body {
     font-weight: normal;
     background-color: var(--black);
     height: 100%;
-    
+
 }
 
 html {
@@ -357,7 +357,7 @@ header {
 
 /* .phone-section  */
 
-.about{
+.about {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -365,21 +365,22 @@ header {
     align-items: center;
 }
 
-.about .content{
+.about .content {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
 }
 
-.about .profile{
+.about .profile {
     max-width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
-.profile span{
+.profile span {
     font-weight: 900;
     font-size: 1.4em;
 }
@@ -866,11 +867,102 @@ footer {
     }
 
     .candle-section-head {
+        z-index: 1;
         width: 100%;
+        top: 0vh;
     }
 
     .model {
         width: 100%;
+        z-index: 2;
     }
 
+    header>div {
+        z-index: 6;
+    }
+
+
+    .candle-section-head.animated {
+        animation-name: candleUPMOBILE;
+    }
+
+    .candle-section-head {
+        animation-name: candleBACKMOBILE;
+    }
+
+    .candle-section-head .candle-text {
+        z-index: 3;
+    }
+
+
+    @keyframes candleUPMOBILE {
+        0% {
+            transform: translateY(0vh) scale(0.7);
+        }
+
+        100% {
+            transform: translateY(-70vh) scale(1);
+
+        }
+    }
+
+
+    @keyframes candleBACKMOBILE {
+        0% {
+            transform: translateY(-70vh) scale(1);
+        }
+
+        100% {
+            transform: translateY(0vh) scale(0.7);
+        }
+    }
+
+    .candle-section.static {
+        flex-direction: column-reverse;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+
+    .candle-section.static .wix-img {
+        translate: none;
+    }
+
+    .candle-section.static .detail-description {
+        max-width: 80%;
+        text-align: center;
+    }
+
+        .phone-section .section-header{
+            text-align: center;
+        }
+
+        .phone-section .section-content{
+            text-align: center;
+            flex-direction: column-reverse;
+            padding: 0;
+            justify-content: center;
+        }
+
+        .phone-section .content {
+            width: 90%;
+            text-align: center;
+        }
+
+        .phone-section .phone {
+            padding: 15px;
+            width: 100%;
+        }
+
+        .continue-section{
+            text-align: center;
+            margin:0;
+            padding: 15px;
+            width: 100%;
+        }
+
+        .moon-sun-span {
+            height: 100vw;
+            width: 100vh;
+            animation: 10s linear infinite dayNight;
+        }
 }
