@@ -730,7 +730,7 @@ footer {
 
 /* STEPS ANIMaTION */
 .element-show .light.center {
-    animation-duration: 0.5s;
+    animation-duration: 0.25s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
     animation-timing-function: linear;
@@ -738,8 +738,8 @@ footer {
 }
 
 .element-show .light.inner {
-    animation-delay: 0.5s;
-    animation-duration: 0.5s;
+    animation-delay: 0.25s;
+    animation-duration: 0.25s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
     animation-timing-function: linear;
@@ -747,8 +747,8 @@ footer {
 }
 
 .element-show .light.middle {
-    animation-delay: 1s;
-    animation-duration: 0.5s;
+    animation-delay: 0.5s;
+    animation-duration: 0.25s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
     animation-timing-function: linear;
@@ -756,8 +756,8 @@ footer {
 }
 
 .element-show .light.outer {
-    animation-delay: 1.5s;
-    animation-duration: 0.5s;
+    animation-delay: 0.75s;
+    animation-duration: 0.25s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
     animation-timing-function: linear;
@@ -765,8 +765,8 @@ footer {
 }
 
 .element-show span {
-    animation-delay: 2s;
-    animation-duration: 0.5s;
+    animation-delay: 1s;
+    animation-duration: 0.25s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
     animation-timing-function: linear;
@@ -774,8 +774,8 @@ footer {
 }
 
 .element-show .step-content {
-    animation-delay: 2.5s;
-    animation-duration: 0.5s;
+    animation-delay: 1.25s;
+    animation-duration: 0.25s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
     animation-timing-function: linear;
