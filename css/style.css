@@ -31,6 +31,7 @@ body {
     font-weight: normal;
     background-color: var(--black);
     height: 100%;
+    
 }
 
 html {
@@ -48,6 +49,7 @@ html {
     width: 100%;
     overflow: hidden;
     position: relative;
+
 }
 
 img {
@@ -110,48 +112,10 @@ header {
     position: relative;
     height: 100vh;
     top: -50vh;
-}
-
-.flame {
-    width: 50px;
-    height: 50px;
-    background: var(--white);
-    position: absolute;
-    border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
-    left: 50%;
-    bottom: 50vh;
-    margin-left: -25px;
-    transform: rotateZ(-45deg);
+    z-index: 3;
 }
 
 
-.middle-glow {
-    left: 50%;
-    width: 100px;
-    height: 100px;
-    background: #ffffff;
-    position: absolute;
-    border-radius: 100%;
-    margin-left: -50px;
-    top: 50%;
-    margin-top: -13vh;
-    opacity: 0.3;
-    transform-origin: center center;
-}
-
-.inner-glow {
-    left: 50%;
-    width: 70px;
-    height: 70px;
-    background: #ffffff;
-    position: absolute;
-    border-radius: 100%;
-    margin-left: -35px;
-    margin-top: -9vh;
-    opacity: 0.8;
-    top: 50%;
-    transform-origin: center center;
-}
 
 .step.element-show {
     opacity: 1;
@@ -191,6 +155,10 @@ header {
     height: auto;
     z-index: 2;
     background-color: var(--black);
+
+    scroll-snap-align: start;
+    scroll-margin: 0px;
+
 }
 
 .step {
@@ -293,25 +261,31 @@ header {
 
 .candle-section.static {
     position: relative;
-    height: 150vh;
+    height: 100vh;
     top: 0;
     margin: 0 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
 }
 
 .candle-section.static .wix-img {
     translate: 5vw 15vh;
 }
 
-.candle-section.static .middle-glow {
-    margin-top: -69vh;
+.candle-section.static .detail-description {
+    max-width: 40%;
 }
 
-.candle-section.static .inner-glow {
-    margin-top: -66vh;
-}
-
-.candle-section.static .flame {
-    bottom: 132vh;
+.Hotspot {
+    background-color: var(--lightblue);
+    -webkit-box-shadow: 0px 0px 120px 39px rgba(202, 197, 219, 1);
+    -moz-box-shadow: 0px 0px 120px 39px rgba(202, 197, 219, 1);
+    box-shadow: 0px 0px 120px 39px rgba(202, 197, 219, 1);
+    border-radius: 100px;
+    height: 2em;
 }
 
 .detail {
@@ -411,7 +385,6 @@ section.day-night {
 
 .day-night .candle-section .wix-img {
     width: 600px;
-    translate: 5vw 50vh;
 }
 
 .day-night .candle-section .flame {
@@ -481,9 +454,6 @@ footer {
 
 
 
-.flame-anim,
-.inner-glow-anim,
-.middle-glow-anim,
 .wix-img-anim {
     opacity: 0;
     animation-duration: 2s;
@@ -499,8 +469,6 @@ footer {
     animation-iteration-count: 1;
     animation-fill-mode: both;
     animation-timing-function: linear;
-    /* 
-    animation-delay: 5s; */
     animation-name: h1IN;
     font-size: 128px;
     line-height: 155px;
@@ -518,7 +486,11 @@ footer {
 }
 
 .header-span.static {
-    animation: none;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-name: h1RETURN;
     font-size: 128px;
     line-height: 155px;
 }
@@ -540,15 +512,14 @@ footer {
 
 .wix-img-anim {
     animation-name: appearanceWix;
-    animation-delay: 2s;
-    animation-duration: 6s;
+    animation-duration: 4s;
 }
 
 
 .candle-section-head {
     animation-name: candleBACK;
     zoom: normal;
-    animation-duration: 1.5s;
+    animation-duration: 1s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
     animation-timing-function: linear;
@@ -557,7 +528,7 @@ footer {
 .candle-section-head.animated {
     animation-name: candleUP;
     zoom: normal;
-    animation-duration: 1.5s;
+    animation-duration: 1s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
     animation-timing-function: linear;
@@ -582,48 +553,6 @@ footer {
     opacity: 0;
 }
 
-@keyframes flameFlicker {
-
-    0%,
-    100% {
-        width: 48px;
-        height: 49px;
-    }
-
-    25% {
-        width: 51px;
-        height: 49px;
-    }
-
-    50% {
-        width: 49px;
-        height: 48px;
-    }
-
-    75% {
-        width: 49px;
-        height: 51px;
-    }
-
-
-}
-
-
-
-@keyframes glowFlicker {
-
-    0%,
-    100% {
-        opacity: 0.15;
-    }
-
-    50% {
-        opacity: 0.22;
-        transform: scale(1.02);
-
-    }
-
-}
 
 @keyframes appearanceFlame {
     from {
@@ -693,6 +622,21 @@ footer {
     }
 }
 
+
+@keyframes h1RETURN {
+    0% {
+        transform: translateY(-150%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+
+
+}
+
 @keyframes h1OUT {
     0% {
         transform: translateY(0%);
@@ -711,13 +655,13 @@ footer {
     }
 
     100% {
-        transform: translateY(-15vh) scale(0.7);
+        transform: translateY(15vh) scale(0.7);
     }
 }
 
 @keyframes candleBACK {
     0% {
-        transform: translateY(-15vh) scale(0.7);
+        transform: translateY(15vh) scale(0.7);
 
     }
 
@@ -759,22 +703,27 @@ footer {
 @keyframes dayNightBack {
     0% {
         background-color: var(--black);
+        color: var(--white);
     }
 
     25% {
         background-color: var(--black);
+        color: var(--white);
     }
 
     50% {
-        background-color: var(--graylighter);
+        background-color: var(--bluegrey);
+        color: var(--black);
     }
 
     75% {
-        background-color: var(--graylighter);
+        background-color: var(--bluegrey);
+        color: var(--black);
     }
 
     100% {
         background-color: var(--black);
+        color: var(--white);
     }
 }
 
@@ -850,9 +799,6 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: center !important;
-    /*  transform: rotateX(90deg) rotateZ(90deg);
-   animation: spin 10s linear infinite;
- position: absolute; */
 }
 
 

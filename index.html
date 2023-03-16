@@ -30,7 +30,8 @@
                         disable-pan disable-zoom shadow-softness="1"  camera-orbit="-25.03deg 86.04deg 9006m"
                         auto-rotate-delay="0"
                         min-camera-orbit="105deg 84deg auto"
-                        max-camera-orbit="105deg 84deg auto"
+                        max-camera-orbit="135deg 84deg auto"
+                        interpolation-decay="300"
                         field-of-view="30deg" touch-action="none" interaction-prompt="none">
                     </model-viewer>
                 </div>
@@ -91,7 +92,10 @@
         <section class="third-section">
 
             <section class="candle-section static">
-
+                <div class="detail-description">
+                    <div class="title"></div>
+                    <div class="description"></div>
+                </div>
                 <div class="wix-img">
                     <model-viewer class="model" src="./media/assets/Candle_with_glass.glb" ar
                         ar-modes="webxr scene-viewer quick-look" camera-controls shadow-intensity="2" exposure="0.21"
@@ -99,16 +103,16 @@
                         max-camera-orbit="auto 84deg auto" touch-action="pan-y" interaction-prompt="none">
                             <button class="Hotspot" slot="hotspot-2" data-surface="3 0 50 49 51 0.860 0.031 0.109"
                                 data-visibility-attribute="visible">
-                                <div class="HotspotAnnotation">Detail 1</div>
+                                <div class="HotspotAnnotation 1">Detail 1</div>
                             </button><button class="Hotspot" slot="hotspot-4"
                                 data-surface="1 0 4882 4881 4883 0.076 0.171 0.754" data-visibility-attribute="visible">
-                                <div class="HotspotAnnotation">Detail 2</div>
+                                <div class="HotspotAnnotation 2">Detail 2</div>
                             </button><button class="Hotspot" slot="hotspot-5"
                                 data-surface="1 0 1575 1579 1580 0.003 0.392 0.605" data-visibility-attribute="visible">
-                                <div class="HotspotAnnotation">Detail 3</div>
+                                <div class="HotspotAnnotation 3">Detail 3</div>
                             </button><button class="Hotspot" slot="hotspot-7"
                                 data-surface="1 0 3960 3961 3962 0.041 0.411 0.548" data-visibility-attribute="visible">
-                                <div class="HotspotAnnotation">Detail 4</div>
+                                <div class="HotspotAnnotation 4">Detail 4</div>
                             </button>
                     </model-viewer>
                 </div>
@@ -156,7 +160,8 @@
                         <model-viewer class="model" src="./media/assets/Candle_with_glass.glb"
                             ar-modes="webxr scene-viewer quick-look" camera-controls shadow-intensity="2" disable-pan
                             disable-zoom shadow-softness="1" auto-rotate min-camera-orbit="auto 84deg auto"
-                            max-camera-orbit="auto 84deg auto" touch-action="none" interaction-prompt="none">
+                            max-camera-orbit="auto 84deg auto" touch-action="none" interaction-prompt="none"
+                            exposure="0.21">
                         </model-viewer>
                     </div>
                 </section>
@@ -176,6 +181,6 @@
         </footer> -->
     </div>
 </body>
-<script src="./scripts/index.js"></script>
+<script src="./scripts/index.js" type="module"></script>
 
 </html>

@@ -1,7 +1,10 @@
+import {details} from './content.js'
+
 ////////////////////scroll limiter///////////////////////////////
 
 var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
-
+let hotspots=document.getElementsByClassName('HotspotAnnotation');
+console.log(hotspots);
 function preventDefault(e) {
   e.preventDefault();
 }
@@ -47,7 +50,6 @@ async function onEntry(entry) {
       disableScroll()
       if (i == 0) {
         document.addEventListener('touchmove', e => {
-          console.log("whelled");
           let target = e.target;
           let steps = document.querySelectorAll('.step');
           for (let i = 0; i < steps.length; i++) {
@@ -61,7 +63,6 @@ async function onEntry(entry) {
 
 
         document.addEventListener('wheel', e => {
-          console.log("whelled");
           e.preventDefault();
           let target = e.target;
           let steps = document.querySelectorAll('.step');
@@ -80,8 +81,18 @@ async function onEntry(entry) {
 
 //////////////////////////////////////////////////////////////////////
 
+
+/* 
+  setInterval(() => {
+    const currentOrbitIndex = orbitCycle.indexOf(modelViewer.cameraOrbit);
+    modelViewer.cameraOrbit =
+        orbitCycle[(currentOrbitIndex + 1) % orbitCycle.length];
+  }, 3000); */
+
+
 ////////////////////////////chande classes on scroll//////////////////////////////////////////
 function offAutoRotate(model) {
+  enableScroll()
   model.removeAttribute('auto-rotate');/* 
   model.setAttribute('min-camera-orbit','135deg 84deg auto');
   model.setAttribute('max-camera-orbit','135deg 84deg auto'); */
@@ -106,29 +117,29 @@ window.addEventListener('load', event => {
     h1.classList.add('static');
   }
 
+  const modelViewer = document.querySelector('.model');
+  const orbitCycle = [
+    '105deg 84deg auto',
+    '135deg 84deg auto',
+    modelViewer.cameraOrbit
+  ];
+
   let observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       let curRatio = entry.intersectionRatio
       curRatio > 0.1 ? entry.target.classList.add('animated') : (entry.target.classList.remove('animated'));
-
-  
       if (window.innerWidth < 600) {
         ratioKoeficient=0.9;
       }
       curRatio < ratioKoeficient ?
         (candleSection.classList.add('animated'),
-        model.setAttribute('rotation-per-second','-20deg'),
-        model.setAttribute('auto-rotate',''),
-        setTimeout(offAutoRotate, 1500,model),
-        
+        modelViewer.cameraOrbit=orbitCycle[1],
           h1.classList.add('out'),
           h1.classList.remove('static'),
           candleText.classList.add('in'),
           candleText.classList.remove('out')) :
         (candleSection.classList.remove('animated'),
-        model.setAttribute('rotation-per-second','20deg'),
-        model.setAttribute('auto-rotate',''),
-        setTimeout(onAutoRotate, 1500,model),
+        modelViewer.cameraOrbit=orbitCycle[0],
           h1.classList.remove('out'),
           candleText.classList.remove('in'),
           candleText.classList.add('out'),
@@ -145,7 +156,7 @@ window.addEventListener('load', event => {
   observer.observe(box)
   function buildThresholdList() {
     let thresholds = []
-    let steps = 20
+    let steps = 100
 
     for (let i = 1.0; i <= steps; i++) {
       let ratio = i / steps
@@ -165,3 +176,15 @@ for (let elm of elements) {
   observer.observe(elm);
 }
 ////////////////////////////////////////////////////////////////////////////////
+
+let descriptionBlock=document.querySelector('.detail-description')
+for (let i = 0; i < hotspots.length; i++) {
+  hotspots[i].addEventListener('click',()=>{
+    let idx = hotspots[i].className.split(' ')[1];
+    let title = descriptionBlock.querySelector('.title');
+    let description = descriptionBlock.querySelector('.description');
+    title.innerHTML=details[idx].title;
+    description.innerHTML=details[idx].description;
+  })
+  
+}
