@@ -167,6 +167,7 @@ header {
     align-items: center;
     justify-content: center;
     max-width: 325px;
+    text-align: center;
 }
 
 .step span {
@@ -415,18 +416,6 @@ section.day-night {
 
 .day-night .candle-section .wix-img {
     width: 600px;
-}
-
-.day-night .candle-section .flame {
-    bottom: 49vh;
-}
-
-.day-night .candle-section .inner-glow {
-    margin-top: -8vh;
-}
-
-.day-night .candle-section .middle-glow {
-    margin-top: -11vh;
 }
 
 .day-night.animated {
@@ -932,37 +921,131 @@ footer {
         text-align: center;
     }
 
-        .phone-section .section-header{
-            text-align: center;
+    .phone-section .section-header {
+        text-align: center;
+    }
+
+    .phone-section .section-content {
+        text-align: center;
+        flex-direction: column-reverse;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .phone-section .content {
+        width: 90%;
+        text-align: center;
+    }
+
+    .phone-section .phone {
+        padding: 15px;
+        width: 100%;
+    }
+
+    .continue-section {
+        text-align: center;
+        margin: 0;
+        padding: 15px;
+        width: 100%;
+    }
+
+    .moon-sun-span {
+        height: 100vw;
+        width: 100vh;
+        animation: 10s linear infinite dayNight;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .candle-section-head.animated {
+        animation-name: candleUPTABLET;
+    }
+
+    .candle-section-head {
+        animation-name: candleBACKTABLET;
+        top: 25vh;
+    }
+
+    .candle-section-head .candle-text {
+        z-index: 3;
+        bottom: 40vh;
+        font-size: 1.2em;
+    }
+
+    .wix-img-anim{
+        width: 80%;
+    }
+
+    .wix-img-anim .model{
+        width: 60vh;
+    }
+
+
+    @keyframes candleUPTABLET {
+        0% {
+            transform: translateY(-75vh) scale(0.7);
         }
 
-        .phone-section .section-content{
-            text-align: center;
-            flex-direction: column-reverse;
-            padding: 0;
-            justify-content: center;
+        100% {
+            transform: translateY(-75vh) scale(1);
+
+        }
+    }
+
+
+    @keyframes candleBACKTABLET {
+        0% {
+            transform: translateY(-75vh) scale(1);
         }
 
-        .phone-section .content {
-            width: 90%;
-            text-align: center;
+        100% {
+            transform: translateY(-75vh) scale(0.7);
         }
+    }
 
-        .phone-section .phone {
-            padding: 15px;
-            width: 100%;
-        }
+    .candle-section.static {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
 
-        .continue-section{
-            text-align: center;
-            margin:0;
-            padding: 15px;
-            width: 100%;
-        }
+    .candle-section.static .wix-img{
+        width: 80%;
+        translate: none;
+    }
 
-        .moon-sun-span {
-            height: 100vw;
-            width: 100vh;
-            animation: 10s linear infinite dayNight;
-        }
+    .candle-section.static .model{
+        width: 80%;
+    }
+
+    .phone-section .section-header{
+        padding: 0 0 0 20px;
+    }
+
+    .phone-section .section-content{
+        padding: 0 50px;
+    }
+
+    .phone-section .content{
+        max-width: 50%;
+        margin: 0 0 0 10px;
+    }
+
+    .day-night .candle-section.static .model{
+        width: 50vh;
+    }
+
+    .day-night .candle-section {
+        height: 50vh;
+    }
+
+    .day-night .text-content {
+        font-size: 1.1em;
+        width: 90%;
+        z-index: 7;
+    }
+
+    .sun{
+        top: 0;
+    }
 }
