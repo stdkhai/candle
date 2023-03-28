@@ -164,12 +164,18 @@ for (let elm of elements) {
 
 let descriptionBlock=document.querySelector('.detail-description')
 for (let i = 0; i < hotspots.length; i++) {
-  hotspots[i].addEventListener('click',()=>{
+  hotspots[i].addEventListener('click',async ()=>{
     let idx = hotspots[i].className.split(' ')[1];
     let title = descriptionBlock.querySelector('.title');
     let description = descriptionBlock.querySelector('.description');
     title.innerHTML=details[idx].title;
     description.innerHTML=details[idx].description;
+    descriptionBlock.classList.add('animated');
   })
   
+}
+
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
