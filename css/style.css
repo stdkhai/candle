@@ -279,6 +279,7 @@ header {
 .candle-section.static .detail-description {
     max-width: 30%;
     margin: 0 0 0 15px;
+    opacity: 0;
 }
 
 .candle-section.static .model{
@@ -291,6 +292,14 @@ header {
     animation-fill-mode: both;
     animation-timing-function: linear;
     animation-name: detailAnimation;
+}
+
+.detail-description.shown{
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-name: detailOpacity;
 }
 
 .Hotspot {
@@ -765,10 +774,17 @@ footer {
 @keyframes detailAnimation {
     from{
         width: 0%;
-        opacity: 0;
     }
     to{
         width: 30%;
+    }
+}
+
+@keyframes detailOpacity {
+    from{
+        opacity: 0;
+    }
+    to{
         opacity: 1;
     }
 }

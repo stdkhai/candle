@@ -171,6 +171,8 @@ for (let i = 0; i < hotspots.length; i++) {
     title.innerHTML=details[idx].title;
     description.innerHTML=details[idx].description;
     descriptionBlock.classList.add('animated');
+    await sleep(1000);
+    descriptionBlock.classList.add('shown');
   })
   
 }
