@@ -1,7 +1,9 @@
+import {details} from './content.js'
+
 ////////////////////scroll limiter///////////////////////////////
 
 var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
-
+let hotspots=document.getElementsByClassName('HotspotAnnotation');
 function preventDefault(e) {
   e.preventDefault();
 }
@@ -24,17 +26,19 @@ var wheelOpt = supportsPassive ? { passive: false } : false;
 var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
 
 function disableScroll() {
+  console.log('scroll blocked');
   window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
   window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
-  window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
-  window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+/*   window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+ */  window.addEventListener('keydown', preventDefaultForScrollKeys, false);
 }
 
 function enableScroll() {
+  console.log('scrol enable');
   window.removeEventListener('DOMMouseScroll', preventDefault, false);
   window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
-  window.removeEventListener('touchmove', preventDefault, wheelOpt);
-  window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+/*   window.removeEventListener('touchmove', preventDefault, wheelOpt);
+ */  window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
 }
 
 //////////////////////////////////////////////////////
@@ -44,10 +48,25 @@ function enableScroll() {
 async function onEntry(entry) {
   for (let i = 0; i < entry.length; i++) {
     if (entry[i].isIntersecting) {
-      disableScroll()
+      if (window.innerWidth >600) {
+       disableScroll()
+      }
+      
       if (i == 0) {
+        document.addEventListener('touchmove', e => {
+          let target = e.target;
+          let steps = document.querySelectorAll('.step');
+          for (let i = 0; i < steps.length; i++) {
+            if (!steps[i].classList.contains('element-show')) {
+              steps[i].classList.add('element-show');
+              return
+            }
+          }
+          enableScroll()
+        });
+
+
         document.addEventListener('wheel', e => {
-          console.log("whelled");
           e.preventDefault();
           let target = e.target;
           let steps = document.querySelectorAll('.step');
@@ -66,29 +85,50 @@ async function onEntry(entry) {
 
 //////////////////////////////////////////////////////////////////////
 
+
 ////////////////////////////chande classes on scroll//////////////////////////////////////////
+
+
 window.addEventListener('load', event => {
   let box = document.querySelector('header')
-  let prevRatio = 0
+  let prevRatio = 0;
+  let ratioKoeficient=0.95;
   let candleSection = document.querySelector('.candle-section-head')
   let h1 = document.querySelector('.header-span');
   let candleText = document.querySelector('.candle-text');
+  let model = document.querySelector('.model');
+
+  if (window.innerWidth <600) {
+    h1.classList.add('static');
+  }
+
+  const modelViewer = document.querySelector('.model');
+  const orbitCycle = [
+    '105deg 84deg auto',
+    '135deg 84deg auto',
+    modelViewer.cameraOrbit
+  ];
+
   let observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       let curRatio = entry.intersectionRatio
       curRatio > 0.1 ? entry.target.classList.add('animated') : (entry.target.classList.remove('animated'));
-
-      curRatio < 0.95 ?
+      if (window.innerWidth < 600) {
+        ratioKoeficient=0.91;
+      }
+      curRatio < ratioKoeficient ?
         (candleSection.classList.add('animated'),
+        modelViewer.cameraOrbit=orbitCycle[1],
           h1.classList.add('out'),
           h1.classList.remove('static'),
           candleText.classList.add('in'),
           candleText.classList.remove('out')) :
         (candleSection.classList.remove('animated'),
+        modelViewer.cameraOrbit=orbitCycle[0],
           h1.classList.remove('out'),
           candleText.classList.remove('in'),
           candleText.classList.add('out'),
-          prevRatio != 0 && curRatio >= 0.95 ?
+          prevRatio != 0 && curRatio >= ratioKoeficient ?
             h1.classList.add('static') :
             h1.classList.remove('static'))
 
@@ -101,7 +141,7 @@ window.addEventListener('load', event => {
   observer.observe(box)
   function buildThresholdList() {
     let thresholds = []
-    let steps = 20
+    let steps = 100
 
     for (let i = 1.0; i <= steps; i++) {
       let ratio = i / steps
@@ -122,28 +162,22 @@ for (let elm of elements) {
 }
 ////////////////////////////////////////////////////////////////////////////////
 
-//////////////////////////lines for details/////////////////////////////////////////////////
-one = $('#detail1').position();
-two = $('#flame').position();
-$('#line1').attr({ "x2": two.left, "y2": $('#flame').offset().top, "y1": $('#detail1').offset().top, "x1": $('#detail1').width() });
+let descriptionBlock=document.querySelector('.detail-description')
+for (let i = 0; i < hotspots.length; i++) {
+  hotspots[i].addEventListener('click',async ()=>{
+    let idx = hotspots[i].className.split(' ')[1];
+    let title = descriptionBlock.querySelector('.title');
+    let description = descriptionBlock.querySelector('.description');
+    title.innerHTML=details[idx].title;
+    description.innerHTML=details[idx].description;
+    descriptionBlock.classList.add('animated');
+    await sleep(1000);
+    descriptionBlock.classList.add('shown');
+  })
+  
+}
 
 
-one = $('#detail2').position();
-two = $('#wix').position();
-$('#line2').attr({ "x2": $('#wix').offset().left + $('#wix').width() / 2, "y2": $('#wix').offset().top, "y1": $('#detail2').offset().top, "x1": $('#detail2').offset().left });
-
-
-one = $('#detail3').position();
-two = $('#wix').position();
-$('#line3').attr({ "x2": $('#wix').offset().left + $('#wix').width() / 2, "y2": $('#wix').offset().top + $('#wix').height() / 3 * 2, "y1": $('#detail3').offset().top, "x1": $('#detail3').width() });
-
-
-one = $('#detail4').position();
-two = $('#wix').position();
-$('#line4').attr({ "x2": $('#wix').offset().left + $('#wix').width() * 0.9, "y2": $('#wix').offset().top + $('#wix').height() / 3 * 2, "y1": $('#detail4').offset().top, "x1": $('#detail4').offset().left });
-
-
-one = $('#detail5').position();
-two = $('#wix').position();
-$('#line5').attr({ "x2": $('#wix').offset().left + $('#wix').width() * 0.7, "y2": $('#wix').offset().top + $('#wix').height() / 5 * 4, "y1": $('#detail5').offset().top, "x1": $('#detail5').offset().left });
-//////////////////////////////////////////////////////////////////////////////
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
