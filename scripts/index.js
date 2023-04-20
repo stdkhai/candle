@@ -1,9 +1,9 @@
-import {details} from './content.js'
+import { details } from './content.js'
 
 ////////////////////scroll limiter///////////////////////////////
 
 var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
-let hotspots=document.getElementsByClassName('HotspotAnnotation');
+let hotspots = document.getElementsByClassName('HotspotAnnotation');
 function preventDefault(e) {
   e.preventDefault();
 }
@@ -48,10 +48,10 @@ function enableScroll() {
 async function onEntry(entry) {
   for (let i = 0; i < entry.length; i++) {
     if (entry[i].isIntersecting) {
-      if (window.innerWidth >600) {
-       disableScroll()
+      if (window.innerWidth > 600) {
+        disableScroll()
       }
-      
+
       if (i == 0) {
         document.addEventListener('touchmove', e => {
           let target = e.target;
@@ -92,13 +92,13 @@ async function onEntry(entry) {
 window.addEventListener('load', event => {
   let box = document.querySelector('header')
   let prevRatio = 0;
-  let ratioKoeficient=0.95;
+  let ratioKoeficient = 0.95;
   let candleSection = document.querySelector('.candle-section-head')
   let h1 = document.querySelector('.header-span');
   let candleText = document.querySelector('.candle-text');
   let model = document.querySelector('.model');
 
-  if (window.innerWidth <600) {
+  if (window.innerWidth < 600) {
     h1.classList.add('static');
   }
 
@@ -114,17 +114,17 @@ window.addEventListener('load', event => {
       let curRatio = entry.intersectionRatio
       curRatio > 0.1 ? entry.target.classList.add('animated') : (entry.target.classList.remove('animated'));
       if (window.innerWidth < 600) {
-        ratioKoeficient=0.91;
+        ratioKoeficient = 0.91;
       }
       curRatio < ratioKoeficient ?
         (candleSection.classList.add('animated'),
-        modelViewer.cameraOrbit=orbitCycle[1],
+          modelViewer.cameraOrbit = orbitCycle[1],
           h1.classList.add('out'),
           h1.classList.remove('static'),
           candleText.classList.add('in'),
           candleText.classList.remove('out')) :
         (candleSection.classList.remove('animated'),
-        modelViewer.cameraOrbit=orbitCycle[0],
+          modelViewer.cameraOrbit = orbitCycle[0],
           h1.classList.remove('out'),
           candleText.classList.remove('in'),
           candleText.classList.add('out'),
@@ -162,21 +162,34 @@ for (let elm of elements) {
 }
 ////////////////////////////////////////////////////////////////////////////////
 
-let descriptionBlock=document.querySelector('.detail-description')
+let descriptionBlock = document.querySelector('.detail-description')
 for (let i = 0; i < hotspots.length; i++) {
-  hotspots[i].addEventListener('click',async ()=>{
+  hotspots[i].addEventListener('click', async () => {
     let idx = hotspots[i].className.split(' ')[1];
     let title = descriptionBlock.querySelector('.title');
     let description = descriptionBlock.querySelector('.description');
-    title.innerHTML=details[idx].title;
-    description.innerHTML=details[idx].description;
+    title.innerHTML = details[idx].title;
+    description.innerHTML = details[idx].description;
     descriptionBlock.classList.add('animated');
     await sleep(1000);
     descriptionBlock.classList.add('shown');
   })
-  
+
 }
 
+
+///////////////////PHONE ANIM//////////////////
+
+let powerButton = document.querySelector(".phone .toclick")
+powerButton.addEventListener('click', e => {
+  let logo = document.querySelector(".phone .logo");
+  let visiblity = logo.style.display;
+  if (visiblity == "none") {
+    logo.style.display = "block"
+  } else {
+    logo.style.display = "none"
+  }
+})
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
