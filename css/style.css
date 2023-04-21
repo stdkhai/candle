@@ -115,6 +115,35 @@ header {
     z-index: 3;
 }
 
+.candle-section-head .logo{
+    position: absolute;
+    height: 567px;
+    width: 567px;
+    right: 0;
+    top:40%
+}
+
+
+.candle-section-head .logo.in {
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-name: headerLogoIN;
+}
+
+.candle-section-head .logo.out {
+    /* 
+    animation-delay: 10.5s; */
+    /* animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-name: candleTextOUT; */
+    animation-duration: 1s;
+    animation-name: headerLogoOUT;
+    opacity: 0;
+}
 
 
 .step.element-show {
@@ -445,6 +474,15 @@ h4 {
     text-align: left;
     width: 600px;
     margin: 0 105px;
+    position: relative;
+}
+
+.continue-section .logo{
+    position: absolute;
+    max-width: 526px;
+    width: 60%;
+    right: -30vw;
+    top: 0;
 }
 
 section.day-night {
@@ -760,6 +798,33 @@ footer {
         opacity: 0;
     }
 }
+
+@keyframes headerLogoIN {
+    0% {
+        top:40%;
+        right:0%;
+    }
+
+    100% {
+        top:10%;
+        right:-10%;
+    }
+}
+
+@keyframes headerLogoOUT {
+    0% {
+        top:10%;
+        right:-10%;
+        opacity: 1;
+    }
+
+    100% {
+        top:40%;
+        right:0%;
+        opacity: 0;
+    }
+}
+
 
 @keyframes dayNight {
     from {

@@ -97,6 +97,7 @@ window.addEventListener('load', event => {
   let h1 = document.querySelector('.header-span');
   let candleText = document.querySelector('.candle-text');
   let model = document.querySelector('.model');
+  let headerLogo=document.querySelector(".logo")
 
   if (window.innerWidth < 600) {
     h1.classList.add('static');
@@ -122,12 +123,16 @@ window.addEventListener('load', event => {
           h1.classList.add('out'),
           h1.classList.remove('static'),
           candleText.classList.add('in'),
-          candleText.classList.remove('out')) :
+          candleText.classList.remove('out'),
+          headerLogo.classList.add('in'),
+          headerLogo.classList.remove('out')) :
         (candleSection.classList.remove('animated'),
           modelViewer.cameraOrbit = orbitCycle[0],
           h1.classList.remove('out'),
           candleText.classList.remove('in'),
           candleText.classList.add('out'),
+          headerLogo.classList.remove('in'),
+          headerLogo.classList.add('out'),
           prevRatio != 0 && curRatio >= ratioKoeficient ?
             h1.classList.add('static') :
             h1.classList.remove('static'))
