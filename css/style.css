@@ -120,7 +120,7 @@ header {
     height: 567px;
     width: 567px;
     right: 0;
-    top:40%
+    top:40%;
 }
 
 
@@ -140,7 +140,7 @@ header {
     animation-fill-mode: both;
     animation-timing-function: linear;
     animation-name: candleTextOUT; */
-    animation-duration: 1s;
+   /*  animation-duration: 1s; */
     animation-name: headerLogoOUT;
     opacity: 0;
 }
