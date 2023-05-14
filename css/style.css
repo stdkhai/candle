@@ -8,11 +8,12 @@
     --bluegrey: #DAE2EA;
     --darkgrey: #676363;
     --graylighter: #757373;
+    --screengerey: #3b3939;
     --darkblue: #3B3E66;
     --green: #1BC943;
     --black: #000000;
     --lightblue: #EAF6FF;
-    --yellow: #eed814;
+    --yellow: #ffb405;
 }
 
 :active,
@@ -115,12 +116,12 @@ header {
     z-index: 3;
 }
 
-.candle-section-head .logo{
+.candle-section-head .logo {
     position: absolute;
     height: 567px;
     width: 567px;
     right: 0;
-    top:40%;
+    top: 40%;
 }
 
 
@@ -140,7 +141,7 @@ header {
     animation-fill-mode: both;
     animation-timing-function: linear;
     animation-name: candleTextOUT; */
-   /*  animation-duration: 1s; */
+    /*  animation-duration: 1s; */
     animation-name: headerLogoOUT;
     opacity: 0;
 }
@@ -312,16 +313,16 @@ header {
     opacity: 0;
 }
 
-.candle-section.static .model{
+.candle-section.static .model {
     width: 100%;
 }
 
-.detail-description .title{
+.detail-description .title {
     font-weight: 600;
     font-size: 32px;
 }
 
-.detail-description.animated{
+.detail-description.animated {
     animation-duration: 1s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
@@ -329,7 +330,7 @@ header {
     animation-name: detailAnimation;
 }
 
-.detail-description.shown{
+.detail-description.shown {
     animation-duration: 1s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
@@ -396,8 +397,12 @@ header {
     padding: 0 105px;
 }
 
+.phone-section .phone img {
+    z-index: -1;
+}
+
 .phone-section .phone {
-    width: 460px;
+    width: 40%;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -405,26 +410,108 @@ header {
     align-items: center;
 }
 
-.phone .logo{
-    position: absolute;    
-    width: 90%;
-}
-
-.phone .toclick{
-    width: 15px;
-    height: 15px;
-    background-color: var(--lightblue);
+.phone-screen {
     position: absolute;
-    left: -3%;
-    top: 21%;
-    border-radius: 100%;
-    box-shadow: 0px 0px 15px 0px rgba(244,242,245,1);
+    width: 100%;
+    height: 100%;
+    scale: 0.9;
+    background-color: var(--screengerey);
+    border-radius: 10px;
 }
 
-.phone .toclick:hover{
-    width: 20px;
-    height: 20px;
-    animation-duration: 1s;
+.phone-screen .statusbar {
+    width: 100%;
+    top: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    position: absolute;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.statusbar i {
+    margin: 5px;
+}
+
+.statusbar #clock {
+    position: absolute;
+    left: 0;
+    margin: 5px 5px 5px 15px;
+}
+
+.phone-screen .notifications {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    font-size: 40px;
+}
+
+.phone-screen .model-view {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.phone-screen .progress-bar {
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    bottom: 10%;
+}
+
+.progress-bar #time-left {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20%;
+    justify-content: space-around;
+}
+
+#time-left .block {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-bar .bar {
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    height: 40%;
+    width: 65%;
+    background-color: var(--darkgrey);
+    border-radius: 100px;
+}
+
+.progress-bar .bar.loaded {
+    width: 55%;
+    background-color: var(--graylighter);
+}
+
+.phone-screen.active .bar.loaded {
+    background: rgb(255, 228, 105);
+    background: linear-gradient(90deg, rgba(255, 228, 105, 1) 0%, rgba(236, 200, 99, 1) 34%, rgba(251, 139, 0, 1) 86%);
+}
+
+.phone-screen .tools-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 50px;
+    z-index: 5;
+    margin: 0 0 15px 0;
+}
+
+.phone-screen.active #power_button {
+    color: var(--yellow);
 }
 
 .phone-section .content {
@@ -483,10 +570,10 @@ h4 {
     position: relative;
 }
 
-.continue-section .logo{
+.continue-section .logo {
     position: absolute;
-   max-width: 100%;
-    right:-100%;
+    max-width: 100%;
+    right: -100%;
     top: -80%;
 }
 
@@ -806,26 +893,26 @@ footer {
 
 @keyframes headerLogoIN {
     0% {
-        top:40%;
-        right:0%;
+        top: 40%;
+        right: 0%;
     }
 
     100% {
-        top:10%;
-        right:-10%;
+        top: 10%;
+        right: -10%;
     }
 }
 
 @keyframes headerLogoOUT {
     0% {
-        top:10%;
-        right:-10%;
+        top: 10%;
+        right: -10%;
         opacity: 1;
     }
 
     100% {
-        top:40%;
-        right:0%;
+        top: 40%;
+        right: 0%;
         opacity: 0;
     }
 }
@@ -869,19 +956,21 @@ footer {
 }
 
 @keyframes detailAnimation {
-    from{
+    from {
         width: 0%;
     }
-    to{
+
+    to {
         width: 30%;
     }
 }
 
 @keyframes detailOpacity {
-    from{
+    from {
         opacity: 0;
     }
-    to{
+
+    to {
         opacity: 1;
     }
 }
@@ -954,7 +1043,7 @@ footer {
 .model {
     z-index: 5;
     height: 100%;
-    width: 50vw;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center !important;
@@ -1063,31 +1152,37 @@ footer {
         text-align: center;
     }
 
-    .candle-section.static .detail-description.animated{
+    .candle-section.static .detail-description.animated {
         animation-name: detailAnimationMOBILE;
     }
 
-    .candle-section.static .detail-description.shown{
+    .candle-section.static .detail-description.shown {
         height: 60%;
         animation-name: detailOpacity
     }
 
     @keyframes detailAnimationMOBILE {
-        from{
+        from {
             height: 0%;
         }
-        to{
+
+        to {
             height: 60%;
         }
     }
 
     @keyframes detailOpacity {
-        from{
+        from {
             opacity: 0;
         }
-        to{
+
+        to {
             opacity: 1;
         }
+    }
+
+    .phone-section {
+        padding: 15px;
     }
 
     .phone-section .section-header {
@@ -1107,7 +1202,6 @@ footer {
     }
 
     .phone-section .phone {
-        padding: 15px;
         width: 100%;
     }
 
@@ -1118,12 +1212,12 @@ footer {
         width: 100%;
     }
 
-    .about .content{
+    .about .content {
         flex-direction: column;
         align-items: center;
     }
 
-    .about .profile{
+    .about .profile {
         max-width: 65%;
     }
 
@@ -1134,7 +1228,7 @@ footer {
     }
 
 
-    .day-night .candle-section.static .model{
+    .day-night .candle-section.static .model {
         width: 50vh;
     }
 
@@ -1152,7 +1246,7 @@ footer {
         width: 100%;
     }
 
-    .sun{
+    .sun {
         top: 0;
     }
 }
@@ -1173,15 +1267,15 @@ footer {
         font-size: 1.2em;
     }
 
-    .wix-img-anim{
+    .wix-img-anim {
         width: 80%;
     }
 
-    .wix-img-anim .model{
+    .wix-img-anim .model {
         width: 60vh;
     }
 
-    .section-steps{
+    .section-steps {
         flex-wrap: nowrap;
     }
 
@@ -1191,29 +1285,31 @@ footer {
         opacity: 0;
     }
 
-    .detail-description.animated{
+    .detail-description.animated {
         animation-name: detailAnimationTABLET;
     }
 
-    .detail-description.shown{
+    .detail-description.shown {
         animation-name: detailOpacityTABLET;
         height: 30%;
     }
 
     @keyframes detailAnimationTABLET {
-        from{
+        from {
             height: 0%;
         }
-        to{
+
+        to {
             height: 30%;
         }
     }
 
     @keyframes detailOpacityTABLET {
-        from{
+        from {
             opacity: 0;
         }
-        to{
+
+        to {
             opacity: 1;
         }
     }
@@ -1246,29 +1342,33 @@ footer {
         justify-content: center;
     }
 
-    .candle-section.static .wix-img{
+    .candle-section.static .wix-img {
         width: 80%;
         translate: none;
     }
 
-    .candle-section.static .model{
+    .candle-section.static .model {
         width: 80%;
     }
 
-    .phone-section .section-header{
+    .phone-section .section-header {
         padding: 0 0 0 20px;
     }
 
-    .phone-section .section-content{
+    .phone-section .tools-bar{
+        font-size: 15px;
+    }
+
+    .phone-section .section-content {
         padding: 0 50px;
     }
 
-    .phone-section .content{
+    .phone-section .content {
         max-width: 50%;
         margin: 0 0 0 10px;
     }
 
-    .day-night .candle-section.static .model{
+    .day-night .candle-section.static .model {
         width: 50vh;
     }
 
@@ -1282,12 +1382,12 @@ footer {
         z-index: 7;
     }
 
-    .sun{
+    .sun {
         top: 0;
     }
 }
 
-@media (min-width: 1025px) and (max-width:1289px){
+@media (min-width: 1025px) and (max-width:1289px) {
     .candle-section-head.animated {
         animation-name: candleUP3;
     }
@@ -1300,6 +1400,7 @@ footer {
         0% {
             transform: translateY(0) scale(1);
         }
+
         100% {
             transform: translateY(-30vh) scale(0.7);
         }
@@ -1309,12 +1410,13 @@ footer {
         0% {
             transform: translateY(-30vh) scale(0.7);
         }
+
         100% {
             transform: translateY(0) scale(1);
         }
     }
 
-    .section-steps{
+    .section-steps {
         flex-wrap: nowrap;
     }
 

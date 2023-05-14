@@ -1,4 +1,5 @@
 import { details } from './content.js'
+document.querySelector("body").onload = startTime()
 
 ////////////////////scroll limiter///////////////////////////////
 
@@ -95,7 +96,7 @@ window.addEventListener('load', event => {
   let h1 = document.querySelector('.header-span');
   let candleText = document.querySelector('.candle-text');
   let model = document.querySelector('.model');
-  let headerLogo=document.querySelector(".logo")
+  let headerLogo = document.querySelector(".logo")
 
   if (window.innerWidth < 600) {
     h1.classList.add('static');
@@ -176,20 +177,37 @@ for (let i = 0; i < hotspots.length; i++) {
 
 }
 
-
-///////////////////PHONE ANIM//////////////////
-
-let powerButton = document.querySelector(".phone .toclick")
-powerButton.addEventListener('click', e => {
-  let logo = document.querySelector(".phone .logo");
-  let visiblity = logo.style.display;
-  if (visiblity == "none") {
-    logo.style.display = "block"
-  } else {
-    logo.style.display = "none"
-  }
-})
-
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+////////////////////////Live clock/////////////////////
+function startTime() {
+  const today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  h = checkTime(h);
+  m = checkTime(m);
+  document.getElementById('clock').innerHTML = h + ":" + m;
+  setTimeout(startTime, 1000);
+}
+
+function checkTime(i) {
+  return i < 10 ? "0" + i : i;
+}
+
+
+///////////////////////////////////////////////////////////////////
+let phoneModel = document.querySelector('#phone-view');
+let powerButton = document.querySelector('#power_button');
+let phoneScreen = document.querySelector('.phone-screen');
+powerButton.addEventListener('click',()=>{
+  
+  if (phoneScreen.classList.contains('active')){
+    phoneScreen.classList.remove('active');
+    phoneModel.currentTime = 0;
+  }else{
+    phoneModel.play({repetitions: 1});
+    phoneScreen.classList.add('active');
+  }
+})

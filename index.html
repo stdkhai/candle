@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
-    <link rel="shortcut icon" href="./media/logo.svg" type="image/x-icon"> 
+    <script src="https://kit.fontawesome.com/22ec67f815.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="./media/logo.svg" type="image/x-icon">
     <title>Candle</title>
 </head>
 
@@ -28,12 +29,9 @@
                 <div class="wix-img wix-img-anim">
                     <model-viewer class="model" src="./media/assets/Candle_with_glass.glb" ar
                         ar-modes="webxr scene-viewer quick-look" camera-controls shadow-intensity="2" exposure="0.21"
-                        disable-pan disable-zoom shadow-softness="1"  camera-orbit="-25.03deg 86.04deg 9006m"
-                        auto-rotate-delay="0"
-                        min-camera-orbit="105deg 84deg auto"
-                        max-camera-orbit="135deg 84deg auto"
-                        interpolation-decay="300"
-                        field-of-view="30deg" touch-action="none" interaction-prompt="none">
+                        disable-pan disable-zoom shadow-softness="1" camera-orbit="-25.03deg 86.04deg 9006m"
+                        auto-rotate-delay="0" min-camera-orbit="105deg 84deg auto" max-camera-orbit="135deg 84deg auto"
+                        interpolation-decay="300" field-of-view="30deg" touch-action="none" interaction-prompt="none">
                     </model-viewer>
                 </div>
 
@@ -102,19 +100,19 @@
                         ar-modes="webxr scene-viewer quick-look" camera-controls shadow-intensity="2" exposure="0.21"
                         disable-pan disable-zoom shadow-softness="1" auto-rotate min-camera-orbit="auto 84deg auto"
                         max-camera-orbit="auto 84deg auto" touch-action="pan-y" interaction-prompt="none">
-                            <button class="Hotspot" slot="hotspot-2" data-surface="3 0 50 49 51 0.860 0.031 0.109"
-                                data-visibility-attribute="visible">
-                                <div class="HotspotAnnotation 1">Detail 1</div>
-                            </button><button class="Hotspot" slot="hotspot-4"
-                                data-surface="1 0 4882 4881 4883 0.076 0.171 0.754" data-visibility-attribute="visible">
-                                <div class="HotspotAnnotation 2">Detail 2</div>
-                            </button><button class="Hotspot" slot="hotspot-5"
-                                data-surface="1 0 1575 1579 1580 0.003 0.392 0.605" data-visibility-attribute="visible">
-                                <div class="HotspotAnnotation 3">Detail 3</div>
-                            </button><button class="Hotspot" slot="hotspot-7"
-                                data-surface="1 0 3960 3961 3962 0.041 0.411 0.548" data-visibility-attribute="visible">
-                                <div class="HotspotAnnotation 4">Detail 4</div>
-                            </button>
+                        <button class="Hotspot" slot="hotspot-2" data-surface="3 0 50 49 51 0.860 0.031 0.109"
+                            data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation 1">Detail 1</div>
+                        </button><button class="Hotspot" slot="hotspot-4"
+                            data-surface="1 0 4882 4881 4883 0.076 0.171 0.754" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation 2">Detail 2</div>
+                        </button><button class="Hotspot" slot="hotspot-5"
+                            data-surface="1 0 1575 1579 1580 0.003 0.392 0.605" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation 3">Detail 3</div>
+                        </button><button class="Hotspot" slot="hotspot-7"
+                            data-surface="1 0 3960 3961 3962 0.041 0.411 0.548" data-visibility-attribute="visible">
+                            <div class="HotspotAnnotation 4">Detail 4</div>
+                        </button>
                     </model-viewer>
                 </div>
             </section>
@@ -125,7 +123,46 @@
             </div>
             <div class="section-content">
                 <div class="phone">
-                    <div class="toclick"></div>
+                    <div class="phone-screen">
+                        <div class="statusbar">
+                            <div id="clock"></div>
+                            <i class="fa-solid fa-battery-full" style="color: #ffffff;"></i>
+                            <i class="fa-solid fa-wifi" style="color: #ffffff;"></i>
+                            <i class="fa-solid fa-signal" style="color: #ffffff;"></i>
+                        </div>
+                        <div class="main-screen">
+                            <div class="notifications">
+                                <i class="fa-regular fa-bell" style="color: #ffffff;"></i>
+                            </div>
+                            <div class="model-view">
+                                <model-viewer id="phone-view" class="model" src="./media/assets/Candle fire animation.glb"  ar
+                                ar-modes="webxr scene-viewer quick-look" camera-controls shadow-intensity="2" exposure="0.21"
+                                disable-pan disable-zoom shadow-softness="1" camera-orbit="-25.03deg 86.04deg 9006m"
+                                auto-rotate-delay="0" min-camera-orbit="105deg 84deg auto" max-camera-orbit="135deg 84deg auto"
+                                interpolation-decay="300" field-of-view="30deg" touch-action="none" interaction-prompt="none">
+                            </model-viewer>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="bar"></div>
+                                <div class="bar loaded"></div>
+                                <div id="time-left">
+                                    <div class="block">
+                                        <div class="digit">2</div>
+                                        <div class="desc">hour</div>
+                                    </div>
+                                    <div class="block">
+                                        <div class="digit">10</div>
+                                        <div class="desc">min</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tools-bar">
+                            <i class="fa-solid fa-house"></i>
+                            <i id="power_button" class="fa-solid fa-power-off"></i>
+                            <i class="fa-solid fa-gear"></i>
+                        </div>
+                    </div>
                     <img src="./media/Silver.png" alt="">
                 </div>
                 <div class="content">
@@ -145,35 +182,37 @@
             <div class="continue-section">
                 <div class="left">
                     <h4>Eco-friendly product</h4>
-                Lorem ipsum dolor sit amet consectetur. Eget pulvinar blandit nibh ac purus nulla consectetur id velit.
-                Ut aliquam nunc urna fringilla amet mattis. Curabitur posuere suspendisse in sem. A semper nisl dictumst
-                tortor nibh. Sagittis libero et hendrerit sed orci. Phasellus vulputate mi sem amet molestie feugiat
-                vitae. Arcu nibh bibendum venenatis adipiscing aliquet.
+                    Lorem ipsum dolor sit amet consectetur. Eget pulvinar blandit nibh ac purus nulla consectetur id
+                    velit.
+                    Ut aliquam nunc urna fringilla amet mattis. Curabitur posuere suspendisse in sem. A semper nisl
+                    dictumst
+                    tortor nibh. Sagittis libero et hendrerit sed orci. Phasellus vulputate mi sem amet molestie feugiat
+                    vitae. Arcu nibh bibendum venenatis adipiscing aliquet.
                 </div>
                 <div class="right">
                 </div>
-                
+
             </div>
         </section>
         <section class="about">
             <h4>About us</h4>
             <div class="content">
                 <div class="profile">
-                <div class="photo">
-                    <img src="./media/profile.png" alt="Author 1">
+                    <div class="photo">
+                        <img src="./media/profile.png" alt="Author 1">
+                    </div>
+                    <span>Name Surname</span>
+                    <p>Some description about first author of this startup</p>
                 </div>
-                <span>Name Surname</span>
-                <p>Some description about first author of this startup</p>
-            </div>
-            <div class="profile">
-                <div class="photo">
-                    <img src="./media/profile.png" alt="Author 2">
+                <div class="profile">
+                    <div class="photo">
+                        <img src="./media/profile.png" alt="Author 2">
+                    </div>
+                    <span>Name Surname</span>
+                    <p>Some description about first author of this startup</p>
                 </div>
-                <span>Name Surname</span>
-                <p>Some description about first author of this startup</p>
             </div>
-            </div>
-            
+
         </section>
         <section class="day-night">
             <div class="text-content">
