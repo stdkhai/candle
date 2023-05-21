@@ -1,5 +1,6 @@
 import { details } from './content.js'
 document.querySelector("body").onload = startTime()
+let candleGlowing = false;
 
 ////////////////////scroll limiter///////////////////////////////
 
@@ -201,13 +202,27 @@ function checkTime(i) {
 let phoneModel = document.querySelector('#phone-view');
 let powerButton = document.querySelector('#power_button');
 let phoneScreen = document.querySelector('.phone-screen');
+let glow = document.querySelector('.glow-outer')
+
+phoneModel.addEventListener('finished',()=>{
+  phoneModel.setAttribute('environment-image','./media/assets/spruit_sunrise_1k_HDR.hdr')
+  candleGlowing=false;
+});
+
+phoneModel.addEventListener('play',()=>{
+  candleGlowing=true;
+})
+
 powerButton.addEventListener('click',()=>{
-  
+  if(candleGlowing){return}
   if (phoneScreen.classList.contains('active')){
     phoneScreen.classList.remove('active');
+    glow.classList.remove('active');
+    phoneModel.setAttribute('environment-image','./media/assets/lightroom_14b.hdr')
     phoneModel.currentTime = 0;
   }else{
     phoneModel.play({repetitions: 1});
     phoneScreen.classList.add('active');
+    glow.classList.add('active');
   }
 })

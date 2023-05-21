@@ -419,6 +419,31 @@ header {
     border-radius: 10px;
 }
 
+.phone-screen .glow-outer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    animation: none;
+}
+
+.phone-screen .glow-outer.active{
+    animation-name: glow;
+    animation-duration: 4s;
+    box-shadow: 10px -5vh 400px 10vw rgba(255,192,46,0.75);
+
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 10px -5vh 400px 0vw rgba(255, 192, 46, 0.75);
+    }
+
+    to {
+        box-shadow: 10px -5vh 400px 10vw rgba(255, 192, 46, 0.75);
+
+    }
+}
+
 .phone-screen .statusbar {
     width: 100%;
     top: 0;
@@ -1355,7 +1380,7 @@ footer {
         padding: 0 0 0 20px;
     }
 
-    .phone-section .tools-bar{
+    .phone-section .tools-bar {
         font-size: 15px;
     }
 
