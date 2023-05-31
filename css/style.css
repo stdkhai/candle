@@ -8,12 +8,17 @@
     --bluegrey: #DAE2EA;
     --darkgrey: #676363;
     --graylighter: #757373;
-    --screengerey: #3b3939;
+    --screengerey: #1c1c1c;
     --darkblue: #3B3E66;
     --green: #1BC943;
     --black: #000000;
     --lightblue: #EAF6FF;
     --yellow: #ffb405;
+}
+
+@font-face {
+    font-family: "phoneFont";
+    src: url("../media/fonts/SFProText-Regular.ttf");
 }
 
 :active,
@@ -384,6 +389,7 @@ header {
 
 
 .phone-section {
+    font-family: 'phoneFont';
     display: flex;
     flex-direction: column;
 }
@@ -398,7 +404,7 @@ header {
 }
 
 .phone-section .phone img {
-    z-index: -1;
+    z-index: 1;
 }
 
 .phone-section .phone {
@@ -414,9 +420,11 @@ header {
     position: absolute;
     width: 100%;
     height: 100%;
-    scale: 0.9;
+    scale: 0.99; 
+    overflow: hidden;
     background-color: var(--screengerey);
-    border-radius: 10px;
+    border-radius: 12%;
+    font-size: 1.4vw;
 }
 
 .phone-screen .glow-outer {
@@ -450,25 +458,26 @@ header {
     display: flex;
     flex-direction: row-reverse;
     position: absolute;
-    font-size: 20px;
-    padding: 10px;
+    font-size: 1.2vw;
+    padding: 5% 10% 0% 15%;
 }
 
 .statusbar i {
-    margin: 5px;
+    margin: 2%;
 }
 
 .statusbar #clock {
+    font-size: 1.4vw;
     position: absolute;
-    left: 0;
-    margin: 5px 5px 5px 15px;
+    left: 10%;
+    margin: 0 2%;
 }
 
 .phone-screen .notifications {
     position: absolute;
     top: 10%;
     left: 10%;
-    font-size: 40px;
+    font-size: 2vw;
 }
 
 .phone-screen .model-view {
@@ -522,7 +531,7 @@ header {
     background: linear-gradient(90deg, rgba(255, 228, 105, 1) 0%, rgba(236, 200, 99, 1) 34%, rgba(251, 139, 0, 1) 86%);
 }
 
-.phone-screen .tools-bar {
+.tools-bar {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -530,9 +539,16 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    font-size: 50px;
+    align-content: center;
+    align-items: center;
+    font-size: 2.2vw;
+    z-index: 6;
+    margin: 0 0 7% 0;
+}
+
+.tools-bar #power_button{
+    font-size: 4vw;
     z-index: 5;
-    margin: 0 0 15px 0;
 }
 
 .phone-screen.active #power_button {
@@ -667,7 +683,8 @@ section.day-night {
 .day-night .text-content {
     text-align: center;
     width: 980px;
-    margin-bottom: 3vh;
+    margin-bottom: 15vh;
+    z-index: 6;
 }
 
 footer {
@@ -1380,9 +1397,9 @@ footer {
         padding: 0 0 0 20px;
     }
 
-    .phone-section .tools-bar {
+   /*  .phone-section .tools-bar {
         font-size: 15px;
-    }
+    } */
 
     .phone-section .section-content {
         padding: 0 50px;
