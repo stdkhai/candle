@@ -497,11 +497,12 @@ header {
     position: absolute;
     display: flex;
     flex-direction: row;
-    right: 10%;
+    right: 8%;
     top: 50%;
     transform: translateY(-50%);
-    width: 20%;
-    justify-content: space-around;
+    width: 15%;
+    justify-content: space-between;
+    font-size: 1.1vw;;
 }
 
 #time-left .block {
@@ -514,7 +515,7 @@ header {
 .progress-bar .bar {
     position: absolute;
     top: 30%;
-    left: 5%;
+    left: 9%;
     height: 40%;
     width: 65%;
     background-color: var(--darkgrey);
@@ -541,13 +542,14 @@ header {
     justify-content: space-around;
     align-content: center;
     align-items: center;
-    font-size: 2.2vw;
+    font-size: 3vw;
     z-index: 6;
     margin: 0 0 7% 0;
+    padding: 0 10%;
 }
 
 .tools-bar #power_button{
-    font-size: 4vw;
+    font-size: 5vw;
     z-index: 5;
 }
 
