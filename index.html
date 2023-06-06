@@ -19,7 +19,7 @@
             <div class="title">
                 Ice Candle
             </div>
-            <button class="notify">
+            <button class="notify" id="notify">
                 Notify me
             </button>
         </div>
@@ -263,5 +263,16 @@
     </div>
 </body>
 <script src="./scripts/index.js" type="module"></script>
+<div class="feedback closed">
+    <div class="modal main">
+        <i class="fa-solid fa-xmark" id="close"></i>
+        <h2>Stay up to date. </h2>
+        <span>Get updates on Apple Vision Pro, including news about availability. </span>
+        <div class="field">
+            <input type="email" name="email" id="email" placeholder="Email Adress">
+            <button type="submit">Notify me</button>
+        </div>
+    </div>
+</div>
 
 </html>

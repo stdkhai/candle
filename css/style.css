@@ -36,8 +36,6 @@ body {
     color: var(--white);
     font-weight: normal;
     background-color: var(--black);
-    height: 100%;
-
 }
 
 html {
@@ -56,6 +54,16 @@ html {
     overflow: hidden;
     position: relative;
 
+}
+
+.transp{
+    background-image: linear-gradient(60deg, #E21143, #FFB03A);
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
 }
 
 img {
@@ -722,6 +730,81 @@ footer {
     text-align: center;
     color: var(--white);
     font-size: 12px;
+}
+
+.feedback{
+    z-index: 12;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.feedback.closed{
+    display: none;
+}
+
+.feedback .modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--bluegrey);
+    width: 60%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color : var(--black);
+    text-align: center;
+    height: 40%;
+    border-radius: 10px;
+}
+.modal i{
+    position: absolute;
+    top:5%;
+    right: 5%;
+}
+
+.modal h2{
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.modal span{
+    color: var(--darkgrey);
+    font-weight: bold;
+}
+
+.modal .field{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 15px 0;
+}
+
+.field input{
+    width: 100%;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+}
+
+.field button{
+    position: absolute;
+    right: 0;
+    padding: 15px 25px;
+    border-radius: 20px;
+    border: none;
+    background-color: var(--black);
+    color: var(--white);
+    font-weight: bold;
 }
 
 /* ANIMATIONS */

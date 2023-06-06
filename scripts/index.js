@@ -1,7 +1,9 @@
 import { details } from './content.js'
 document.querySelector("body").onload = startTime()
 let candleGlowing = false;
-
+let modalCross = document.querySelector("#close");
+let feedback = document.querySelector('.feedback');
+let notifyMe = document.querySelector('#notify');
 ////////////////////scroll limiter///////////////////////////////
 
 var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
@@ -203,29 +205,29 @@ let powerButton = document.querySelector('#power_button');
 let phoneScreen = document.querySelector('.phone-screen');
 let glow = document.querySelector('.glow-outer')
 
-phoneModel.addEventListener('finished',()=>{
-  candleGlowing=false;
+phoneModel.addEventListener('finished', () => {
+  candleGlowing = false;
 });
 
-phoneModel.addEventListener('play',()=>{
-  candleGlowing=true;
+phoneModel.addEventListener('play', () => {
+  candleGlowing = true;
 })
 
-powerButton.addEventListener('click',()=>{
-  if(candleGlowing){return}
-  if (phoneScreen.classList.contains('active')){
+powerButton.addEventListener('click', () => {
+  if (candleGlowing) { return }
+  if (phoneScreen.classList.contains('active')) {
     phoneScreen.classList.remove('active');
     glow.classList.remove('active');
     phoneModel.currentTime = 0;
-  }else{
-    phoneModel.play({repetitions: 1});
+  } else {
+    phoneModel.play({ repetitions: 1 });
     phoneScreen.classList.add('active');
     glow.classList.add('active');
   }
 })
 
 //////////////////////////////////////////////////////////////////////////
-window.onscroll = function() {stickyHeaderF()};
+window.onscroll = function () { stickyHeaderF() };
 let stickyHeader = document.querySelector('.header');
 let sticky = stickyHeader.offsetTop;
 
@@ -235,4 +237,44 @@ function stickyHeaderF(params) {
   } else {
     stickyHeader.classList.remove("sticky");
   }
+}
+let wrapper = document.querySelector(".wrapper")
+
+let als = deepText(wrapper)
+for (let i = 0; i < als.length; i++) {
+  //als[i].parentNode.classList.add("transp")
+
+}
+console.log(als);
+
+function deepText(node) {
+  var A = [];
+  if (node) {
+    node = node.firstChild;
+    while (node != null) {
+      if (node.nodeType == 3) A[A.length] = node;
+      else A = A.concat(deepText(node));
+      node = node.nextSibling;
+    }
+  }
+  return A;
+}
+
+notifyMe.addEventListener('click', openModal)
+modalCross.addEventListener('click', closeModal)
+feedback.addEventListener('click', closeModal)
+
+
+function closeModal(e) {
+  let target = e.target;
+  if (!target.closest('.modal') || target.closest('#close')) {
+    let modal = document.querySelector('.feedback');
+    modal.classList.add('closed');
+    return
+  }
+}
+
+function openModal(e) {
+  let modal = document.querySelector('.feedback');
+  modal.classList.remove('closed');
 }
