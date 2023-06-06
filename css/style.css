@@ -546,14 +546,13 @@ header {
     justify-content: space-around;
     align-content: center;
     align-items: center;
-    font-size: 3vw;
+    font-size: 4vw;
     z-index: 6;
-    margin: 0 0 7% 0;
+    margin: 0 0 10% 0;
     padding: 0 10%;
 }
 
 .tools-bar #power_button{
-    font-size: 5vw;
     z-index: 5;
 }
 
