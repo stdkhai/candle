@@ -306,6 +306,7 @@ header {
     justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
+    transform: translateX(-5%);
 }
 
 .candle-section.static .wix-img {
