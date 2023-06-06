@@ -89,15 +89,14 @@ async function onEntry(entry) {
 ////////////////////////////chande classes on scroll//////////////////////////////////////////
 
 
-window.addEventListener('load', event => {
+window.addEventListener('load', e => {
   let box = document.querySelector('header')
   let prevRatio = 0;
-  let ratioKoeficient = 0.95;
+  let ratioKoeficient = 0.92;
   let candleSection = document.querySelector('.candle-section-head')
   let h1 = document.querySelector('.header-span');
   let candleText = document.querySelector('.candle-text');
-  let model = document.querySelector('.model');
-  let headerLogo = document.querySelector(".logo")
+
 
   if (window.innerWidth < 600) {
     h1.classList.add('static');
@@ -224,3 +223,16 @@ powerButton.addEventListener('click',()=>{
     glow.classList.add('active');
   }
 })
+
+//////////////////////////////////////////////////////////////////////////
+window.onscroll = function() {stickyHeaderF()};
+let stickyHeader = document.querySelector('.header');
+let sticky = stickyHeader.offsetTop;
+
+function stickyHeaderF(params) {
+  if (window.pageYOffset > sticky) {
+    stickyHeader.classList.add("sticky");
+  } else {
+    stickyHeader.classList.remove("sticky");
+  }
+}

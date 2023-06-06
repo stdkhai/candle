@@ -107,12 +107,37 @@ h1 {
     text-align: center;
 }
 
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: var(--black);
+    align-items: center;
+}
+
+.sticky{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.header .title{
+    padding: 0 0 0 10px;
+}
+
+.header .notify{
+    background-color: var(--white);
+    color: var(--black);
+    border-radius: 20px;
+    padding: 5px 20px;
+}
+
 header {
     position: inherit;
     height: 100vh;
 }
-
-
 
 .candle-section-head {
     position: relative;
