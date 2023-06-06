@@ -205,7 +205,6 @@ let phoneScreen = document.querySelector('.phone-screen');
 let glow = document.querySelector('.glow-outer')
 
 phoneModel.addEventListener('finished',()=>{
-  phoneModel.setAttribute('environment-image','./media/assets/spruit_sunrise_1k_HDR.hdr')
   candleGlowing=false;
 });
 
@@ -218,7 +217,6 @@ powerButton.addEventListener('click',()=>{
   if (phoneScreen.classList.contains('active')){
     phoneScreen.classList.remove('active');
     glow.classList.remove('active');
-    phoneModel.setAttribute('environment-image','./media/assets/lightroom_14b.hdr')
     phoneModel.currentTime = 0;
   }else{
     phoneModel.play({repetitions: 1});
