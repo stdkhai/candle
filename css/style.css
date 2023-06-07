@@ -21,6 +21,11 @@
     src: url("../media/fonts/SFProText-Regular.ttf");
 }
 
+@font-face {
+    font-family: appleFontBold;
+    src: url("../media/fonts/SFProText-Bold.ttf");
+}
+
 :active,
 :hover,
 :focus {
@@ -339,7 +344,9 @@ header {
     justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
-    transform: translateX(-5%);
+    &.dayNight{
+        transform: translateX(-5%);
+    }
 }
 
 .candle-section.static .wix-img {
@@ -762,6 +769,7 @@ footer {
     text-align: center;
     height: 40%;
     border-radius: 10px;
+    font-family: 'phoneFont';
 }
 .modal i{
     position: absolute;
@@ -771,7 +779,8 @@ footer {
 
 .modal h2{
     font-size: 2em;
-    font-weight: 700;
+    font-weight: bold;
+    font-family: 'appleFontBold';
 }
 
 .modal span{
