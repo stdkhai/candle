@@ -113,11 +113,19 @@ window.addEventListener('load', e => {
 
   let observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
-      let curRatio = entry.intersectionRatio
-      curRatio > 0.1 ? entry.target.classList.add('animated') : (entry.target.classList.remove('animated'));
+      let curRatio = entry.intersectionRatio;
+      let curRatioKoef = 0.1;
+      let isMobile = false;
       if (window.innerWidth < 600) {
-        ratioKoeficient = 0.91;
+        ratioKoeficient = 0.75;
+        curRatioKoef = 0.7;
+        isMobile = true;
       }
+      console.log("curRatio", curRatio);
+      console.log("prevRatio", prevRatio);
+      console.log("ratioKoeficient", ratioKoeficient);
+      console.log("curRatioKoeficient", curRatioKoef);
+      curRatio > curRatioKoef ? entry.target.classList.add('animated') : (entry.target.classList.remove('animated'));
       curRatio < ratioKoeficient ?
         (candleSection.classList.add('animated'),
           modelViewer.cameraOrbit = orbitCycle[1],
@@ -131,7 +139,10 @@ window.addEventListener('load', e => {
           candleText.classList.remove('in'),
           candleText.classList.add('out'),
           prevRatio != 0 && curRatio >= ratioKoeficient ?
-            h1.classList.add('static') :
+            !isMobile ?
+              h1.classList.add('static')
+              : ""
+            :
             h1.classList.remove('static'))
 
       prevRatio = curRatio

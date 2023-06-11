@@ -61,20 +61,11 @@ html {
 }
 
 .wrapper {
+    margin-top: 30px;
     width: 100%;
     overflow: hidden;
     position: relative;
 
-}
-
-.transp {
-    background-image: linear-gradient(60deg, #E21143, #FFB03A);
-    background-clip: text;
-    color: transparent;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-text-fill-color: transparent;
 }
 
 img {
@@ -133,9 +124,6 @@ h1 {
     padding: 10px;
     background-color: var(--black);
     align-items: center;
-}
-
-.sticky {
     position: fixed;
     top: 0;
     width: 100%;
@@ -701,43 +689,44 @@ section.day-night {
 .moon-sun-span {
     top: 0;
     position: absolute;
-    height: 115vw;
-    width: 115vw;
+    height: 100vw;
+    width: 100vw;
     animation: 10s linear infinite dayNight;
 }
 
 .moon,
 .sun {
     position: absolute;
-    top: 50vh;
-    width: 175px;
-    height: 175px;
+/*     top: 50vh;
+ */    width: 10vw;
+    height: 10vw;
     background-color: var(--lightblue);
     border-radius: 50%;
 }
 
 .sun {
+    bottom: 0;
     right: 0;
 }
 
 .moon .shadow {
     position: absolute;
-    width: 150px;
-    height: 150px;
+    width: 8vw;
+    height: 8vw;
     border-radius: 50%;
     right: 0;
     animation: 10s linear infinite dayNightBack;
-
 }
 
 .moon {
+    top: 0;
     animation: 10s linear infinite dayNight reverse;
 }
 
 .day-night .text-content {
     text-align: center;
     width: 980px;
-    margin-bottom: 15vh;
+    margin-bottom: 50vh;
     z-index: 6;
 }
 
@@ -1108,17 +1097,22 @@ footer {
         color: var(--white);
     }
 
-    25% {
+    20% {
         background-color: var(--black);
         color: var(--white);
     }
 
-    50% {
+    40%{
         background-color: var(--bluegrey);
         color: var(--black);
     }
 
-    75% {
+    60% {
+        background-color: var(--bluegrey);
+        color: var(--black);
+    }
+
+    80% {
         background-color: var(--bluegrey);
         color: var(--black);
     }
@@ -1252,7 +1246,8 @@ footer {
 
 @media (max-width: 669px) {
     h1 {
-        margin: 20px 0;
+        margin: 0;
+        font-size: 30vw;
     }
 
     .wix-img {
@@ -1263,12 +1258,16 @@ footer {
     .candle-section-head {
         z-index: 1;
         width: 100%;
-        top: 0vh;
+        top: 20vh;
     }
 
     .model {
         width: 100%;
         z-index: 2;
+    }
+
+    header{
+        height: 120vh;
     }
 
     header>div {
@@ -1291,11 +1290,11 @@ footer {
 
     @keyframes candleUPMOBILE {
         0% {
-            transform: translateY(0vh) scale(0.7);
+            transform: translateY(20vh) scale(0.7);
         }
 
         100% {
-            transform: translateY(-100vh) scale(1);
+            transform: translateY(-70vh) scale(1);
 
         }
     }
@@ -1303,11 +1302,11 @@ footer {
 
     @keyframes candleBACKMOBILE {
         0% {
-            transform: translateY(-100vh) scale(1);
+            transform: translateY(-70vh) scale(1);
         }
 
         100% {
-            transform: translateY(0vh) scale(0.7);
+            transform: translateY(20vh) scale(0.7);
         }
     }
 
@@ -1379,6 +1378,14 @@ footer {
         width: 100%;
     }
 
+    .tools-bar{
+        font-size: 6vw;
+    }
+
+    .phone-screen .progress-bar #time-left{
+        font-size: 2.5vw;
+    }
+
     .continue-section {
         text-align: center;
         margin: 0;
@@ -1422,6 +1429,19 @@ footer {
 
     .sun {
         top: 0;
+    }
+
+    .moon, .sun{
+        width: 50px;
+        height: 50px;
+    }
+    .moon .shadow {
+        width: 30px;
+        height: 30px;
+    }
+
+    .feedback .modal {
+        width: 80%;
     }
 }
 
