@@ -41,6 +41,12 @@ body {
     color: var(--white);
     font-weight: normal;
     background-color: var(--black);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 html {
@@ -61,13 +67,13 @@ html {
 
 }
 
-.transp{
+.transp {
     background-image: linear-gradient(60deg, #E21143, #FFB03A);
     background-clip: text;
     color: transparent;
     -webkit-background-clip: text;
     -moz-background-clip: text;
-    -webkit-text-fill-color: transparent; 
+    -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
 }
 
@@ -120,7 +126,7 @@ h1 {
     text-align: center;
 }
 
-.header{
+.header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -129,18 +135,18 @@ h1 {
     align-items: center;
 }
 
-.sticky{
+.sticky {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 10;
 }
 
-.header .title{
+.header .title {
     padding: 0 0 0 10px;
 }
 
-.header .notify{
+.header .notify {
     background-color: var(--white);
     color: var(--black);
     border-radius: 20px;
@@ -344,7 +350,8 @@ header {
     justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
-    &.dayNight{
+
+    &.dayNight {
         transform: translateX(-5%);
     }
 }
@@ -465,7 +472,7 @@ header {
     position: absolute;
     width: 100%;
     height: 100%;
-    scale: 0.99; 
+    scale: 0.99;
     overflow: hidden;
     background-color: var(--screengerey);
     border-radius: 12%;
@@ -479,10 +486,10 @@ header {
     animation: none;
 }
 
-.phone-screen .glow-outer.active{
+.phone-screen .glow-outer.active {
     animation-name: glow;
     animation-duration: 4s;
-    box-shadow: 10px -5vh 400px 10vw rgba(255,192,46,0.75);
+    box-shadow: 10px -5vh 400px 10vw rgba(255, 192, 46, 0.75);
 
 }
 
@@ -547,7 +554,8 @@ header {
     transform: translateY(-50%);
     width: 15%;
     justify-content: space-between;
-    font-size: 1.1vw;;
+    font-size: 1.1vw;
+    ;
 }
 
 #time-left .block {
@@ -593,7 +601,7 @@ header {
     padding: 0 10%;
 }
 
-.tools-bar #power_button{
+.tools-bar #power_button {
     z-index: 5;
 }
 
@@ -739,21 +747,21 @@ footer {
     font-size: 12px;
 }
 
-.feedback{
+.feedback {
     z-index: 12;
     position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
     overflow: auto;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
-.feedback.closed{
+.feedback.closed {
     display: none;
 }
 
-.feedback .modal{
+.feedback .modal {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -765,30 +773,31 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color : var(--black);
+    color: var(--black);
     text-align: center;
     height: 40%;
     border-radius: 10px;
     font-family: 'phoneFont';
 }
-.modal i{
+
+.modal i {
     position: absolute;
-    top:5%;
+    top: 5%;
     right: 5%;
 }
 
-.modal h2{
+.modal h2 {
     font-size: 2em;
     font-weight: bold;
     font-family: 'appleFontBold';
 }
 
-.modal span{
+.modal span {
     color: var(--darkgrey);
     font-weight: bold;
 }
 
-.modal .field{
+.modal .field {
     display: flex;
     flex-direction: row;
     width: 90%;
@@ -798,14 +807,14 @@ footer {
     margin: 15px 0;
 }
 
-.field input{
+.field input {
     width: 100%;
     padding: 15px;
     border-radius: 20px;
     border: none;
 }
 
-.field button{
+.field button {
     position: absolute;
     right: 0;
     padding: 15px 25px;
@@ -1520,7 +1529,7 @@ footer {
         padding: 0 0 0 20px;
     }
 
-   /*  .phone-section .tools-bar {
+    /*  .phone-section .tools-bar {
         font-size: 15px;
     } */
 
