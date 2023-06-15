@@ -117,14 +117,15 @@ window.addEventListener('load', e => {
       let curRatioKoef = 0.1;
       let isMobile = false;
       if (window.innerWidth <= 669) {
-        ratioKoeficient = 0.605;
-        curRatioKoef = 0.7;
+        ratioKoeficient = 0.75;
+       // curRatioKoef = 0.7;
         isMobile = true;
       }
       console.log("curRatio", curRatio);
       console.log("prevRatio", prevRatio);
       console.log("ratioKoeficient", ratioKoeficient);
       console.log("curRatioKoeficient", curRatioKoef);
+      console.log("scroolTop", window.scrollY);
       //  curRatio > curRatioKoef ? entry.target.classList.add('animated') : (entry.target.classList.remove('animated'));
       if (curRatio < ratioKoeficient) {
         candleSection.classList.add('animated')
@@ -144,7 +145,7 @@ window.addEventListener('load', e => {
           :
           h1.classList.remove('static')
       } else//if mobile
-       if (curRatio >= ratioKoeficient+0.055) {
+       if (/* curRatio >= ratioKoeficient+0.085 */ window.scrollY<10) {
         candleSection.classList.remove('animated')
         modelViewer.cameraOrbit = orbitCycle[0]
         h1.classList.remove('out')
