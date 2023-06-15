@@ -1258,7 +1258,7 @@ footer {
     .candle-section-head {
         z-index: 1;
         width: 100%;
-        top: 20vh;
+        top: 0%; 
     }
 
     .model {
@@ -1267,7 +1267,7 @@ footer {
     }
 
     header{
-        height: 120vh;
+        height: 150vh;
     }
 
     header>div {
@@ -1285,16 +1285,18 @@ footer {
 
     .candle-section-head .candle-text {
         z-index: 3;
+        bottom: none;
+        top: 0vh;
     }
 
 
     @keyframes candleUPMOBILE {
         0% {
-            transform: translateY(20vh) scale(0.7);
+            transform: translateY(100%) scale(0.7);
         }
 
         100% {
-            transform: translateY(-70vh) scale(1);
+            transform: translateY(0%) scale(1);
 
         }
     }
@@ -1302,11 +1304,11 @@ footer {
 
     @keyframes candleBACKMOBILE {
         0% {
-            transform: translateY(-70vh) scale(1);
+            transform: translateY(0%) scale(1);
         }
 
         100% {
-            transform: translateY(20vh) scale(0.7);
+            transform: translateY(100%) scale(0.7);
         }
     }
 

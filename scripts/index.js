@@ -116,8 +116,8 @@ window.addEventListener('load', e => {
       let curRatio = entry.intersectionRatio;
       let curRatioKoef = 0.1;
       let isMobile = false;
-      if (window.innerWidth < 600) {
-        ratioKoeficient = 0.75;
+      if (window.innerWidth <= 669) {
+        ratioKoeficient = 0.605;
         curRatioKoef = 0.7;
         isMobile = true;
       }
@@ -125,25 +125,77 @@ window.addEventListener('load', e => {
       console.log("prevRatio", prevRatio);
       console.log("ratioKoeficient", ratioKoeficient);
       console.log("curRatioKoeficient", curRatioKoef);
-      curRatio > curRatioKoef ? entry.target.classList.add('animated') : (entry.target.classList.remove('animated'));
-      curRatio < ratioKoeficient ?
-        (candleSection.classList.add('animated'),
+      //  curRatio > curRatioKoef ? entry.target.classList.add('animated') : (entry.target.classList.remove('animated'));
+      if (curRatio < ratioKoeficient) {
+        candleSection.classList.add('animated')
+        modelViewer.cameraOrbit = orbitCycle[1]
+        h1.classList.add('out')
+        h1.classList.remove('static')
+        candleText.classList.add('in')
+        candleText.classList.remove('out')
+      } else if (!isMobile) {
+        candleSection.classList.remove('animated')
+        modelViewer.cameraOrbit = orbitCycle[0]
+        h1.classList.remove('out')
+        candleText.classList.remove('in')
+        candleText.classList.add('out')
+        prevRatio != 0 && curRatio >= ratioKoeficient ?
+          h1.classList.add('static')
+          :
+          h1.classList.remove('static')
+      } else//if mobile
+       if (curRatio >= ratioKoeficient+0.055) {
+        candleSection.classList.remove('animated')
+        modelViewer.cameraOrbit = orbitCycle[0]
+        h1.classList.remove('out')
+        candleText.classList.remove('in')
+        candleText.classList.add('out')
+        prevRatio != 0 && curRatio >= ratioKoeficient ?
+          !isMobile ?
+            h1.classList.add('static')
+            : ""
+          :
+          h1.classList.remove('static')
+      }
+
+      /* curRatio < ratioKoeficient ?
+        (
+          candleSection.classList.add('animated'),
           modelViewer.cameraOrbit = orbitCycle[1],
           h1.classList.add('out'),
           h1.classList.remove('static'),
           candleText.classList.add('in'),
-          candleText.classList.remove('out')) :
-        (candleSection.classList.remove('animated'),
-          modelViewer.cameraOrbit = orbitCycle[0],
-          h1.classList.remove('out'),
-          candleText.classList.remove('in'),
-          candleText.classList.add('out'),
-          prevRatio != 0 && curRatio >= ratioKoeficient ?
-            !isMobile ?
-              h1.classList.add('static')
-              : ""
-            :
-            h1.classList.remove('static'))
+          candleText.classList.remove('out')
+        ) :
+        !isMobile ?
+          (
+            candleSection.classList.remove('animated'),
+            modelViewer.cameraOrbit = orbitCycle[0],
+            h1.classList.remove('out'),
+            candleText.classList.remove('in'),
+            candleText.classList.add('out'),
+            prevRatio != 0 && curRatio >= ratioKoeficient ?
+              !isMobile ?
+                h1.classList.add('static')
+                : ""
+              :
+              h1.classList.remove('static')
+          ) :
+          curRatio>=ratioKoeficient+0.04?
+          (
+            candleSection.classList.remove('animated'),
+            modelViewer.cameraOrbit = orbitCycle[0],
+            h1.classList.remove('out'),
+            candleText.classList.remove('in'),
+            candleText.classList.add('out'),
+            prevRatio != 0 && curRatio >= ratioKoeficient ?
+              !isMobile ?
+                h1.classList.add('static')
+                : ""
+              :
+              h1.classList.remove('static')
+          ):
+          ("") */
 
       prevRatio = curRatio
     })
@@ -158,6 +210,7 @@ window.addEventListener('load', e => {
 
     for (let i = 1.0; i <= steps; i++) {
       let ratio = i / steps
+      console.log(ratio);
       thresholds.push(ratio)
     }
     return thresholds
