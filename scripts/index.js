@@ -123,7 +123,7 @@ window.addEventListener('load', e => {
       let curRatioKoef = 0.1;
       let isMobile = false;
       if (window.innerWidth <= 669) {
-        ratioKoeficient = 0.75;
+        ratioKoeficient = 0.74;
        // curRatioKoef = 0.7;
         isMobile = true;
       }
@@ -151,7 +151,7 @@ window.addEventListener('load', e => {
           :
           h1.classList.remove('static')
       } else//if mobile
-       if (/* curRatio >= ratioKoeficient+0.085 */ window.scrollY<10) {
+       if (/*curRatio >= ratioKoeficient+0.085 */ window.scrollY<10) {
         candleSection.classList.remove('animated')
         modelViewer.cameraOrbit = orbitCycle[0]
         h1.classList.remove('out')
