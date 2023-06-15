@@ -1,10 +1,17 @@
 import { details } from './content.js'
-window.addEventListener("load",function() {
+/* window.addEventListener("load",function() {
   setTimeout(function(){
       // This hides the address bar:
       window.scrollTo(0, 1);
   }, 0);
-});
+}); */
+// Covering all browsers that support this
+var docEl = document.documentElement;
+var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+// Execute the variable on initalization
+requestFullScreen.call(docEl);
 document.querySelector("body").onload = startTime()
 let candleGlowing = false;
 let modalCross = document.querySelector("#close");
