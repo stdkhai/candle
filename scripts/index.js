@@ -1,4 +1,7 @@
 import { details } from './content.js'
+$(window).on('beforeunload', function() {
+  $(window).scrollTop(0);
+});
 document.querySelector("body").onload = startTime()
 let candleGlowing = false;
 let modalCross = document.querySelector("#close");
