@@ -35,7 +35,7 @@
 
 body {
     margin: 0;
-    font-family: 'Georama', sans-serif;
+    font-family: phoneFont;
     font-size: 18px;
     line-height: 1.4;
     color: var(--white);

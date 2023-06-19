@@ -65,8 +65,10 @@ async function onEntry(entry) {
           let target = e.target;
           let steps = document.querySelectorAll('.step');
           for (let i = 0; i < steps.length; i++) {
+            if (!steps[i].classList.contains('element-show')) {
               steps[i].classList.add('element-show');
               return
+            }
           }
           await sleep(2000)
           enableScroll()
@@ -78,8 +80,10 @@ async function onEntry(entry) {
           let target = e.target;
           let steps = document.querySelectorAll('.step');
           for (let i = 0; i < steps.length; i++) {
+            if (!steps[i].classList.contains('element-show')) {
               steps[i].classList.add('element-show');
               return
+            }
           }
           await sleep(2000)
           enableScroll()
