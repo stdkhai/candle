@@ -288,11 +288,13 @@ powerButton.addEventListener('click', () => {
   if (phoneScreen.classList.contains('active')) {
     phoneScreen.classList.remove('active');
     glow.classList.remove('active');
+    powerButton.classList.remove('active');
     phoneModel.currentTime = 0;
   } else {
     phoneModel.play({ repetitions: 1 });
     phoneScreen.classList.add('active');
     glow.classList.add('active');
+    powerButton.classList.add('active');
   }
 })
 
