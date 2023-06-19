@@ -190,7 +190,7 @@ header {
 
 .step.element-show {
     opacity: 1;
-    transition: all 1s;
+    transition: all 0s;
 }
 
 

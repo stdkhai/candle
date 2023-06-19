@@ -56,34 +56,32 @@ function enableScroll() {
 async function onEntry(entry) {
   for (let i = 0; i < entry.length; i++) {
     if (entry[i].isIntersecting) {
-      if (window.innerWidth > 600) {
+      if (window.innerWidth > 699) {
         disableScroll()
       }
 
       if (i == 0) {
-        document.addEventListener('touchmove', e => {
+        document.addEventListener('touchmove', async e => {
           let target = e.target;
           let steps = document.querySelectorAll('.step');
           for (let i = 0; i < steps.length; i++) {
-            if (!steps[i].classList.contains('element-show')) {
               steps[i].classList.add('element-show');
               return
-            }
           }
+          await sleep(2000)
           enableScroll()
         });
 
 
-        document.addEventListener('wheel', e => {
+        document.addEventListener('wheel', async e => {
           e.preventDefault();
           let target = e.target;
           let steps = document.querySelectorAll('.step');
           for (let i = 0; i < steps.length; i++) {
-            if (!steps[i].classList.contains('element-show')) {
               steps[i].classList.add('element-show');
               return
-            }
           }
+          await sleep(2000)
           enableScroll()
         })
       }
