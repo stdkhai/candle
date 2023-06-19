@@ -117,7 +117,20 @@ h1 {
     text-align: center;
 }
 
-.header {
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--black);
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    font-family: 'appleFontBold';
+}
+
+.header .container{
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -126,7 +139,7 @@ h1 {
     padding: 10px;
     background-color: var(--black);
     align-items: center;
-    position: fixed;
+    position: relative;
     top: 0;
     width: 90%;
     max-width: 1400px;
