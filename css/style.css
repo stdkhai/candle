@@ -805,6 +805,7 @@ footer {
     height: 40%;
     border-radius: 10px;
     font-family: 'phoneFont';
+    padding: 20px;
 }
 
 .modal i {
