@@ -123,7 +123,7 @@ window.addEventListener('load', e => {
       let curRatioKoef = 0.1;
       let isMobile = false;
       if (window.innerWidth <= 669) {
-        ratioKoeficient = 0.74;
+        ratioKoeficient = 0.7;
        // curRatioKoef = 0.7;
         isMobile = true;
       }
@@ -217,7 +217,6 @@ window.addEventListener('load', e => {
 
     for (let i = 1.0; i <= steps; i++) {
       let ratio = i / steps
-      console.log(ratio);
       thresholds.push(ratio)
     }
     return thresholds
