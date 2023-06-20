@@ -70,7 +70,6 @@ async function onEntry(entry) {
               return
             }
           }
-          await sleep(2000)
           enableScroll()
         });
 
