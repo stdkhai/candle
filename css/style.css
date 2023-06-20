@@ -626,7 +626,7 @@ header {
 
 	70% {
 /* 		transform: scale(1);
- */		box-shadow: 0 0 0 10px rgba(226, 112, 13, 0);
+ */		box-shadow: 0 0 0 1.1em rgba(226, 112, 13, 0);
 	}
 
 	100% {
