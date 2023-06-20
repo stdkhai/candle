@@ -85,7 +85,7 @@ async function onEntry(entry) {
               return
             }
           }
-          await sleep(2000)
+          await sleep(1200)
           enableScroll()
         })
       }
@@ -313,7 +313,7 @@ function stickyHeaderF(params) {
   }
 }
 let wrapper = document.querySelector(".wrapper")
-
+/* 
 let als = deepText(wrapper)
 for (let i = 0; i < als.length; i++) {
   //als[i].parentNode.classList.add("transp")
@@ -333,7 +333,7 @@ function deepText(node) {
   }
   return A;
 }
-
+ */
 notifyMe.addEventListener('click', openModal)
 modalCross.addEventListener('click', closeModal)
 feedback.addEventListener('click', closeModal)

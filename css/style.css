@@ -493,7 +493,7 @@ header {
 
 .phone-screen .glow-outer.active {
     animation-name: glow;
-    animation-duration: 4s;
+    animation-duration: 2s;
     box-shadow: 10px -5vh 400px 10vw rgba(255, 192, 46, 0.75);
 
 }
