@@ -117,7 +117,7 @@ h1 {
     text-align: center;
 }
 
-.header{
+.header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -130,7 +130,7 @@ h1 {
     font-family: 'appleFontBold';
 }
 
-.header .container{
+.header .container {
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -619,20 +619,23 @@ header {
 }
 
 @keyframes pulse {
-	0% {
-/* 		transform: scale(1.2);
- */		box-shadow: 0 0 0 0 rgba(211, 122, 12, 0.875);
-	}
+    0% {
+        /* 		transform: scale(1.2);
+ */
+        box-shadow: 0 0 0 0 rgba(211, 122, 12, 0.875);
+    }
 
-	70% {
-/* 		transform: scale(1);
- */		box-shadow: 0 0 0 1.1em rgba(226, 112, 13, 0);
-	}
+    70% {
+        /* 		transform: scale(1);
+ */
+        box-shadow: 0 0 0 1.1em rgba(226, 112, 13, 0);
+    }
 
-	100% {
-/* 		transform: scale(1.2);
- */		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-	}
+    100% {
+        /* 		transform: scale(1.2);
+ */
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
 }
 
 .phone-section .content {
@@ -735,8 +738,9 @@ section.day-night {
 .moon,
 .sun {
     position: absolute;
-/*     top: 50vh;
- */    width: 10vw;
+    /*     top: 50vh;
+ */
+    width: 10vw;
     height: 10vw;
     background-color: var(--lightblue);
     border-radius: 50%;
@@ -1141,7 +1145,7 @@ footer {
         color: var(--white);
     }
 
-    40%{
+    40% {
         background-color: var(--bluegrey);
         color: var(--black);
     }
@@ -1297,7 +1301,7 @@ footer {
     .candle-section-head {
         z-index: 1;
         width: 100%;
-        top: 0vh; 
+        top: 0vh;
     }
 
     .model {
@@ -1305,7 +1309,7 @@ footer {
         z-index: 2;
     }
 
-    header{
+    header {
         height: 120vh;
     }
 
@@ -1419,11 +1423,17 @@ footer {
         width: 100%;
     }
 
-    .tools-bar{
+    .phone-screen .statusbar,
+    .statusbar #clock,
+    .phone-screen .notifications {
+        font-size: 3vw;
+    }
+
+    .tools-bar {
         font-size: 6vw;
     }
 
-    .phone-screen .progress-bar #time-left{
+    .phone-screen .progress-bar #time-left {
         font-size: 2.5vw;
     }
 
@@ -1472,10 +1482,12 @@ footer {
         top: 0;
     }
 
-    .moon, .sun{
+    .moon,
+    .sun {
         width: 50px;
         height: 50px;
     }
+
     .moon .shadow {
         width: 30px;
         height: 30px;
