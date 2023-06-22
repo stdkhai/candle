@@ -494,7 +494,7 @@ header {
 .phone-screen .glow-outer.active {
     animation-name: glow;
     animation-duration: 2s;
-    box-shadow: 10px -5vh 400px 10vw rgba(255, 192, 46, 0.75);
+    box-shadow: 10px -5vh 400px 15vw rgba(255, 192, 46, 0.75);
 
 }
 
@@ -504,7 +504,7 @@ header {
     }
 
     to {
-        box-shadow: 10px -5vh 400px 10vw rgba(255, 192, 46, 0.75);
+        box-shadow: 10px -5vh 400px 15vw rgba(255, 192, 46, 0.75);
 
     }
 }
@@ -1435,6 +1435,25 @@ footer {
     .phone-screen .progress-bar #time-left {
         font-size: 2.5vw;
     }
+
+    .phone-screen .glow-outer.active {
+        animation-name: glow;
+        animation-duration: 2s;
+        box-shadow: 10px -5vh 400px 20em rgba(255, 192, 46, 0.75);
+    
+    }
+    
+    @keyframes glow {
+        from {
+            box-shadow: 10px -5vh 400px 0em rgba(255, 192, 46, 0.75);
+        }
+    
+        to {
+            box-shadow: 10px -5vh 400px 20em rgba(255, 192, 46, 0.75);
+    
+        }
+    }
+    
 
     .continue-section {
         text-align: center;
