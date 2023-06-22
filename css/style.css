@@ -701,7 +701,7 @@ h4 {
 }
 
 section.day-night {
-    animation: 10s linear infinite dayNightBack;
+    animation: 30s linear infinite dayNightBack;
 }
 
 
@@ -731,7 +731,7 @@ section.day-night {
     position: absolute;
     height: 100vw;
     width: 100vw;
-    animation: 10s linear infinite dayNight;
+    animation: 30s linear infinite dayNight;
 }
 
 .moon,
@@ -756,12 +756,12 @@ section.day-night {
     height: 8vw;
     border-radius: 50%;
     right: 0;
-    animation: 10s linear infinite dayNightBack;
+    animation: 30s linear infinite dayNightBack;
 }
 
 .moon {
     top: 0;
-    animation: 10s linear infinite dayNight reverse;
+    animation: 30s linear infinite dayNight reverse;
 }
 
 .day-night .text-content {
@@ -1473,7 +1473,7 @@ footer {
     .moon-sun-span {
         height: 100vw;
         width: 100vh;
-        animation: 10s linear infinite dayNight;
+        animation: 30s linear infinite dayNight;
     }
 
 
