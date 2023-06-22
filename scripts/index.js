@@ -1,8 +1,8 @@
 import { details } from './content.js'
-window.addEventListener("load",function() {
-  setTimeout(function(){
-      // This hides the address bar:
-      window.scrollTo(0, 1);
+window.addEventListener("load", function () {
+  setTimeout(function () {
+    // This hides the address bar:
+    window.scrollTo(0, 1);
   }, 0);
 });
 document.querySelector("body").onload = startTime()
@@ -40,6 +40,8 @@ function disableScroll() {
   window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
 /*   window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
  */  window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+  let block = document.querySelector('.section-steps')
+  block.scrollIntoView({block: 'nearest'})
 }
 
 function enableScroll() {
@@ -47,6 +49,8 @@ function enableScroll() {
   window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
 /*   window.removeEventListener('touchmove', preventDefault, wheelOpt);
  */  window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+  let block = document.querySelector('.section-steps')
+  block.scrollIntoView = function () { }
 }
 
 //////////////////////////////////////////////////////
@@ -61,7 +65,7 @@ async function onEntry(entry) {
       }
 
       if (i == 0) {
-        document.addEventListener('touchmove', async e => {
+        document.addEventListener('touchmove', e => {
           let target = e.target;
           let steps = document.querySelectorAll('.step');
           for (let i = 0; i < steps.length; i++) {
@@ -74,7 +78,7 @@ async function onEntry(entry) {
         });
 
 
-        document.addEventListener('wheel', async e => {
+        document.addEventListener('wheel', e => {
           e.preventDefault();
           let target = e.target;
           let steps = document.querySelectorAll('.step');
@@ -84,7 +88,6 @@ async function onEntry(entry) {
               return
             }
           }
-          await sleep(1200)
           enableScroll()
         })
       }
@@ -125,7 +128,7 @@ window.addEventListener('load', e => {
       let isMobile = false;
       if (window.innerWidth <= 669) {
         ratioKoeficient = 0.7;
-       // curRatioKoef = 0.7;
+        // curRatioKoef = 0.7;
         isMobile = true;
       }
       console.log("curRatio", curRatio);
@@ -152,19 +155,19 @@ window.addEventListener('load', e => {
           :
           h1.classList.remove('static')
       } else//if mobile
-       if (/*curRatio >= ratioKoeficient+0.085 */ window.scrollY<10) {
-        candleSection.classList.remove('animated')
-        modelViewer.cameraOrbit = orbitCycle[0]
-        h1.classList.remove('out')
-        candleText.classList.remove('in')
-        candleText.classList.add('out')
-        prevRatio != 0 && curRatio >= ratioKoeficient ?
-          !isMobile ?
-            h1.classList.add('static')
-            : ""
-          :
-          h1.classList.remove('static')
-      }
+        if (/*curRatio >= ratioKoeficient+0.085 */ window.scrollY < 10) {
+          candleSection.classList.remove('animated')
+          modelViewer.cameraOrbit = orbitCycle[0]
+          h1.classList.remove('out')
+          candleText.classList.remove('in')
+          candleText.classList.add('out')
+          prevRatio != 0 && curRatio >= ratioKoeficient ?
+            !isMobile ?
+              h1.classList.add('static')
+              : ""
+            :
+            h1.classList.remove('static')
+        }
 
       /* curRatio < ratioKoeficient ?
         (
