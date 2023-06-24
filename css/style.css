@@ -615,6 +615,7 @@ header {
 #power_button.active {
     color: var(--yellow);
     animation: none;
+    -webkit-text-fill-color: var(--yellow)
 }
 
 @keyframes pulse {
@@ -701,7 +702,7 @@ h4 {
 }
 
 section.day-night {
-    animation: 30s linear infinite dayNightBack;
+    animation: 30s linear infinite dayNightBack;    
 }
 
 
@@ -757,6 +758,8 @@ section.day-night {
     border-radius: 50%;
     right: 0;
     animation: 30s linear infinite dayNightBack;
+    background-clip: none!important;
+    -webkit-background-clip: none !important;
 }
 
 .moon {
@@ -1439,20 +1442,20 @@ footer {
         animation-name: glow;
         animation-duration: 2s;
         box-shadow: 10px -5vh 400px 20em rgba(255, 192, 46, 0.75);
-    
+
     }
-    
+
     @keyframes glow {
         from {
             box-shadow: 10px -5vh 400px 0em rgba(255, 192, 46, 0.75);
         }
-    
+
         to {
             box-shadow: 10px -5vh 400px 20em rgba(255, 192, 46, 0.75);
-    
+
         }
     }
-    
+
 
     .continue-section {
         text-align: center;
@@ -1684,4 +1687,10 @@ footer {
         flex-wrap: nowrap;
     }
 
+}
+
+.transp {
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
 }

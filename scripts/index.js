@@ -10,6 +10,8 @@ let candleGlowing = false;
 let modalCross = document.querySelector("#close");
 let feedback = document.querySelector('.feedback');
 let notifyMe = document.querySelector('#notify');
+let wrapper = document.querySelector(".wrapper")
+
 ////////////////////scroll limiter///////////////////////////////
 
 var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
@@ -264,8 +266,8 @@ function startTime() {
   let m = today.getMinutes();
   h = checkTime(h);
   m = checkTime(m);
-  document.getElementById('clock').innerHTML = h + ":" + m;
-  setTimeout(startTime, 1000);
+  document.getElementById('clock').textContent = h + ":" + m;
+  setTimeout(startTime, 5000);
 }
 
 function checkTime(i) {
@@ -289,16 +291,27 @@ phoneModel.addEventListener('play', () => {
 
 powerButton.addEventListener('click', () => {
   if (candleGlowing) { return }
+  let als = deepText(wrapper)
   if (phoneScreen.classList.contains('active')) {
     phoneScreen.classList.remove('active');
     glow.classList.remove('active');
     powerButton.classList.remove('active');
     phoneModel.currentTime = 0;
+    for (let i = 0; i < als.length; i++) {
+      als[i].parentNode.classList.remove("transp")
+      als[i].parentNode.style.backgroundImage = ""
+      als[i].parentNode.style.webkitBackgroundClip = ""
+    }
   } else {
     phoneModel.play({ repetitions: 1 });
     phoneScreen.classList.add('active');
     glow.classList.add('active');
     powerButton.classList.add('active');
+    for (let i = 0; i < als.length; i++) {
+      als[i].parentNode.classList.add("transp")
+      als[i].parentNode.style.backgroundImage = createGradient(phoneModel)
+      als[i].parentNode.style.webkitBackgroundClip = "text"    
+    }
   }
 })
 
@@ -308,20 +321,12 @@ let stickyHeader = document.querySelector('.header');
 let sticky = stickyHeader.offsetTop;
 
 function stickyHeaderF(params) {
-  if (window.pageYOffset > sticky) {
+  if (window.scrollY > sticky) {
     stickyHeader.classList.add("sticky");
   } else {
     stickyHeader.classList.remove("sticky");
   }
 }
-let wrapper = document.querySelector(".wrapper")
-/* 
-let als = deepText(wrapper)
-for (let i = 0; i < als.length; i++) {
-  //als[i].parentNode.classList.add("transp")
-
-}
-console.log(als);
 
 function deepText(node) {
   var A = [];
@@ -335,7 +340,7 @@ function deepText(node) {
   }
   return A;
 }
- */
+
 notifyMe.addEventListener('click', openModal)
 modalCross.addEventListener('click', closeModal)
 feedback.addEventListener('click', closeModal)
@@ -353,4 +358,17 @@ function closeModal(e) {
 function openModal(e) {
   let modal = document.querySelector('.feedback');
   modal.classList.remove('closed');
+}
+
+function createGradient(seedElement) {
+  var pageWidth = window.innerWidth;
+  var pageHeight = window.innerHeight;
+  var seedRect = seedElement.getBoundingClientRect();
+  var seedCenterX = seedRect.left + seedRect.width / 2;
+  var seedCenterY = seedRect.top + seedRect.height / 2;
+  var gradientX = (seedCenterX / pageWidth) * 100;
+  var gradientY = (seedCenterY / pageHeight) * 100;
+  var gradient = "radial-gradient(circle at " + gradientX + "% " + gradientY + "%, #fb6b00, #ece663)";
+
+  return gradient;
 }
