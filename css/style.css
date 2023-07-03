@@ -14,6 +14,7 @@
     --black: #000000;
     --lightblue: #EAF6FF;
     --yellow: #ffb405;
+    --orange: #f56900;
 }
 
 @font-face {
@@ -43,6 +44,10 @@ body {
     background-color: var(--black);
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+body.lighted{
+    color: var(--orange);
 }
 
 body::-webkit-scrollbar {
@@ -159,7 +164,7 @@ h1 {
 
 header {
     position: inherit;
-    height: 100vh;
+    height: 100%;
 }
 
 .candle-section-head {
@@ -880,6 +885,7 @@ footer {
     animation-name: h1IN;
     font-size: 128px;
     line-height: 155px;
+    padding-top: 50px;
 }
 
 .header-span.out {

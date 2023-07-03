@@ -12,6 +12,10 @@ let feedback = document.querySelector('.feedback');
 let notifyMe = document.querySelector('#notify');
 let wrapper = document.querySelector(".wrapper")
 
+
+const screenHeight = window.innerHeight;
+document.querySelector("header").style.height = screenHeight + "px";
+
 ////////////////////scroll limiter///////////////////////////////
 
 var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
@@ -43,7 +47,7 @@ function disableScroll() {
 /*   window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
  */  window.addEventListener('keydown', preventDefaultForScrollKeys, false);
   let block = document.querySelector('.section-steps')
-  block.scrollIntoView({block: 'nearest'})
+  block.scrollIntoView({ block: 'nearest' })
 }
 
 function enableScroll() {
@@ -157,7 +161,7 @@ window.addEventListener('load', e => {
           :
           h1.classList.remove('static')
       } else//if mobile
-        if (/*curRatio >= ratioKoeficient+0.085 */ window.scrollY < 10) {
+        if (window.scrollY < 10) {
           candleSection.classList.remove('animated')
           modelViewer.cameraOrbit = orbitCycle[0]
           h1.classList.remove('out')
@@ -170,46 +174,6 @@ window.addEventListener('load', e => {
             :
             h1.classList.remove('static')
         }
-
-      /* curRatio < ratioKoeficient ?
-        (
-          candleSection.classList.add('animated'),
-          modelViewer.cameraOrbit = orbitCycle[1],
-          h1.classList.add('out'),
-          h1.classList.remove('static'),
-          candleText.classList.add('in'),
-          candleText.classList.remove('out')
-        ) :
-        !isMobile ?
-          (
-            candleSection.classList.remove('animated'),
-            modelViewer.cameraOrbit = orbitCycle[0],
-            h1.classList.remove('out'),
-            candleText.classList.remove('in'),
-            candleText.classList.add('out'),
-            prevRatio != 0 && curRatio >= ratioKoeficient ?
-              !isMobile ?
-                h1.classList.add('static')
-                : ""
-              :
-              h1.classList.remove('static')
-          ) :
-          curRatio>=ratioKoeficient+0.04?
-          (
-            candleSection.classList.remove('animated'),
-            modelViewer.cameraOrbit = orbitCycle[0],
-            h1.classList.remove('out'),
-            candleText.classList.remove('in'),
-            candleText.classList.add('out'),
-            prevRatio != 0 && curRatio >= ratioKoeficient ?
-              !isMobile ?
-                h1.classList.add('static')
-                : ""
-              :
-              h1.classList.remove('static')
-          ):
-          ("") */
-
       prevRatio = curRatio
     })
   }, {
@@ -219,15 +183,14 @@ window.addEventListener('load', e => {
   observer.observe(box)
   function buildThresholdList() {
     let thresholds = []
-    let steps = 100
-
+    let steps = 1000
     for (let i = 1.0; i <= steps; i++) {
       let ratio = i / steps
       thresholds.push(ratio)
     }
     return thresholds
   }
-})
+});
 
 ///////////////////////////////////////////////////////////////
 
@@ -282,36 +245,34 @@ let phoneScreen = document.querySelector('.phone-screen');
 let glow = document.querySelector('.glow-outer')
 
 phoneModel.addEventListener('finished', () => {
+  // phoneScreen.classList.remove('active');
   candleGlowing = false;
+  console.log('finished');
 });
 
 phoneModel.addEventListener('play', () => {
+  /* setTimeout(() => {
+    console.log('setted');
+    phoneModel.pause();
+    candleGlowing = false;
+  }, phoneModel.duration*1000) */
   candleGlowing = true;
 })
 
 powerButton.addEventListener('click', () => {
   if (candleGlowing) { return }
-  let als = deepText(wrapper)
+  document.querySelector('body').classList.toggle('lighted');
   if (phoneScreen.classList.contains('active')) {
     phoneScreen.classList.remove('active');
     glow.classList.remove('active');
     powerButton.classList.remove('active');
-    phoneModel.currentTime = 0;
-    for (let i = 0; i < als.length; i++) {
-      als[i].parentNode.classList.remove("transp")
-      als[i].parentNode.style.backgroundImage = ""
-      als[i].parentNode.style.webkitBackgroundClip = ""
-    }
+    phoneModel.currentTime=0;
+   // phoneModel.currentTime = phoneModel.duration
   } else {
-    phoneModel.play({ repetitions: 1 });
+    phoneModel.play({ repetitions:1});
     phoneScreen.classList.add('active');
     glow.classList.add('active');
     powerButton.classList.add('active');
-    for (let i = 0; i < als.length; i++) {
-      als[i].parentNode.classList.add("transp")
-      als[i].parentNode.style.backgroundImage = createGradient(phoneModel)
-      als[i].parentNode.style.webkitBackgroundClip = "text"    
-    }
   }
 })
 
@@ -358,17 +319,4 @@ function closeModal(e) {
 function openModal(e) {
   let modal = document.querySelector('.feedback');
   modal.classList.remove('closed');
-}
-
-function createGradient(seedElement) {
-  var pageWidth = window.innerWidth;
-  var pageHeight = window.innerHeight;
-  var seedRect = seedElement.getBoundingClientRect();
-  var seedCenterX = seedRect.left + seedRect.width / 2;
-  var seedCenterY = seedRect.top + seedRect.height / 2;
-  var gradientX = (seedCenterX / pageWidth) * 100;
-  var gradientY = (seedCenterY / pageHeight) * 100;
-  var gradient = "radial-gradient(circle at " + gradientX + "% " + gradientY + "%, #fb6b00, #ece663)";
-
-  return gradient;
 }
