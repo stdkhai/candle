@@ -46,7 +46,7 @@ body {
     scrollbar-width: none;
 }
 
-body.lighted{
+body.lighted {
     color: var(--orange);
 }
 
@@ -160,6 +160,7 @@ h1 {
     color: var(--black);
     border-radius: 20px;
     padding: 5px 20px;
+    border: none;
 }
 
 header {
@@ -598,9 +599,10 @@ header {
 }
 
 @keyframes loadBar {
-    from{
+    from {
         width: 0%;
     }
+
     to {
         width: 55%;
     }
@@ -665,6 +667,7 @@ header {
     font-weight: 600;
     font-size: 64px;
     line-height: 77px;
+    margin-left: 105px !important;
 }
 
 /* .phone-section  */
@@ -719,7 +722,7 @@ h4 {
 }
 
 section.day-night {
-    animation: 30s linear infinite dayNightBack;    
+    animation: 30s linear infinite dayNightBack;
 }
 
 
@@ -775,7 +778,7 @@ section.day-night {
     border-radius: 50%;
     right: 0;
     animation: 30s linear infinite dayNightBack;
-    background-clip: none!important;
+    background-clip: none !important;
     -webkit-background-clip: none !important;
 }
 
@@ -845,6 +848,7 @@ footer {
 .modal span {
     color: var(--darkgrey);
     font-weight: bold;
+    white-space: nowrap;
 }
 
 .modal .field {
@@ -1332,6 +1336,11 @@ footer {
         height: 120vh;
     }
 
+
+    .modal span {
+        white-space: normal;
+    }
+
     header>div {
         z-index: 6;
     }
@@ -1707,8 +1716,3 @@ footer {
 
 }
 
-.transp {
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    -webkit-background-clip: text;
-}
