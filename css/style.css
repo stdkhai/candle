@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cardo&family=Inter&family=Montserrat&family=Roboto&family=Georama&display=swap');
 
 :root {
+    /* colors */
     --red: #F05454;
     --blue: #0E49B5;
     --grey: #DDDDDD;
@@ -15,6 +16,9 @@
     --lightblue: #EAF6FF;
     --yellow: #ffb405;
     --orange: #f56900;
+
+    /* gradient */
+    --bar-loaded: linear-gradient(90deg, rgba(255, 228, 105, 1) 0%, rgba(236, 200, 99, 1) 34%, rgba(251, 139, 0, 1) 86%)
 }
 
 @font-face {
@@ -586,25 +590,25 @@ header {
 }
 
 .progress-bar .bar.loaded {
-    width: 0%;
+    width: 65%;
     background-color: var(--graylighter);
 }
 
 .phone-screen.active .bar.loaded {
     animation-name: loadBar;
     animation-duration: 3s;
-    width: 55%;
+    width: 30%;
     background: rgb(255, 228, 105);
-    background: linear-gradient(90deg, rgba(255, 228, 105, 1) 0%, rgba(236, 200, 99, 1) 34%, rgba(251, 139, 0, 1) 86%);
+    background: var(--bar-loaded);
 }
 
 @keyframes loadBar {
     from {
-        width: 0%;
+        width: 65%;
     }
 
     to {
-        width: 55%;
+        width: 30%;
     }
 }
 

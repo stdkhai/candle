@@ -261,20 +261,31 @@ phoneModel.addEventListener('play', () => {
 
 powerButton.addEventListener('click', () => {
   if (candleGlowing) { return }
+  let digits = document.querySelectorAll('#time-left .digit');
   document.querySelector('body').classList.toggle('lighted');
   if (phoneScreen.classList.contains('active')) {
     phoneScreen.classList.remove('active');
     glow.classList.remove('active');
     powerButton.classList.remove('active');
     phoneModel.currentTime=0;
-   // phoneModel.currentTime = phoneModel.duration
+    digits.forEach((d)=>d.innerHTML = `<i class="fa-solid fa-clock"></i>`);
   } else {
     phoneModel.play({ repetitions:1});
     phoneScreen.classList.add('active');
     glow.classList.add('active');
     powerButton.classList.add('active');
+    digits.forEach((d)=>digitAnim(d));
   }
 })
+
+
+function digitAnim(block) {
+  for (let index = 0; index < 10; index++) {
+    setTimeout(()=>{
+      block.innerHTML = index;
+    },1000*Math.random());
+  }
+}
 
 //////////////////////////////////////////////////////////////////////////
 window.onscroll = function () { stickyHeaderF() };
