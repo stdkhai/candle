@@ -367,7 +367,7 @@ header {
 }
 
 .candle-section.static .wix-img {
-    translate: 5vw 10vh;
+    translate: 5vw 0vh;
 }
 
 .candle-section.static .detail-description {
