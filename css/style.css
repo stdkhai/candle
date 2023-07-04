@@ -12,10 +12,11 @@
     --screengerey: #1c1c1c;
     --darkblue: #3B3E66;
     --green: #1BC943;
-    --black: #000000;
+    --black: #161617;
     --lightblue: #EAF6FF;
     --yellow: #ffb405;
     --orange: #f56900;
+    --secondary-text: #86868b;
 
     /* gradient */
     --bar-loaded: linear-gradient(90deg, rgba(255, 228, 105, 1) 0%, rgba(236, 200, 99, 1) 34%, rgba(251, 139, 0, 1) 86%)
@@ -503,17 +504,17 @@ header {
 .phone-screen .glow-outer.active {
     animation-name: glow;
     animation-duration: 2s;
-    box-shadow: 10px -5vh 400px 15vw rgba(255, 192, 46, 0.75);
+    box-shadow: 10px -5vh 400px 15vw rgba(255, 233, 31, 0.856);
 
 }
 
 @keyframes glow {
     from {
-        box-shadow: 10px -5vh 400px 0vw rgba(255, 192, 46, 0.75);
+        box-shadow: 10px -5vh 400px 0vw rgba(199, 110, 0, 0.362);
     }
 
     to {
-        box-shadow: 10px -5vh 400px 15vw rgba(255, 192, 46, 0.75);
+        box-shadow: 10px -5vh 400px 15vw rgba(255, 233, 31, 0.856);
 
     }
 }
@@ -622,7 +623,7 @@ header {
     justify-content: space-around;
     align-content: center;
     align-items: center;
-    font-size: 4vw;
+    font-size: 3vw;
     z-index: 6;
     margin: 0 0 10% 0;
     padding: 0 10%;
@@ -633,12 +634,13 @@ header {
     animation: pulse 2s infinite linear;
     border: 2px solid transparent;
     border-radius: 100%;
+    color: red;
 }
 
 #power_button.active {
-    color: var(--yellow);
+    color: var(--green);
     animation: none;
-    -webkit-text-fill-color: var(--yellow)
+    /* -webkit-text-fill-color: var(--yellow) */
 }
 
 @keyframes pulse {
@@ -664,6 +666,11 @@ header {
 .phone-section .content {
     width: 600px;
     text-align: right;
+    color: var(--secondary-text);
+}
+
+.phone-section .content span {
+    color: red;
 }
 
 .phone-section h3 {
@@ -672,6 +679,7 @@ header {
     font-size: 64px;
     line-height: 77px;
     margin-left: 105px !important;
+    color: red !important;
 }
 
 /* .phone-section  */
@@ -709,6 +717,7 @@ header {
 h4 {
     font-size: 40px;
     font-weight: 600;
+    color: var(--orange);
 }
 
 .continue-section {
@@ -1719,4 +1728,3 @@ footer {
     }
 
 }
-
