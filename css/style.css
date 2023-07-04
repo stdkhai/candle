@@ -678,7 +678,7 @@ header {
     font-weight: 600;
     font-size: 64px;
     line-height: 77px;
-    margin-left: 105px !important;
+    margin-left: 105px;
     color: red !important;
 }
 
@@ -1364,6 +1364,7 @@ footer {
     }
 
     .candle-section-head {
+        z-index: 3;
         animation-name: candleBACKMOBILE;
     }
 
@@ -1380,7 +1381,7 @@ footer {
         }
 
         100% {
-            transform: translateY(-50vh) scale(1);
+            transform: translateY(-75vh) scale(1);
 
         }
     }
@@ -1442,6 +1443,10 @@ footer {
 
     .phone-section {
         padding: 15px;
+    }
+
+    .phone-section h3{
+        margin: 15px;
     }
 
     .phone-section .section-header {
