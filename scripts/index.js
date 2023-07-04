@@ -274,17 +274,23 @@ powerButton.addEventListener('click', () => {
     phoneScreen.classList.add('active');
     glow.classList.add('active');
     powerButton.classList.add('active');
-    digits.forEach((d)=>digitAnim(d));
+    digits.forEach((d)=>digitAnim(d, d.classList[d.classList.length-1]));
   }
 })
 
 
-function digitAnim(block) {
+function digitAnim(block, finValue) {
+  let finalTime = 0
   for (let index = 0; index < 10; index++) {
+    let time = 1000*Math.random()
     setTimeout(()=>{
       block.innerHTML = index;
-    },1000*Math.random());
+    },time);
+    if (time>finalTime){
+      finalTime = time;
+    }
   }
+  setTimeout(()=>{block.innerHTML = finValue},finalTime)
 }
 
 //////////////////////////////////////////////////////////////////////////
