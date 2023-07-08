@@ -679,7 +679,7 @@ header {
     font-weight: 600;
     font-size: 64px;
     line-height: 77px;
-    margin-left: 105px;
+    margin: 0 0 20px 105px;
     color: red !important;
 }
 
