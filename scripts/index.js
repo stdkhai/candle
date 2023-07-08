@@ -262,7 +262,7 @@ phoneModel.addEventListener('play', () => {
 powerButton.addEventListener('click', () => {
   if (candleGlowing) { return }
   let digits = document.querySelectorAll('#time-left .digit');
-  document.querySelector('body').classList.toggle('lighted');
+  document.querySelectorAll('h4').forEach(e=>e.classList.toggle('lighted'))
   if (phoneScreen.classList.contains('active')) {
     phoneScreen.classList.remove('active');
     glow.classList.remove('active');
