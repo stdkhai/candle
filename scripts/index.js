@@ -122,8 +122,8 @@ window.addEventListener('load', e => {
 
   const modelViewer = document.querySelector('.model');
   const orbitCycle = [
-    '50deg 84deg auto',
     '300deg 84deg auto',
+    '420deg 84deg auto',
     modelViewer.cameraOrbit
   ];
 
