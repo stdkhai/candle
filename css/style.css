@@ -466,9 +466,10 @@ header {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 0 105px;
+    height: 90vh;
 }
 
 .phone-section .phone img {
@@ -482,6 +483,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    scale: 0.65;
 }
 
 .phone-screen {
@@ -668,6 +670,7 @@ header {
     width: 600px;
     text-align: right;
     color: var(--secondary-text);
+    margin: 10vw;
 }
 
 .phone-section .content span {
@@ -714,14 +717,14 @@ header {
     font-size: 1.4em;
 }
 
-.profile .photo{
+/* .profile .photo{
     background-color: var(--secondary-text);
     border-radius: 100%;
 }
 
 .profile img{
     transform: scale(0.9);
-}
+} */
 
 h4 {
     font-size: 40px;
