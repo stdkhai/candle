@@ -714,6 +714,14 @@ header {
     font-size: 1.4em;
 }
 
+.profile .photo{
+    background-color: var(--secondary-text);
+    border-radius: 100%;
+}
+
+.profile img{
+    transform: scale(0.9);
+}
 
 h4 {
     font-size: 40px;
