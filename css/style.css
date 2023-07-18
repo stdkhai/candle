@@ -1474,6 +1474,7 @@ footer {
         flex-direction: column-reverse;
         padding: 0;
         justify-content: center;
+        height: auto;
     }
 
     .phone-section .content {
