@@ -1536,6 +1536,7 @@ footer {
 
     .phone-section .phone {
         width: 100%;
+        scale: 1;
     }
 
     .phone-screen .statusbar,
