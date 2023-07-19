@@ -458,6 +458,51 @@ header {
     right: 10vh;
 }
 
+.arrow {
+    z-index: -1;
+    width: 150px;
+    height: 50px;
+    position: absolute;
+    bottom: 5%;
+    background-color: transparent;
+    border-bottom:1px solid #ccc ;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+  }
+  
+  .arrow:before,
+  .arrow:after {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    border-top: 1px solid var(--lightblue);
+    transform: rotate(45deg);
+    border-radius: 6px;
+  }
+  
+  .arrow:before {
+    bottom: 5%;
+    left: 0;
+    transform: rotate(-45deg);
+    border-left: 1px solid var(--lightblue);
+
+  }
+  
+  .arrow:after {
+    bottom: 5%;
+    right: 0;
+    border-right: 1px solid var(--lightblue);
+
+  }
+
 
 .phone-section {
     font-family: 'phoneFont';
