@@ -126,6 +126,13 @@ h1 {
     text-align: center;
 }
 
+h1.lighted{
+    background: radial-gradient(178.71% 178.71% at 50.04% 148.39%, var(--orange) 0%, rgba(255, 255, 255, 0) 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
 .header {
     display: flex;
     flex-direction: row;

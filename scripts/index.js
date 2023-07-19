@@ -245,9 +245,7 @@ let phoneScreen = document.querySelector('.phone-screen');
 let glow = document.querySelector('.glow-outer')
 
 phoneModel.addEventListener('finished', () => {
-  // phoneScreen.classList.remove('active');
   candleGlowing = false;
-  console.log('finished');
 });
 
 phoneModel.addEventListener('play', () => {
@@ -258,6 +256,7 @@ powerButton.addEventListener('click', () => {
   if (candleGlowing) { return }
   let digits = document.querySelectorAll('#time-left .digit');
   document.querySelectorAll('h4').forEach(e=>e.classList.toggle('lighted'))
+  document.querySelector('h1').classList.toggle('lighted');
   if (phoneScreen.classList.contains('active')) {
     phoneScreen.classList.remove('active');
     glow.classList.remove('active');
