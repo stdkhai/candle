@@ -284,7 +284,7 @@ candleSection.addEventListener('animationend', e=>{
 ///////////////////////////////////////////////////////////////
 
 //////////////////////////set observer to steps////////////////////////////////////
-let options = { threshold: [0.99] };
+let options = { threshold: [0.9, 1] };
 let observer = new IntersectionObserver(onEntry, options);
 let elements = document.querySelectorAll('.step');
 for (let elm of elements) {
