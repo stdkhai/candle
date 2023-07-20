@@ -461,12 +461,11 @@ header {
 .arrow {
     z-index: -1;
     width: 150px;
-    height: 50px;
     position: absolute;
     bottom: 5%;
     background-color: transparent;
     border-bottom:1px solid #ccc ;
-    border-radius: 50%;
+    border-radius: 25%;
     cursor: pointer;
     user-select: none;
     display: flex;
@@ -489,7 +488,7 @@ header {
   }
   
   .arrow:before {
-    bottom: 5%;
+    bottom: -60%;
     left: 0;
     transform: rotate(-45deg);
     border-left: 1px solid var(--lightblue);
@@ -497,7 +496,7 @@ header {
   }
   
   .arrow:after {
-    bottom: 5%;
+    bottom: -60%;
     right: 0;
     border-right: 1px solid var(--lightblue);
 
