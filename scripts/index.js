@@ -137,15 +137,15 @@ const orbitCycle = [
 ];
 
 function scrollObserver(e) {
- 
+
   let headerOut = calculateVisibilityPercentage('header');
-/*   console.log(headerOut);
- */
-  if (headerOut.below!=0) {
+  /*   console.log(headerOut);
+   */
+  if (headerOut.below != 0) {
     headerObserver(headerOut)
     return
   }
-  
+
 }
 /**
  * 
@@ -171,17 +171,17 @@ function headerObserver(headerOut) {
     candleText.classList.add('in')
     candleText.classList.remove('out')
   }
-  if (headerOut.above <0.05) {
+  if (headerOut.above < 0.05) {
     candleSection.classList.remove('animated')
     h1.classList.remove('out')
     candleText.classList.remove('in')
     candleText.classList.add('out')
   }
-  
+
 }
 
 
-candleSection.addEventListener('animationend', e=>{
+candleSection.addEventListener('animationend', e => {
   switch (e.animationName) {
     case 'candleUP':
       modelViewer.cameraOrbit = orbitCycle[1]
@@ -389,19 +389,6 @@ function stickyHeaderF(params) {
   }
 }
 
-function deepText(node) {
-  var A = [];
-  if (node) {
-    node = node.firstChild;
-    while (node != null) {
-      if (node.nodeType == 3) A[A.length] = node;
-      else A = A.concat(deepText(node));
-      node = node.nextSibling;
-    }
-  }
-  return A;
-}
-
 notifyMe.addEventListener('click', openModal)
 modalCross.addEventListener('click', closeModal)
 feedback.addEventListener('click', closeModal)
@@ -416,7 +403,90 @@ function closeModal(e) {
   }
 }
 
-function openModal(e) {
+function openModal() {
   let modal = document.querySelector('.feedback');
   modal.classList.remove('closed');
 }
+//
+// day night new animations
+//
+const sky = document.querySelector('.candle-section.static.dayNight');
+const sun = document.querySelector('.sun');
+const moon = document.querySelector('.moon');
+
+let angle = 0;
+let animationStartTime = null;
+let centerX = sky.clientWidth / 2;
+let centerY = sky.clientHeight / 2;
+let radiusX = sky.clientWidth / 2 * 1.1; // Радіус по осі X (половина ширини блоку)
+let radiusY = sky.clientHeight / 4 * 1.5; // Радіус по осі Y (половина висоти блоку)
+const animationDuration = 30000; // 30 секунд (в мілісекундах)
+
+
+function animate(currentTime) {
+  if (!animationStartTime) animationStartTime = currentTime;
+  const elapsedTime = currentTime - animationStartTime;
+
+  // Обчислюємо кут повороту за час, що пройшов з початку анімації
+  angle = (elapsedTime / animationDuration) * (Math.PI * 2);
+
+  centerX = sky.clientWidth / 2; // Оновлюємо центр еліпса при зміні розміру блоку
+  centerY = sky.clientHeight / 2; // Оновлюємо центр еліпса при зміні розміру блоку
+
+  const sunX = centerX + radiusX * Math.cos(angle);
+  const sunY = centerY + radiusY * Math.sin(angle);
+  sun.style.left = sunX + 'px';
+  sun.style.top = sunY + 'px';
+
+  const moonX = centerX + radiusX * Math.cos(angle + Math.PI); // Змінюємо знак для зміни напрямку руху місяця
+  const moonY = centerY + radiusY * Math.sin(angle + Math.PI); // Змінюємо знак для зміни напрямку руху місяця
+  moon.style.left = moonX + 'px';
+  moon.style.top = moonY + 'px';
+
+  // Перевірка, чи об'єкти виходять за межі блоку "sky" і чи знаходяться в нижній половині блоку
+  if (sunX > sky.clientWidth || sunX < 0 || sunY > sky.clientHeight || sunY > centerY) {
+    sun.style.opacity = 0; // Заховати сонце, якщо воно за межами блоку або в нижній половині
+  } else {
+    sun.style.opacity = 1;
+  }
+
+  if (moonX > sky.clientWidth || moonX < 0 || moonY > sky.clientHeight || moonY > centerY) {
+    moon.style.opacity = 0; // Заховати місяць, якщо він за межами блоку або в нижній половині
+  } else {
+    moon.style.opacity = 1;
+  }
+
+  // Зміна кольору блоку .sky залежно від положення сонця та місяця
+  const sunDistanceFromTop = sunY / centerY;
+  const moonDistanceFromTop = moonY / centerY;
+  const skyColor = getSkyColor(sunDistanceFromTop, moonDistanceFromTop);
+  let section =document.querySelector('section.day-night');
+  section.style.backgroundColor = skyColor;
+  section.style.color = getTextColor(sunDistanceFromTop, moonDistanceFromTop);
+  section.querySelector('h4').style.color = getTextColor(sunDistanceFromTop, moonDistanceFromTop);
+  requestAnimationFrame(animate);
+}
+
+function getSkyColor(sunDistanceFromTop, moonDistanceFromTop) {
+  const sunBrightness = 1 - Math.max(0, sunDistanceFromTop); // 1 - відстань сонця від верху блоку
+  const moonBrightness = 1 - Math.max(0, moonDistanceFromTop); // 1 - відстань місяця від верху блоку
+    let k = Math.round((1 - moonBrightness) * 255)
+    return `rgb(${k}, ${k}, ${k})`
+}
+
+function getTextColor(sunDistanceFromTop, moonDistanceFromTop) {
+  const sunBrightness = 1 - Math.max(0, sunDistanceFromTop); // 1 - відстань сонця від верху блоку
+  const moonBrightness = 1 - Math.max(0, moonDistanceFromTop); // 1 - відстань місяця від верху блоку
+    let k = Math.round((1 - sunBrightness) * 255)
+    return `rgb(${k}, ${k}, ${k})`
+}
+
+
+animate();
+
+window.addEventListener('resize', () => {
+  centerX = sky.clientWidth / 2;
+  centerY = sky.clientHeight / 2;
+  radiusX = sky.clientWidth / 2 * 1.1;
+  radiusY = sky.clientHeight / 4 * 1.5;
+});

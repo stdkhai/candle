@@ -205,14 +205,6 @@ header {
 }
 
 .candle-section-head .logo.out {
-    /* 
-    animation-delay: 10.5s; */
-    /* animation-duration: 1s;
-    animation-iteration-count: 1;
-    animation-fill-mode: both;
-    animation-timing-function: linear;
-    animation-name: candleTextOUT; */
-    /*  animation-duration: 1s; */
     animation-name: headerLogoOUT;
     opacity: 0;
 }
@@ -375,7 +367,7 @@ header {
     flex-wrap: nowrap;
 
     &.dayNight {
-        transform: translateX(-5%);
+        width: 100vw;
     }
 }
 
@@ -801,11 +793,6 @@ h4.lighted{
     top: -80%;
 }
 
-section.day-night {
-    animation: 30s linear infinite dayNightBack;
-}
-
-
 .day-night {
     display: flex;
     flex-direction: column;
@@ -827,50 +814,34 @@ section.day-night {
     width: 80vw;
 }
 
-.moon-sun-span {
+  
+  .sun, .moon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    transform: translateY(-100%);
+  }
+  
+  .sun {
+    background-color: #ffd700; /* Жовте сонце */
+  }
+  
+  .moon {
+    background-color: #ffffff; /* Білий місяць */
+  }
+  
+  .moon-sun-span {
     top: 0;
     position: absolute;
-    height: 100vw;
     width: 100vw;
-    animation: 30s linear infinite dayNight;
+    /* animation: 30s linear infinite dayNight; */
 }
 
-.moon,
-.sun {
-    position: absolute;
-    /*     top: 50vh;
- */
-    width: 10vw;
-    height: 10vw;
-    background-color: var(--lightblue);
-    border-radius: 50%;
-}
-
-.sun {
-    bottom: 0;
-    right: 0;
-}
-
-.moon .shadow {
-    position: absolute;
-    width: 8vw;
-    height: 8vw;
-    border-radius: 50%;
-    right: 0;
-    animation: 30s linear infinite dayNightBack;
-    background-clip: none !important;
-    -webkit-background-clip: none !important;
-}
-
-.moon {
-    top: 0;
-    animation: 30s linear infinite dayNight reverse;
-}
 
 .day-night .text-content {
     text-align: center;
     width: 980px;
-    margin-bottom: 50vh;
     z-index: 6;
 }
 
@@ -1587,11 +1558,7 @@ footer {
         max-width: 65%;
     }
 
-    .moon-sun-span {
-        height: 100vw;
-        width: 100vh;
-        animation: 30s linear infinite dayNight;
-    }
+    
 
 
     .day-night .candle-section.static .model {
@@ -1610,21 +1577,6 @@ footer {
 
     .day-night .candle-section .wix-img {
         width: 100%;
-    }
-
-    .sun {
-        top: 0;
-    }
-
-    .moon,
-    .sun {
-        width: 50px;
-        height: 50px;
-    }
-
-    .moon .shadow {
-        width: 30px;
-        height: 30px;
     }
 
     .feedback .modal {
