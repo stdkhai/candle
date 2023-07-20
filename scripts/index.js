@@ -11,11 +11,12 @@ let modalCross = document.querySelector("#close");
 let feedback = document.querySelector('.feedback');
 let notifyMe = document.querySelector('#notify');
 let wrapper = document.querySelector(".wrapper")
+let candleSection = document.querySelector('.candle-section-head')
 
 
 const screenHeight = window.innerHeight;
-document.querySelector("header").style.height = screenHeight + "px";
-
+/* document.querySelector("header").style.height = screenHeight + "px";
+ */
 ////////////////////scroll limiter///////////////////////////////
 
 var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
@@ -105,9 +106,95 @@ async function onEntry(entry) {
 
 
 ////////////////////////////chande classes on scroll//////////////////////////////////////////
+/**
+ * 
+ * @param {String} selector 
+ * @returns 
+ */
+function calculateVisibilityPercentage(selector) {
+  const block = document.querySelector(selector);
+  const blockRect = block.getBoundingClientRect();
+
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+  const aboveViewportPercentage = Math.max(0, (-blockRect.top / blockRect.height));
+  const belowViewportPercentage = Math.max(0, ((blockRect.bottom - viewportHeight) / blockRect.height));
+
+  return {
+    above: aboveViewportPercentage,
+    below: belowViewportPercentage
+  }
+}
 
 
-window.addEventListener('load', e => {
+window.addEventListener('load', scrollObserver);
+window.addEventListener('scroll', scrollObserver);
+
+const modelViewer = document.querySelector('.model');
+const orbitCycle = [
+  '300deg 84deg auto',
+  '420deg 84deg auto',
+  modelViewer.cameraOrbit
+];
+
+function scrollObserver(e) {
+ 
+  let headerOut = calculateVisibilityPercentage('header');
+/*   console.log(headerOut);
+ */
+  if (headerOut.below!=0) {
+    headerObserver(headerOut)
+    return
+  }
+  
+}
+/**
+ * 
+ * @param {Object} headerOut 
+ * @param {Number} headerOut.below
+ * @param {Number} headerOut.above
+ */
+function headerObserver(headerOut) {
+  let h1 = document.querySelector('.header-span');
+  let candleText = document.querySelector('.candle-text');
+  let isMobile = false;
+  if (window.innerWidth <= 669) {
+    isMobile = true;
+  }
+  let headerAbove = 0.1;
+  if (isMobile) {
+    headerAbove = 0.2;
+  }
+  if (headerOut.above > headerAbove && headerOut.below > 0) {
+    candleSection.classList.add('animated')
+    h1.classList.add('out')
+    h1.classList.remove('static')
+    candleText.classList.add('in')
+    candleText.classList.remove('out')
+  }
+  if (headerOut.above <0.05) {
+    candleSection.classList.remove('animated')
+    h1.classList.remove('out')
+    candleText.classList.remove('in')
+    candleText.classList.add('out')
+  }
+  
+}
+
+
+candleSection.addEventListener('animationend', e=>{
+  switch (e.animationName) {
+    case 'candleUP':
+      modelViewer.cameraOrbit = orbitCycle[1]
+      break;
+    case 'candleBACK':
+      modelViewer.cameraOrbit = orbitCycle[0];
+      break;
+    default:
+      break;
+  }
+});
+
+/* window.addEventListener('w', e => {
   let box = document.querySelector('header')
   let prevRatio = 0;
   let ratioKoeficient = 0.92;
@@ -126,6 +213,8 @@ window.addEventListener('load', e => {
     '420deg 84deg auto',
     modelViewer.cameraOrbit
   ];
+
+
 
   let observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
@@ -191,7 +280,7 @@ window.addEventListener('load', e => {
     return thresholds
   }
 });
-
+ */
 ///////////////////////////////////////////////////////////////
 
 //////////////////////////set observer to steps////////////////////////////////////
@@ -255,20 +344,20 @@ phoneModel.addEventListener('play', () => {
 powerButton.addEventListener('click', () => {
   if (candleGlowing) { return }
   let digits = document.querySelectorAll('#time-left .digit');
-  document.querySelectorAll('h4').forEach(e=>e.classList.toggle('lighted'))
+  document.querySelectorAll('h4').forEach(e => e.classList.toggle('lighted'))
   document.querySelector('h1').classList.toggle('lighted');
   if (phoneScreen.classList.contains('active')) {
     phoneScreen.classList.remove('active');
     glow.classList.remove('active');
     powerButton.classList.remove('active');
-    phoneModel.currentTime=0;
-    digits.forEach((d)=>d.innerHTML = `<i class="fa-solid fa-clock"></i>`);
+    phoneModel.currentTime = 0;
+    digits.forEach((d) => d.innerHTML = `<i class="fa-solid fa-clock"></i>`);
   } else {
-    phoneModel.play({ repetitions:1});
+    phoneModel.play({ repetitions: 1 });
     phoneScreen.classList.add('active');
     glow.classList.add('active');
     powerButton.classList.add('active');
-    digits.forEach((d)=>digitAnim(d, d.classList[d.classList.length-1]));
+    digits.forEach((d) => digitAnim(d, d.classList[d.classList.length - 1]));
   }
 })
 
@@ -276,15 +365,15 @@ powerButton.addEventListener('click', () => {
 function digitAnim(block, finValue) {
   let finalTime = 0
   for (let index = 0; index < 10; index++) {
-    let time = 1000*Math.random()
-    setTimeout(()=>{
+    let time = 1000 * Math.random()
+    setTimeout(() => {
       block.innerHTML = index;
-    },time);
-    if (time>finalTime){
+    }, time);
+    if (time > finalTime) {
       finalTime = time;
     }
   }
-  setTimeout(()=>{block.innerHTML = finValue},finalTime)
+  setTimeout(() => { block.innerHTML = finValue }, finalTime)
 }
 
 //////////////////////////////////////////////////////////////////////////

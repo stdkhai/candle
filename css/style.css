@@ -177,7 +177,7 @@ h1.lighted{
 
 header {
     position: inherit;
-    height: 100%;
+    height: 150vh;
 }
 
 .candle-section-head {
@@ -1166,13 +1166,13 @@ footer {
     }
 
     100% {
-        transform: translateY(15vh) scale(0.7);
+        transform: translateY(40vh) scale(0.8);
     }
 }
 
 @keyframes candleBACK {
     0% {
-        transform: translateY(15vh) scale(0.7);
+        transform: translateY(40vh) scale(0.8);
 
     }
 
@@ -1414,8 +1414,8 @@ footer {
     }
 
     header {
-        height: 120vh;
-    }
+/*         height: 120vh;
+ */    }
 
 
     .modal span {
@@ -1449,7 +1449,7 @@ footer {
         }
 
         100% {
-            transform: translateY(-75vh) scale(1);
+            transform: translateY(-20vh) scale(1);
 
         }
     }
@@ -1457,7 +1457,7 @@ footer {
 
     @keyframes candleBACKMOBILE {
         0% {
-            transform: translateY(-50vh) scale(1);
+            transform: translateY(-20vh) scale(1);
         }
 
         100% {
