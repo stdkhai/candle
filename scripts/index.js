@@ -490,3 +490,23 @@ window.addEventListener('resize', () => {
   radiusX = sky.clientWidth / 2 * 1.1;
   radiusY = sky.clientHeight / 4 * 1.5;
 });
+
+let modelHeader = document.querySelector('.model');
+console.log(modelHeader);
+  modelHeader.addEventListener('progress',(event)=>{
+  console.log('br', event.detail.totalProgress);
+  if (event.detail.totalProgress!=1) {
+    modelHeader.classList.add('flame');
+  }else{
+    modelHeader.classList.remove('flame');
+  }
+})
+
+modelHeader.addEventListener('load',()=>{
+  console.log('load');
+
+})
+
+modelHeader.addEventListener('poster-dismissed',()=>{
+  modelHeader.classList.add('flame123');
+})
