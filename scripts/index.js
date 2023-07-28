@@ -1,9 +1,26 @@
 import { details } from './content.js'
+let loaderController = {
+  locked: true,
+  toLoad: 0,
+  loaded: 0,
+}
 window.addEventListener("load", function () {
-  setTimeout(function () {
-    // This hides the address bar:
+  setTimeout(()=>{
     window.scrollTo(0, 1);
   }, 0);
+  disableAnyScroll()
+  let models = document.querySelectorAll('model-viewer');
+  loaderController.toLoad = models.length;
+  models.forEach(model => {
+    model.addEventListener('progress', modelLoadListener)
+  });
+  setTimeout(() => {
+    if (loaderController.loaded === loaderController.toLoad) {
+      loaderController.locked=false;
+      document.querySelector('.plug').classList.add('loaded');
+      enableAnyScroll();
+    }
+  },loaderController.toLoad*1500)
 });
 document.querySelector("body").onload = startTime()
 let candleGlowing = false;
@@ -51,6 +68,15 @@ function disableScroll() {
   block.scrollIntoView({ block: 'nearest' })
 }
 
+function disableAnyScroll() {
+  window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+  window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+  window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+  window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+  let block = document.querySelector('.section-steps')
+  block.scrollIntoView({ block: 'nearest' })
+}
+
 function enableScroll() {
   window.removeEventListener('DOMMouseScroll', preventDefault, false);
   window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
@@ -60,11 +86,23 @@ function enableScroll() {
   block.scrollIntoView = function () { }
 }
 
+function enableAnyScroll() {
+  window.removeEventListener('DOMMouseScroll', preventDefault, false);
+  window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
+  window.removeEventListener('touchmove', preventDefault, wheelOpt);
+  window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+  let block = document.querySelector('.section-steps')
+  block.scrollIntoView = function () { }
+}
+
 //////////////////////////////////////////////////////
 
 //////////////////////steps animation/////////////////////////////////
 
 async function onEntry(entry) {
+  if (loaderController.locked){
+    return
+  }
   for (let i = 0; i < entry.length; i++) {
     if (entry[i].isIntersecting) {
       if (window.innerWidth > 699) {
@@ -284,11 +322,20 @@ candleSection.addEventListener('animationend', e => {
 ///////////////////////////////////////////////////////////////
 
 //////////////////////////set observer to steps////////////////////////////////////
-let options = { threshold: [0.9, 1] };
+let options = { threshold: [ 0.8, 0.9, 1] };
 let observer = new IntersectionObserver(onEntry, options);
 let elements = document.querySelectorAll('.step');
 for (let elm of elements) {
   observer.observe(elm);
+}
+function buildThresholdList() {
+  let thresholds = []
+  let steps = 10
+  for (let i = 1.0; i <= steps; i++) {
+    let ratio = i / steps
+    thresholds.push(ratio)
+  }
+  return thresholds
 }
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -460,7 +507,7 @@ function animate(currentTime) {
   const sunDistanceFromTop = sunY / centerY;
   const moonDistanceFromTop = moonY / centerY;
   const skyColor = getSkyColor(sunDistanceFromTop, moonDistanceFromTop);
-  let section =document.querySelector('section.day-night');
+  let section = document.querySelector('section.day-night');
   section.style.backgroundColor = skyColor;
   section.style.color = getTextColor(sunDistanceFromTop, moonDistanceFromTop);
   section.querySelector('h4').style.color = getTextColor(sunDistanceFromTop, moonDistanceFromTop);
@@ -470,15 +517,15 @@ function animate(currentTime) {
 function getSkyColor(sunDistanceFromTop, moonDistanceFromTop) {
   const sunBrightness = 1 - Math.max(0, sunDistanceFromTop); // 1 - відстань сонця від верху блоку
   const moonBrightness = 1 - Math.max(0, moonDistanceFromTop); // 1 - відстань місяця від верху блоку
-    let k = Math.round((1 - moonBrightness) * 255)
-    return `rgb(${k}, ${k}, ${k})`
+  let k = Math.round((1 - moonBrightness) * 255)
+  return `rgb(${k}, ${k}, ${k})`
 }
 
 function getTextColor(sunDistanceFromTop, moonDistanceFromTop) {
   const sunBrightness = 1 - Math.max(0, sunDistanceFromTop); // 1 - відстань сонця від верху блоку
   const moonBrightness = 1 - Math.max(0, moonDistanceFromTop); // 1 - відстань місяця від верху блоку
-    let k = Math.round((1 - sunBrightness) * 255)
-    return `rgb(${k}, ${k}, ${k})`
+  let k = Math.round((1 - sunBrightness) * 255)
+  return `rgb(${k}, ${k}, ${k})`
 }
 
 
@@ -491,22 +538,15 @@ window.addEventListener('resize', () => {
   radiusY = sky.clientHeight / 4 * 1.5;
 });
 
-let modelHeader = document.querySelector('.model');
-console.log(modelHeader);
-  modelHeader.addEventListener('progress',(event)=>{
-  console.log('br', event.detail.totalProgress);
-  if (event.detail.totalProgress!=1) {
-    modelHeader.classList.add('flame');
-  }else{
-    modelHeader.classList.remove('flame');
+function modelLoadListener(event) {
+  if (event.detail.totalProgress == 1) {
+    loaderController.loaded++;
+    const l = loaderController.loaded;
+    setTimeout(() => {
+      document.querySelector('.plug .bar .loaded').style.width=`${l*20}%`
+    },l*500)
   }
-})
+}
 
-modelHeader.addEventListener('load',()=>{
-  console.log('load');
 
-})
 
-modelHeader.addEventListener('poster-dismissed',()=>{
-  modelHeader.classList.add('flame123');
-})

@@ -12,7 +12,11 @@
     <link rel="shortcut icon" href="./media/logo.svg" type="image/x-icon">
     <title>Candle</title>
 </head>
-
+<div class="plug">
+    <div class="bar">
+        <div class="loaded"></div>
+    </div>
+</div>
 <body>
     <div class="wrapper">
         <div class="header">
@@ -43,7 +47,8 @@
                         shadow-intensity="2" exposure="0.21" disable-pan disable-zoom shadow-softness="1"
                         camera-orbit="300deg 84deg auto" auto-rotate-delay="0" min-camera-orbit="300deg 84deg auto"
                         max-camera-orbit="420deg 84deg auto" interpolation-decay="800" field-of-view="30deg"
-                        touch-action="pan-y" interaction-prompt="none" poster="./media/transp.png">
+                        touch-action="pan-y" interaction-prompt="none" poster="./media/transp.png"
+                        loading="eager">
                     </model-viewer>
                 </div>
 
@@ -112,7 +117,8 @@
                         powerPreference="low-power" ar-modes="webxr scene-viewer quick-look" camera-controls
                         shadow-intensity="2" exposure="0.21" disable-pan disable-zoom shadow-softness="1" auto-rotate
                         min-camera-orbit="auto 84deg auto" max-camera-orbit="auto 84deg auto" touch-action="pan-y"
-                        interaction-prompt="none">
+                        interaction-prompt="none"
+                        loading="eager">
                         <button class="Hotspot" slot="hotspot-2" data-surface="3 0 50 49 51 0.860 0.031 0.109"
                             data-visibility-attribute="visible">
                             <div class="HotspotAnnotation 1">Detail 1</div>
@@ -182,7 +188,8 @@
                             shadow-softness="1" camera-orbit="50deg 86.04deg 9006m" auto-rotate-delay="0"
                             min-camera-orbit="50deg 84deg auto" max-camera-orbit="135deg 84deg auto"
                             interpolation-decay="300" field-of-view="30deg" touch-action="pan-y"
-                            interaction-prompt="none" environment-image="./media/assets/lightroom_14b.hdr">
+                            interaction-prompt="none" environment-image="./media/assets/lightroom_14b.hdr"
+                            loading="eager">
                         </model-viewer>
                     </div>
                     <div class=" tools-bar">
@@ -277,7 +284,7 @@
                             ar-modes="webxr scene-viewer quick-look" camera-controls shadow-intensity="2" disable-pan
                             powerPreference="low-power" disable-zoom shadow-softness="1" auto-rotate
                             min-camera-orbit="auto 84deg auto" max-camera-orbit="auto 84deg auto" touch-action="none"
-                            interaction-prompt="none" exposure="0.21">
+                            interaction-prompt="none" exposure="0.21" loading="eager">
                         </model-viewer>
                     </div>
                 </section>

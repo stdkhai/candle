@@ -70,6 +70,29 @@ html {
     box-sizing: inherit;
 }
 
+.plug{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--black);
+    z-index: 100;
+}
+
+.plug .bar{
+    width: 100%;
+    height: 10px;
+}
+
+.plug .bar .loaded{
+    width: 10%;
+    height: 10px;
+    background-color: var(--lightblue);
+}
+
+.plug.loaded{
+    z-index: -1;
+}
+
 .wrapper {
     width: 100%;
     overflow: hidden;
@@ -1765,8 +1788,8 @@ model-viewer::part(default-progress-bar){
 	animation:.1s flame infinite;
 	filter:blur(10px);
 	position:relative;
-	box-shadow:17px 20px 90px #700;
-	border:45px solid black;
+/* 	box-shadow:17px 20px 90px #700;
+ */	border:45px solid black;
 	border-left-width:25px;
 	border-top-width:25px;
 	
