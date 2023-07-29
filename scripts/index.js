@@ -4,8 +4,20 @@ let loaderController = {
   toLoad: 0,
   loaded: 0,
 }
+let percentsBar = document.querySelector('.plug .bar .loaded');
+let plug = document.querySelector('.plug');
+let ticker = setInterval(() => {
+  let percents=percentsBar.style.width.match(/\d+\.*\d*/)[0]
+  if ((loaderController.loaded === loaderController.toLoad || !loaderController.locked) && percents >= 50) {
+    clearInterval(ticker);
+    document.querySelector('.plug').classList.add('loaded');
+    enableAnyScroll();
+  }
+  document.querySelector('.plug .bar .loaded').style.width = `${Number(percents) + 0.1}%`;
+}, 5)
 window.addEventListener("load", function () {
-  setTimeout(()=>{
+  let percentsBar = document.querySelector('.plug .bar .loaded')
+  setTimeout(() => {
     window.scrollTo(0, 1);
   }, 0);
   disableAnyScroll()
@@ -15,25 +27,17 @@ window.addEventListener("load", function () {
     model.addEventListener('progress', modelLoadListener)
   });
   setTimeout(() => {
-    if (loaderController.loaded === loaderController.toLoad) {
-      loaderController.locked=false;
-      document.querySelector('.plug').classList.add('loaded');
-      enableAnyScroll();
-    }
-  },loaderController.toLoad*1500)
+      loaderController.locked = false;
+  }, loaderController.toLoad * 1500);
+
 });
 document.querySelector("body").onload = startTime()
 let candleGlowing = false;
 let modalCross = document.querySelector("#close");
 let feedback = document.querySelector('.feedback');
 let notifyMe = document.querySelector('#notify');
-let wrapper = document.querySelector(".wrapper")
 let candleSection = document.querySelector('.candle-section-head')
 
-
-const screenHeight = window.innerHeight;
-/* document.querySelector("header").style.height = screenHeight + "px";
- */
 ////////////////////scroll limiter///////////////////////////////
 
 var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
@@ -100,7 +104,7 @@ function enableAnyScroll() {
 //////////////////////steps animation/////////////////////////////////
 
 async function onEntry(entry) {
-  if (loaderController.locked){
+  if (loaderController.locked) {
     return
   }
   for (let i = 0; i < entry.length; i++) {
@@ -322,7 +326,7 @@ candleSection.addEventListener('animationend', e => {
 ///////////////////////////////////////////////////////////////
 
 //////////////////////////set observer to steps////////////////////////////////////
-let options = { threshold: [ 0.8, 0.9, 1] };
+let options = { threshold: [0.8, 0.9, 1] };
 let observer = new IntersectionObserver(onEntry, options);
 let elements = document.querySelectorAll('.step');
 for (let elm of elements) {
@@ -541,12 +545,8 @@ window.addEventListener('resize', () => {
 function modelLoadListener(event) {
   if (event.detail.totalProgress == 1) {
     loaderController.loaded++;
-    const l = loaderController.loaded;
-    setTimeout(() => {
-      document.querySelector('.plug .bar .loaded').style.width=`${l*20}%`
-    },l*500)
   }
 }
-
-
-
+plug.addEventListener('animationend', () => {
+  plug.style.zIndex="-1";
+});

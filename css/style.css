@@ -84,13 +84,23 @@ html {
 }
 
 .plug .bar .loaded{
-    width: 10%;
     height: 10px;
     background-color: var(--lightblue);
 }
 
 .plug.loaded{
-    z-index: -1;
+    animation: 2s linear 0s plug-transition;
+    opacity: 0;
+}
+
+@keyframes plug-transition {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
 
 .wrapper {
