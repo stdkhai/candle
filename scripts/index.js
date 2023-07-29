@@ -7,13 +7,13 @@ let loaderController = {
 let percentsBar = document.querySelector('.plug .bar .loaded');
 let plug = document.querySelector('.plug');
 let ticker = setInterval(() => {
-  let percents=percentsBar.style.width.match(/\d+\.*\d*/)[0]
+  let percents = percentsBar.style.width.match(/\d+\.*\d*/)[0]
   if ((loaderController.loaded === loaderController.toLoad || !loaderController.locked) && percents >= 50) {
     clearInterval(ticker);
     document.querySelector('.plug').classList.add('loaded');
     enableAnyScroll();
   }
-  document.querySelector('.plug .bar .loaded').style.width = `${Number(percents) + 0.1}%`;
+  document.querySelector('.plug .bar .loaded').style.width = `${Number(percents) + 0.1 <= 100 ? Number(percents) + 0.1 : 100}%`;
 }, 5)
 window.addEventListener("load", function () {
   let percentsBar = document.querySelector('.plug .bar .loaded')
@@ -27,7 +27,7 @@ window.addEventListener("load", function () {
     model.addEventListener('progress', modelLoadListener)
   });
   setTimeout(() => {
-      loaderController.locked = false;
+    loaderController.locked = false;
   }, loaderController.toLoad * 1500);
 
 });
@@ -548,5 +548,5 @@ function modelLoadListener(event) {
   }
 }
 plug.addEventListener('animationend', () => {
-  plug.style.zIndex="-1";
+  plug.style.zIndex = "-1";
 });
