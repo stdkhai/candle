@@ -13,7 +13,7 @@ let ticker = setInterval(() => {
     document.querySelector('.plug').classList.add('loaded');
     enableAnyScroll();
   }
-  document.querySelector('.plug .bar .loaded').style.width = `${Number(percents) + 0.1 <= 100 ? Number(percents) + 0.1 : 100}%`;
+  document.querySelector('.plug .bar .loaded').style.width = `${Number(percents) + 0.5 <= 100 ? Number(percents) + 0.5 : 100}%`;
 }, 5)
 window.addEventListener("load", function () {
   let percentsBar = document.querySelector('.plug .bar .loaded')
@@ -28,7 +28,7 @@ window.addEventListener("load", function () {
   });
   setTimeout(() => {
     loaderController.locked = false;
-  }, loaderController.toLoad * 1500);
+  }, loaderController.toLoad * 1000);
 
 });
 document.querySelector("body").onload = startTime()
