@@ -275,24 +275,22 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
+    align-items: stretch;
     flex-wrap: wrap;
-    min-height: 100vh;
-    height: auto;
     z-index: 2;
     background-color: var(--black);
-
     scroll-snap-align: start;
     scroll-margin: 0px;
 
+    padding: 100px 0;
 }
 
 .step {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    max-width: 325px;
+    justify-content: space-between;
+    width: 325px;
     text-align: center;
 }
 
@@ -306,6 +304,7 @@ header {
 .step .step-content {
     opacity: 0;
     font-size: 24px;
+    flex-grow: 2;
 }
 
 .light-container {
@@ -370,6 +369,7 @@ header {
     min-height: 100vh;
     height: auto;
     position: relative;
+    padding: 50px 0;
 }
 
 
@@ -487,7 +487,7 @@ header {
     z-index: -1;
     width: 150px;
     position: absolute;
-    bottom: 5%;
+    bottom: 3%;
     background-color: transparent;
     border-bottom:1px solid #ccc ;
     border-radius: 25%;
@@ -1641,10 +1641,10 @@ footer {
         width: 60vh;
     }
 
-    .section-steps {
+/*     .section-steps {
         flex-wrap: nowrap;
     }
-
+ */
     .candle-section.static .detail-description {
         max-width: 90%;
         margin: 0 0 0 15px;
@@ -1709,12 +1709,12 @@ footer {
     }
 
     .candle-section.static .wix-img {
-        width: 80%;
+        width: 100%;
         translate: none;
     }
 
     .candle-section.static .model {
-        width: 80%;
+        width: 100%;
     }
 
     .phone-section .section-header {

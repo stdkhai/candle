@@ -84,6 +84,7 @@ function enableScroll() {
   window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
 /*   window.removeEventListener('touchmove', preventDefault, wheelOpt);
  */  window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+ document.removeEventListener('wheel', wheelListener);
   let block = document.querySelector('.section-steps')
   block.scrollIntoView = function () { }
 }
@@ -108,7 +109,6 @@ async function onEntry(entry) {
       if (window.innerWidth > 699) {
         disableScroll()
       }
-
       if (i == 0) {
         document.addEventListener('touchmove', e => {
           let target = e.target;
@@ -122,24 +122,26 @@ async function onEntry(entry) {
           enableScroll()
         });
 
-
-        document.addEventListener('wheel', e => {
-          e.preventDefault();
-          let target = e.target;
-          let steps = document.querySelectorAll('.step');
-          for (let i = 0; i < steps.length; i++) {
-            if (!steps[i].classList.contains('element-show')) {
-              steps[i].classList.add('element-show');
-              return
-            }
-          }
-          enableScroll()
-        })
+        document.addEventListener('wheel',wheelListener)       
+        
       }
     }
   }
 }
 
+
+function wheelListener(e) {
+  let target = e.target;
+  let steps = document.querySelectorAll('.step');
+  for (let i = 0; i < steps.length; i++) {
+    if (!steps[i].classList.contains('element-show')) {
+      e.preventDefault();
+      steps[i].classList.add('element-show');
+      return
+    }
+  }
+  enableScroll()
+}
 //////////////////////////////////////////////////////////////////////
 
 
