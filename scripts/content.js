@@ -1,18 +1,19 @@
 export const details = {
     1: {
-        title: 'Detai 1',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel consectetur interdum, nisl nunc consectetur nunc, eget egestas',
+        title: 'Safety glass',
+        description: `Protective glass that preserves the temperature and enhances the candle's aesthetic appeal. 
+        The flame is shielded from nearby objects, with the possibility to replace it with an extra glass`,
     },
     2: {
-        title: 'Detai 2',
-        description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit',
+        title: 'Replaceable Cartridge for Endless Burning',
+        description: `The replaceable cartridge allows you to enjoy real fire for 20 hours. With our quick replacement technology, you can easily extend the burning time as much as you desire`,
     },
     3: {
-        title: 'Detai 3',
-        description: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos',
+        title: 'One Sensor for Control',
+        description: `Home comfort at your fingertips. The ergonomic touch button allows you to conveniently and intuitively control your candle.`,
     },
     4: {
-        title: 'Detai 4',
-        description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa',
+        title: 'Flame Control ',
+        description: `A special system allows you to light the candle, adjust the flame, and extinguish the candle from a distance. Just as easy as turning on a table lamp`,
     },
 }

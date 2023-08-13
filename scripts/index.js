@@ -77,8 +77,6 @@ function disableAnyScroll() {
   window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
   window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
   window.addEventListener('keydown', preventDefaultForScrollKeys, false);
-  let block = document.querySelector('.section-steps')
-  block.scrollIntoView({ block: 'nearest' })
 }
 
 function enableScroll() {
@@ -95,8 +93,6 @@ function enableAnyScroll() {
   window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
   window.removeEventListener('touchmove', preventDefault, wheelOpt);
   window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
-  let block = document.querySelector('.section-steps')
-  block.scrollIntoView = function () { }
 }
 
 //////////////////////////////////////////////////////
