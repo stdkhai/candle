@@ -282,7 +282,7 @@ header {
     scroll-snap-align: start;
     scroll-margin: 0px;
 
-    padding: 100px 0;
+    padding:0 0 100px 0;
 }
 
 .step {
