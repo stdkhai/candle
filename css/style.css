@@ -263,10 +263,13 @@ header {
 
 .candle-text {
     position: absolute;
-    width: 200px;
     bottom: 10vh;
     left: 10vh;
     opacity: 0;
+    font-size: 46px;
+    font-weight: 600;
+    color: var(--white);
+
 }
 
 
